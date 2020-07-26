@@ -4,7 +4,7 @@
 				react
 				electron
 				
-				database
+				database used
 				firebase
 				
 				step1
@@ -17,8 +17,7 @@
 				step3
 				build installation and optimized files:"npm run build"
 				
-				step4
-				go to build->dist folder destination to install current desktop application
+				
 				
 				
 				
