@@ -11,8 +11,8 @@ function createWindow () {
       nodeIntegration: true
     },
     show:false,
-    resizable:false,
-    autoHideMenuBar:true
+    // resizable:false,
+    // autoHideMenuBar:true
   });
   // Menu.setApplicationMenu(null)
   win.on('ready-to-show',()=>{

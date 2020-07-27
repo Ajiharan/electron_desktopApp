@@ -1,0 +1,24 @@
+
+.nav-container  .bg-dark{
+    background-image: linear-gradient(to bottom left, #fa4e65, #fd973e);   
+}
+#nav-header{
+    border: 1px solid rgb(231, 44, 44);
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    box-shadow: inset -2px -6px 18px 0px #f73737;
+}
+.nav-container .img-header{
+    width: 40px;
+    height:40px;
+}
+
+#ul-heading-img{ 
+    flex: 1 1 25px;   
+}
+
+
+#ul-heading{
+    flex: 2 1 auto;
+}

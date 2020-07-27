@@ -1,14 +1,19 @@
 import React from 'react';
-
+import {HashRouter,Route,Switch} from 'react-router-dom';
+import HomeScreen from './screens/home/Home';
 import './App.css';
+import Navbar from './screens/navbar/Navbar';
 
 function App() {
   return (
-    <div className="App">
-    
-          <p>Desktop Application with react js and electron framwork</p>
-      
-    </div>
+   <React.Fragment>
+     <HashRouter>
+       <Navbar/>
+        <Switch>
+          <Route exact to="/" component={HomeScreen}/>
+        </Switch>
+     </HashRouter>
+   </React.Fragment>
   );
 }
 
