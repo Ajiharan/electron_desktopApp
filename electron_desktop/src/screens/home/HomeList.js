@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
+import {Link} from 'react-router-dom'
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -24,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(8),
     
   },
+  sub_nested:{
+    paddingLeft: theme.spacing(11),
+  }
 }));
 
 const  HomeNestedList=()=> {
@@ -31,8 +35,10 @@ const  HomeNestedList=()=> {
   const subjectData=usecheck(false);
   const lectureData=usecheck(false);
   const studentData=usecheck(false);
+  const sub_studentData=usecheck(false);
  
   return (
+    // nav list
     <List
       component="nav"
       aria-labelledby="nested-list-subheader"
@@ -43,24 +49,45 @@ const  HomeNestedList=()=> {
       }
       className={classes.root}
     >
-      <ListItem button button onClick={studentData.handleClick}>
+      {/* student list */}
+      <ListItem button  onClick={studentData.handleClick}>
         <ListItemIcon>
           <PeopleOutlineIcon style={{ color: "white"}} />
         </ListItemIcon >
         <ListItemText primary="Students" />
         {studentData.open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-
+      {/* student >year&semister  sub list */}
       <Collapse in={studentData.open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
+          <ListItem button className={classes.nested} onClick={sub_studentData.handleClick}>    
+            <ListItemText primary="year & semister" />
+            {sub_studentData.open ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          {/* student > year & semister sub list */}
+          <Collapse in={sub_studentData.open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+             {/* student > year & semister > Add sub list */}
+             <Link to="/student/year_semister/add">
+              <ListItem button className={classes.sub_nested}>
+                <ListItemText primary="Add" />
+              </ListItem>
+             </Link>       
+             {/* student > year & semister >view sub list */}
+            <ListItem button className={classes.sub_nested}>
+            
+              <ListItemText primary="view" />
+            </ListItem>
+
+          </List>
+        </Collapse>
+          {/* student > group number list */}
           <ListItem button className={classes.nested}>
            
-            <ListItemText primary="Add" />
+            <ListItemText primary="Group Number" />
           </ListItem>
-          <ListItem button className={classes.nested}>
-           
-            <ListItemText primary="Delete" />
-          </ListItem>
+
+
         </List>
       </Collapse>
 
