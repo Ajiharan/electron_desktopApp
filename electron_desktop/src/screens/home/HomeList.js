@@ -6,69 +6,102 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
-
+import ImportContactsIcon from '@material-ui/icons/ImportContacts';
+import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import usecheck from '../useHooks/useCheck';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor:'rgb(36, 35, 35)',
+    color:'white',
+    fontFamily:"Iceland cursive"
   },
   nested: {
-    paddingLeft: theme.spacing(4),
+    paddingLeft: theme.spacing(8),
+    
   },
 }));
 
 const  HomeNestedList=()=> {
   const classes = useStyles();
-  const [open, setOpen] = useState(true);
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
+  const subjectData=usecheck(false);
+  const lectureData=usecheck(false);
+  const studentData=usecheck(false);
+ 
   return (
     <List
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
+        <ListSubheader style={{ color: "white"}} component="div" id="nested-list-subheader">
           Management Navigation List
         </ListSubheader>
       }
       className={classes.root}
     >
-      <ListItem button>
+      <ListItem button button onClick={studentData.handleClick}>
         <ListItemIcon>
-          <SendIcon />
-        </ListItemIcon>
+          <PeopleOutlineIcon style={{ color: "white"}} />
+        </ListItemIcon >
         <ListItemText primary="Students" />
+        {studentData.open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Lectures" />
-      </ListItem>
-      <ListItem button onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Subjects" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+
+      <Collapse in={studentData.open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
+           
+            <ListItemText primary="Add" />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+           
+            <ListItemText primary="Delete" />
+          </ListItem>
+        </List>
+      </Collapse>
+
+      <ListItem button onClick={lectureData.handleClick}>
+        <ListItemIcon>
+          <SupervisedUserCircleIcon style={{ color: "white"}} />
+        </ListItemIcon>
+        <ListItemText primary="Lectures" />
+        {lectureData.open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+
+      <Collapse in={lectureData.open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+           
+            <ListItemText primary="Add" />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+           
+            <ListItemText primary="Delete" />
+          </ListItem>
+        </List>
+      </Collapse>
+
+
+      <ListItem button onClick={subjectData.handleClick}>
+        <ListItemIcon>
+          <ImportContactsIcon style={{ color: "white"}}/>
+        </ListItemIcon>
+        <ListItemText primary="Subjects" />
+        {subjectData.open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={subjectData.open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+           
+            <ListItemText primary="Add" />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+           
+            <ListItemText primary="Delete" />
           </ListItem>
         </List>
       </Collapse>

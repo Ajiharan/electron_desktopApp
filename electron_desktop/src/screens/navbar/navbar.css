@@ -1,4 +1,8 @@
-
+.nav-container{
+    position:sticky;
+    top:0;
+    z-index:100;
+}
 .nav-container  .bg-dark{
     background-image: linear-gradient(to bottom left, #fa4e65, #fd973e);   
 }
