@@ -1,18 +1,17 @@
 import React,{useState,useEffect} from 'react';
+import {useDispatch,useSelector} from 'react-redux';
+import {addSemisterYear} from '../../redux/Year_semi/YearAction';
 import './Yearsemister.css';
 import {db} from '../../firebase';
 import firebase from 'firebase';
 
 const Yearsemister = () => {
-
+    const dispatch=useDispatch();
     const [year,setYear]=useState("");
 
     const submitHandler=(e)=>{
         e.preventDefault();
-        db.collection('students').add({
-            year_semister:year,
-            timestamp:firebase.firestore.FieldValue.serverTimestamp()
-        });
+        dispatch(addSemisterYear(year));
         setYear("");
     }
 
@@ -33,9 +32,9 @@ const Yearsemister = () => {
                         placeholder="eg:S1.Y3" id="year_semister" type="text" className="form-control" required/>
                     </div>
                     <div className="yearSemister_buttons">
-                        <button type="submit" class="btn" disabled={!year}>Add</button>
-                        <button type="button" class="btn">View</button>
-                        <button type="button" onClick={clearInput} class="btn">Clear</button>
+                        <button type="submit" className="btn" disabled={!year}>Add</button>
+                        <button type="button" className="btn">View</button>
+                        <button type="button" onClick={clearInput} className="btn">Clear</button>
                     </div>
                 
                 </form>
