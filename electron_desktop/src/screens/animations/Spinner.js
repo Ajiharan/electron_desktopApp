@@ -10,12 +10,7 @@ const Spinner = ({ Loader, size }) => {
   `;
   return (
     <React.Fragment>
-      <Loader
-        css={override}
-        size={size || 10}
-        color={"#fa4e65"}
-        loading={true}
-      />
+      <Loader css={override} size={size || 10} color={"white"} loading={true} />
     </React.Fragment>
   );
 };

@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addSemisterYear } from "../../redux/Year_semi/YearAction";
 import "./Yearsemister.css";
 import { Spinner } from "../animations/Spinner";
-import { DotLoader } from "react-spinners";
-import { Link } from "react-router-dom";
+import { DotLoader, MoonLoader } from "react-spinners";
+import { useHistory } from "react-router-dom";
+
+import ScreenNav from "../screen-nav/ScreenNav";
 
 const Yearsemister = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [year, setYear] = useState("");
   const [clicked, isClicked] = useState(false);
@@ -14,7 +17,6 @@ const Yearsemister = () => {
   const { loading, error, year_semi } = useSelector(
     (state) => state.year_semister
   );
-  //   console.log("SemiData", semiData);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -22,15 +24,19 @@ const Yearsemister = () => {
     dispatch(addSemisterYear(year));
     setYear("");
   };
-  useEffect(() => {
-    if (year_semi != JSON.stringify({})) {
-      setSuccess("Successfully Added");
-      setTimeout(() => {
-        setSuccess("");
-        console.log("worked");
-      }, 5000);
-    }
-  }, [year_semi]);
+
+  const navData = [
+    {
+      id: 1,
+      name: "TimeTable > ",
+      pathname: "/",
+    },
+    {
+      id: 2,
+      name: "Student",
+      pathname: "/student/year_semister/add",
+    },
+  ];
 
   const clearInput = () => {
     setYear("");
@@ -38,31 +44,12 @@ const Yearsemister = () => {
 
   return (
     <div className="yearSemister">
-      <div className="yearSemister__navigation">
-        <button className="btn btn-link text-info yearSemister__navleft">
-          <h5>{"<"} Go back</h5>
-        </button>
-        <div className="yearSemister__navRight">
-          <h5>
-            {" "}
-            <Link to="/" className="text-info">
-              Timetable {">"}{" "}
-            </Link>
-            <Link className="text-info" to="/">
-              Student {">"}
-            </Link>
-            <Link className="text-info" to="/student/year_semister/add">
-              {" "}
-              Year&Semister
-            </Link>{" "}
-          </h5>
-        </div>
-      </div>
+      <ScreenNav rightNavData={navData} />
       <div className="yearSemister__container">
         <div className="yearSemister__box">
           <div className="lead text-success yearSemister__message">
-            {loading && clicked && <Spinner Loader={DotLoader} size={20} />}
-            <p className={`lead ${error ? "text-danger" : "text-success"}`}>
+            {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
+            <p className={`lead ${error ? "text-danger" : "text-light"}`}>
               {!loading && !error && success}
               {!loading && error && error}
             </p>
@@ -71,7 +58,9 @@ const Yearsemister = () => {
           <h2 className="text-center text-dark">Add year & Semister</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="yearSemister_inputs">
-              <label htmlFor="year_semister">year & semister</label>
+              <label htmlFor="year_semister" className="text-light">
+                year & semister
+              </label>
               <input
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
@@ -86,7 +75,13 @@ const Yearsemister = () => {
               <button type="submit" className="btn" disabled={!year}>
                 Add
               </button>
-              <button type="button" className="btn">
+              <button
+                type="button"
+                className="btn"
+                onClick={(e) => {
+                  history.push({ pathname: "/student/year_semister/view" });
+                }}
+              >
                 View
               </button>
               <button type="button" onClick={clearInput} className="btn">

@@ -1,4 +1,12 @@
 body {
   font-family: "Iceland";
-  background-color: lightgrey;
+  background-image: linear-gradient(
+    120deg,
+    transparent,
+    rgba(35, 36, 35, 0.62),
+    rgb(76, 79, 82)
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
