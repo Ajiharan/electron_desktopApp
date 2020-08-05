@@ -60,7 +60,7 @@ const addLecturer = (lecturer_name,lecturer_emp_id,lecturer_faculty,lecturer_cen
                     } else {
                         dispatch({
                             type: ADD_LECTURER_FAILURE,
-                            error: "data already exists",
+                            error: "Data already exists",
                         });
                     }
                 });

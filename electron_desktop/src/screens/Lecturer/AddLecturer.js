@@ -509,7 +509,7 @@ const AddLecturer = () => {
                                 <button type="button" className="btn">
                                     Clear
                                 </button>
-                                <button type="submit" className="btn">
+                                <button type="submit" className="btn" disabled={!emp_id}>
                                     Add
                                 </button>
                             </div>
