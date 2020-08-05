@@ -145,13 +145,53 @@ const AddLecturer = () => {
                             <div className="lecturer_inputs">
 
                                 <label htmlFor="faculty">Faculty</label>
-                                    <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty}>
-                                        <option>Select Faculty</option>
-                                        <option value="Computing">Computing</option>
-                                        <option value="Engineering">Engineering</option>
-                                        <option value="Business">Business</option>
-                                        <option value="Humanity science">Humanity science</option>
-                                    </select>
+                                    {
+                                        center == "Malabe" ? (
+                                                <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty}>
+                                                    <option>Select Faculty</option>
+                                                    <option value="Computing">Computing</option>
+                                                    <option value="Engineering">Engineering</option>
+                                                    <option value="Business">Business</option>
+                                                    <option value="Humanity science">Humanity science</option>
+                                                </select>
+                                        ):center == "Metro" ?(
+                                                    <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty}>
+                                                        <option>Select Faculty</option>
+                                                        <option value="Computing">Computing</option>
+                                                        <option value="Business">Business</option>
+                                                    </select>
+                                             ):center == "Kandy" ? (
+                                                        <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty}>
+                                                            <option>Select Faculty</option>
+                                                            <option value="Computing">Computing</option>
+                                                            <option value="Business">Business</option>
+                                                        </select>
+                                                 ):center == "Matara" ?(
+                                                        <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty}>
+                                                        <option>Select Faculty</option>
+                                                        <option value="Computing">Computing</option>
+                                                        <option value="Business">Business</option>
+                                                        </select>
+                                                    ):center == "Kurunegala" ?(
+                                                        <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty}>
+                                                        <option>Select Faculty</option>
+                                                        <option value="Computing">Computing</option>
+                                                        <option value="Business">Business</option>
+                                                        </select>
+                                                      ):center == "Jaffna" ? (
+                                                            <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty}>
+                                                            <option>Select Faculty</option>
+                                                            <option value="Computing">Computing</option>
+                                                            <option value="Business">Business</option>
+                                                            </select>
+                                                           ):
+                                                            (
+                                                            <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty} disabled>
+                                                            <option>Select Faculty</option>
+                                                            </select>
+                                                            )
+                                    }
+
                             </div>
 
 
@@ -159,59 +199,204 @@ const AddLecturer = () => {
 
                                 <label htmlFor="department">Department</label>
                                     {
-                                        faculty == "Computing" ?(
-                                            <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
-                                                    <option>Select department</option>
-                                                    <option value="Information Technology">Information Technology</option>
-                                                    <option value="Computer science & software engineering">Computer science & software engineering</option>
-                                                    <option value="Networking">Networking</option>
-                                                    <option value="Data Science">Data Science</option>
-                                                    <option value="Interactive media">Interactive media</option>
-                                            </select>
+                                        center == "Malabe" ?(
+                                            faculty == "Computing" ?(
+                                                    <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
+                                                        <option>Select department</option>
+                                                        <option value="Information Technology">Information Technology</option>
+                                                        <option value="Computer science & software engineering">Computer science & software engineering</option>
+                                                        <option value="Networking">Networking</option>
+                                                        <option value="Data Science">Data Science</option>
+                                                        <option value="Interactive media">Interactive media</option>
+                                                    </select>
 
 
-                                            )
+                                                )
 
-                                            : faculty == "Engineering" ?
+                                                : faculty == "Engineering" ?
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+
+                                                        <option>Select department</option>
+                                                        <option value="Architecture">Architecture</option>
+                                                        <option value="Civil Engineering">Civil Engineering</option>
+                                                        <option value="Electronic & Telecommunication Engineering">Electronic & Telecommunication Engineering</option>
+                                                        <option value="Quantity Surverying">Quantity Surverying</option>
+                                                    </select>
+                                                )
+
+                                                :faculty == "Business" ?
                                                     (
-                                                        <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+                                                        <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
 
                                                             <option>Select department</option>
-                                                            <option value="Architecture">Architecture</option>
-                                                            <option value="Civil Engineering">Civil Engineering</option>
-                                                            <option value="Electronic & Telecommunication Engineering">Electronic & Telecommunication Engineering</option>
-                                                            <option value="Quantity Surverying">Quantity Surverying</option>
+                                                            <option value="a">a</option>
+                                                            <option value="b">b</option>
+                                                            <option value="c">c</option>
+                                                            <option value="d">d</option>
                                                         </select>
                                                     )
+                                                    :faculty == "Humanity science" ?
+                                                        (
+                                                            <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
 
-                                                    :faculty == "Business" ?
-                                                            (
-                                                                <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
+                                                                <option>Select Department</option>
+                                                                <option value="Nursing">Nursing</option>
+                                                                <option value="y">y</option>
+                                                                <option value="z">z</option>
+                                                                <option value="w">w</option>
+                                                            </select>
+                                                        )
+                                                        :
+                                                        (
+                                                            <select className="form-control" onChange={handlechangeDepartment} name="department" value={department} disabled>
+                                                                <option>Select Department</option>
+                                                            </select>
+                                                        )
+                                            ):center == "Metro" ?(
+                                            faculty == "Computing" ?(
+                                                    <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
+                                                        <option>Select department</option>
+                                                        <option value="Information Technology">Information Technology</option>
+                                                        <option value="Computer science & software engineering">Computer science & software engineering</option>
+                                                        <option value="Networking">Networking</option>
+                                                        <option value="Interactive media">Interactive media</option>
+                                                    </select>
 
-                                                                    <option>Select department</option>
-                                                                    <option value="a">a</option>
-                                                                    <option value="b">b</option>
-                                                                    <option value="c">c</option>
-                                                                    <option value="d">d</option>
-                                                                </select>
-                                                            )
-                                                            :faculty == "Humanity science" ?
-                                                                        (
-                                                                            <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
 
-                                                                                <option>Select Department</option>
-                                                                                <option value="Nursing">Nursing</option>
-                                                                                <option value="y">y</option>
-                                                                                <option value="z">z</option>
-                                                                                <option value="w">w</option>
-                                                                            </select>
-                                                                        )
-                                                                        :
-                                                                        (
-                                                                            <select className="form-control" onChange={handlechangeDepartment} name="department" value={department} disabled>
-                                                                                <option>Select Department</option>
-                                                                            </select>
-                                                                        )
+                                                )
+
+                                                : faculty == "Business" ?
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+
+                                                        <option>Select department</option>
+                                                        <option value="b">b</option>
+                                                        <option value="c">c</option>
+                                                    </select>
+                                                ):
+
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+                                                        <option>Select department</option>
+                                                    </select>
+                                                )
+                                        ):center == "Kandy" ?(
+                                            faculty == "Computing" ?(
+                                                    <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
+                                                        <option>Select department</option>
+                                                        <option value="Information Technology">Information Technology</option>
+                                                        <option value="Computer science & software engineering">Computer science & software engineering</option>
+                                                        <option value="Networking">Networking</option>
+                                                        <option value="Data Science">Data Science</option>
+                                                    </select>
+
+
+                                                )
+
+                                                : faculty == "Business" ?
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+
+                                                        <option>Select department</option>
+                                                        <option value="a">a</option>
+                                                        <option value="b">b</option>
+                                                        <option value="c">c</option>
+                                                    </select>
+                                                ):
+
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+                                                        <option>Select department</option>
+                                                    </select>
+                                                )
+                                        ):center == "Matara" ?(
+                                            faculty == "Computing" ?(
+                                                    <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
+                                                        <option>Select department</option>
+                                                        <option value="Information Technology">Information Technology</option>
+                                                        <option value="Computer science & software engineering">Computer science & software engineering</option>
+                                                        <option value="Networking">Networking</option>
+                                                    </select>
+
+
+                                                )
+
+                                                : faculty == "Business" ?
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+
+                                                        <option>Select department</option>
+                                                        <option value="a">a</option>
+                                                        <option value="b">b</option>
+                                                        <option value="c">c</option>
+                                                    </select>
+                                                ):
+
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+                                                        <option>Select department</option>
+                                                    </select>
+                                                )
+                                        ):center == "Kurunegala" ?(
+                                            faculty == "Computing" ?(
+                                                    <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
+                                                        <option>Select department</option>
+                                                        <option value="Information Technology">Information Technology</option>
+                                                        <option value="Networking">Networking</option>
+                                                    </select>
+
+
+                                                )
+
+                                                : faculty == "Business" ?
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+
+                                                        <option>Select department</option>
+                                                        <option value="a">a</option>
+                                                        <option value="b">b</option>
+                                                    </select>
+                                                ):
+
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+                                                        <option>Select department</option>
+                                                    </select>
+                                                )
+                                        ):center == "Jaffna" ?(
+                                            faculty == "Computing" ?(
+                                                    <select className="form-control" onChange={handlechangeDepartment}  name="department" value={department}>
+                                                        <option>Select department</option>
+                                                        <option value="Information Technology">Information Technology</option>
+                                                        <option value="Networking">Networking</option>
+                                                    </select>
+
+
+                                                )
+
+                                                : faculty == "Business" ?
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+
+                                                        <option>Select department</option>
+                                                        <option value="a">a</option>
+                                                        <option value="b">b</option>
+                                                    </select>
+                                                ):
+
+                                                (
+                                                    <select className="form-control" onChange={handlechangeDepartment} name="department" value={department}>
+                                                        <option>Select department</option>
+                                                    </select>
+                                                )
+                                        ):
+                                            (
+                                                <select className="form-control" onChange={handlechangeDepartment} name="department" value={department} disabled>
+                                                    <option>Select department</option>
+                                                </select>
+                                            )
+
                                     }
                             </div>
 
@@ -275,14 +460,6 @@ const AddLecturer = () => {
 
                                                             )
 
-                                                            : faculty == "Engineering" ?
-                                                            (
-                                                                <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                    <option>Select Building</option>
-                                                                    <option value="Q building">Q building</option>
-                                                                    <option value="E building">E building</option>
-                                                                </select>
-                                                            )
 
                                                             :faculty == "Business" ?
                                                                 (
@@ -292,14 +469,6 @@ const AddLecturer = () => {
                                                                         <option value="X building">X building</option>
                                                                     </select>
                                                                 )
-                                                                :faculty == "Humanity science" ?
-                                                                    (
-                                                                        <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                            <option>Select Building</option>
-                                                                            <option value="Y building">Y building</option>
-                                                                            <option value="W building">W building</option>
-                                                                        </select>
-                                                                    )
                                                                     :
                                                                     (
                                                                         <select className="form-control" onChange={handlechangeBuilding} name="building" value={building} disabled>
@@ -316,15 +485,6 @@ const AddLecturer = () => {
 
                                                                 )
 
-                                                                : faculty == "Engineering" ?
-                                                                (
-                                                                    <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                        <option>Select Building</option>
-                                                                        <option value="Q building">Q building</option>
-                                                                        <option value="E building">E building</option>
-                                                                    </select>
-                                                                )
-
                                                                 :faculty == "Business" ?
                                                                     (
                                                                         <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
@@ -333,14 +493,7 @@ const AddLecturer = () => {
                                                                             <option value="X building">X building</option>
                                                                         </select>
                                                                     )
-                                                                    :faculty == "Humanity science" ?
-                                                                        (
-                                                                            <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                                <option>Select Building</option>
-                                                                                <option value="Y building">Y building</option>
-                                                                                <option value="W building">W building</option>
-                                                                            </select>
-                                                                        )
+
                                                                         :
                                                                         (
                                                                             <select className="form-control" onChange={handlechangeBuilding} name="building" value={building} disabled>
@@ -357,15 +510,6 @@ const AddLecturer = () => {
 
                                                                     )
 
-                                                                    : faculty == "Engineering" ?
-                                                                    (
-                                                                        <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                            <option>Select Building</option>
-                                                                            <option value="Q building">Q building</option>
-                                                                            <option value="E building">E building</option>
-                                                                        </select>
-                                                                    )
-
                                                                     :faculty == "Business" ?
                                                                         (
                                                                             <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
@@ -374,14 +518,6 @@ const AddLecturer = () => {
                                                                                 <option value="X building">X building</option>
                                                                             </select>
                                                                         )
-                                                                        :faculty == "Humanity science" ?
-                                                                            (
-                                                                                <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                                    <option>Select Building</option>
-                                                                                    <option value="Y building">Y building</option>
-                                                                                    <option value="W building">W building</option>
-                                                                                </select>
-                                                                            )
                                                                             :
                                                                             (
                                                                                 <select className="form-control" onChange={handlechangeBuilding} name="building" value={building} disabled>
@@ -398,15 +534,6 @@ const AddLecturer = () => {
 
                                                                     )
 
-                                                                    : faculty == "Engineering" ?
-                                                                    (
-                                                                        <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                            <option>Select Building</option>
-                                                                            <option value="Q building">Q building</option>
-                                                                            <option value="E building">E building</option>
-                                                                        </select>
-                                                                    )
-
                                                                     :faculty == "Business" ?
                                                                         (
                                                                             <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
@@ -415,14 +542,6 @@ const AddLecturer = () => {
                                                                                 <option value="X building">X building</option>
                                                                             </select>
                                                                         )
-                                                                        :faculty == "Humanity science" ?
-                                                                            (
-                                                                                <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                                    <option>Select Building</option>
-                                                                                    <option value="Y building">Y building</option>
-                                                                                    <option value="W building">W building</option>
-                                                                                </select>
-                                                                            )
                                                                             :
                                                                             (
                                                                                 <select className="form-control" onChange={handlechangeBuilding} name="building" value={building} disabled>
@@ -439,15 +558,6 @@ const AddLecturer = () => {
 
                                                                             )
 
-                                                                            : faculty == "Engineering" ?
-                                                                            (
-                                                                                <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                                    <option>Select Building</option>
-                                                                                    <option value="Q building">Q building</option>
-                                                                                    <option value="E building">E building</option>
-                                                                                </select>
-                                                                            )
-
                                                                             :faculty == "Business" ?
                                                                                 (
                                                                                     <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
@@ -456,14 +566,6 @@ const AddLecturer = () => {
                                                                                         <option value="X building">X building</option>
                                                                                     </select>
                                                                                 )
-                                                                                :faculty == "Humanity science" ?
-                                                                                    (
-                                                                                        <select className="form-control" onChange={handlechangeBuilding}  name="building" value={building}>
-                                                                                            <option>Select Building</option>
-                                                                                            <option value="Y building">Y building</option>
-                                                                                            <option value="W building">W building</option>
-                                                                                        </select>
-                                                                                    )
                                                                                     :
                                                                                     (
                                                                                         <select className="form-control" onChange={handlechangeBuilding} name="building" value={building} disabled>
