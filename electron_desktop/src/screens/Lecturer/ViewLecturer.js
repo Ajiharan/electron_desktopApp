@@ -86,10 +86,11 @@ const ViewLecturer = () => {
                                 {data.rank}
                             </td>
                             <td>
-                                <button>Delete</button>
-                            </td>
-                            <td>
                                 <button>Edit</button>
+                            </td>
+
+                            <td>
+                                <button>Delete</button>
                             </td>
                         </tr>
                     ))}

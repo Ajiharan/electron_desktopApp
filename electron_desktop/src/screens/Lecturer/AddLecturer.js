@@ -50,7 +50,7 @@ const AddLecturer = () => {
     const handlechangeLevel = event=> {
 
         setLevel(event.target.value);
-        setRank(level+"."+emp_id)
+        setRank(event.target.value+"."+emp_id)
     }
 
 
@@ -130,6 +130,20 @@ const AddLecturer = () => {
 
                             <div className="lecturer_inputs">
 
+                                <label htmlFor="center">Center</label>
+                                <select className="form-control" onChange={handlechangeCenter} name="center" value={center}>
+                                    <option>Select Center</option>
+                                    <option value="Malabe">Malabe</option>
+                                    <option value="Metro">Metro</option>
+                                    <option value="Kandy">Kandy</option>
+                                    <option value="Matara">Matara</option>
+                                    <option value="Kurunegala">Kurunegala</option>
+                                    <option value="Jaffna">Jaffna</option>
+                                </select>
+                            </div>
+
+                            <div className="lecturer_inputs">
+
                                 <label htmlFor="faculty">Faculty</label>
                                     <select className="form-control" onChange={handlechangeFaculty} name="faculty" value={faculty}>
                                         <option>Select Faculty</option>
@@ -139,6 +153,8 @@ const AddLecturer = () => {
                                         <option value="Humanity science">Humanity science</option>
                                     </select>
                             </div>
+
+
                             <div className="lecturer_inputs">
 
                                 <label htmlFor="department">Department</label>
@@ -199,19 +215,6 @@ const AddLecturer = () => {
                                     }
                             </div>
 
-                            <div className="lecturer_inputs">
-
-                                <label htmlFor="center">Center</label>
-                                <select className="form-control" onChange={handlechangeCenter} name="center" value={center}>
-                                    <option>Select Center</option>
-                                    <option value="Malabe">Malabe</option>
-                                    <option value="Metro">Metro</option>
-                                    <option value="Kandy">Kandy</option>
-                                    <option value="Matara">Matara</option>
-                                    <option value="Kurunegala">Kurunegala</option>
-                                    <option value="Jaffna">Jaffna</option>
-                                </select>
-                            </div>
 
                             <div className="lecturer_inputs">
 
