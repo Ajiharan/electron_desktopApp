@@ -105,12 +105,16 @@ const HomeNestedList = () => {
 
       <Collapse in={lectureData.open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
+          <Link to="/lecturer/add">
           <ListItem button className={classes.nested}>
             <ListItemText primary="Add" />
           </ListItem>
+          </Link>
+          <Link to="/lecturer/view">
           <ListItem button className={classes.nested}>
-            <ListItemText primary="Delete" />
+            <ListItemText primary="View" />
           </ListItem>
+          </Link>
         </List>
       </Collapse>
 
@@ -123,11 +127,13 @@ const HomeNestedList = () => {
       </ListItem>
       <Collapse in={subjectData.open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
+          <Link to="/subject/add">
           <ListItem button className={classes.nested}>
             <ListItemText primary="Add" />
           </ListItem>
+          </Link>
           <ListItem button className={classes.nested}>
-            <ListItemText primary="Delete" />
+            <ListItemText primary="View" />
           </ListItem>
         </List>
       </Collapse>
