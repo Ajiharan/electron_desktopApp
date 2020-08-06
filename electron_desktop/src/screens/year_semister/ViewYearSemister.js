@@ -85,6 +85,17 @@ const ViewYearSemister = () => {
     console.log("checkData", checkData);
   };
 
+  const searchData = (name) => {
+    setCheckData([]);
+    if (name) {
+      setUserData(
+        userData.filter((data) => data.year_semister.startsWith(name))
+      );
+    } else {
+      setUserData(year_semi);
+    }
+  };
+
   return (
     <div className="YearViewContainer">
       <div className="YearViewContainer__nav">
@@ -106,7 +117,7 @@ const ViewYearSemister = () => {
               >
                 Add new record
               </button>
-              <Search />
+              <Search searchData={searchData} />
             </div>
 
             <YearSemisterTable
@@ -115,7 +126,7 @@ const ViewYearSemister = () => {
               handleDelete={handleDelete}
             />
             <div className="YearViewContainer__bottom">
-              {userData.length > 0 && (
+              {userData.length > 0 && userData.length === year_semi.length && (
                 <button onClick={DeleteAll} className="btn btn-danger">
                   Delete All
                 </button>
