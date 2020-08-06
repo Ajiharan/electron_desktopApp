@@ -6,7 +6,6 @@ import Navbar from "./screens/navbar/Navbar";
 import Yearsemister from "./screens/year_semister/Yearsemister";
 import ViewYearSemister from "./screens/year_semister/ViewYearSemister";
 import AddLecturer from "./screens/Lecturer/AddLecturer";
-import AddSubject from "./screens/Subject/AddSubject";
 import ViewLecturer from "./screens/Lecturer/ViewLecturer";
 
 function App() {
@@ -26,10 +25,9 @@ function App() {
             path="/student/year_semister/view"
             component={ViewYearSemister}
           />
-          <Route exact path="/lecturer/add" component={AddLecturer}/>
-          <Route exact path="/subject/add" component={AddSubject}/>
-          <Route exact path="/lecturer/view" component={ViewLecturer}/>
+          <Route exact path="/lecturer/add" component={AddLecturer} />
 
+          <Route exact path="/lecturer/view" component={ViewLecturer} />
         </Switch>
       </HashRouter>
     </React.Fragment>
