@@ -5,6 +5,9 @@ import {
   GET_YEAR_SEMISTER_FAILURE,
   GET_YEAR_SEMISTER_REQUEST,
   GET_YEAR_SEMISTER_SUCCESS,
+  DELETE_YEAR_SEMISTER_REQUEST,
+  DELETE_YEAR_SEMISTER_FAILURE,
+  DELETE_YEAR_SEMISTER_SUCCESS,
 } from "./yearType";
 import firebase from "firebase";
 import { db } from "../../firebase";
@@ -85,6 +88,16 @@ const viewSemister = () => {
   };
 };
 
-const deleteSemister = () => {};
+// const deleteOneSemister_detail = (doc_id) => {
+//   return async (dispatch) => {
+//     dispatch({ type: DELETE_YEAR_SEMISTER_REQUEST });
+//     try {
+//       dispatch({
+//         type: DELETE_YEAR_SEMISTER_SUCCESS,
+//         payload: db.collection("todos").doc(doc_id).delete(),
+//       });
+//     } catch (err) {}
+//   };
+// };
 
 export { addSemisterYear, viewSemister };
