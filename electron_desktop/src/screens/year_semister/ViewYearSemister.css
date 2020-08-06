@@ -1,12 +1,22 @@
-.YearViewContainer__table button {
-  color: white;
-  background-image: linear-gradient(to right, #fc6076, #ff9231);
-  border: none;
-  width: 80px;
-  padding: 2px;
-  cursor: pointer;
+.btn_new {
+  margin: 10px;
 }
 
-.YearViewContainer__table button:hover {
-  background-image: linear-gradient(to right, #e72c45, #f59644);
+.YearViewContainer__top {
+  display: flex;
+  justify-content: space-between;
+}
+.top__search {
+  height: 40px;
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  width: 250px;
+  outline: none;
+}
+
+.YearViewContainer__bottom {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }

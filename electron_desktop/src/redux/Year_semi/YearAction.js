@@ -66,6 +66,7 @@ const viewSemister = () => {
     dispatch({ type: GET_YEAR_SEMISTER_REQUEST });
     try {
       db.collection("students")
+        .orderBy("timestamp", "desc")
         .onSnapshot(async (snapshot) => {
           const tempData = await snapshot.docs.map((doc) => ({
             year_semister: doc.data().year_semister,
