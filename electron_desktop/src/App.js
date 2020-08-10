@@ -7,6 +7,7 @@ import Yearsemister from "./screens/year_semister/Yearsemister";
 import ViewYearSemister from "./screens/year_semister/ViewYearSemister";
 import AddLecturer from "./screens/Lecturer/AddLecturer";
 import ViewLecturer from "./screens/Lecturer/ViewLecturer";
+import AddSubject from "./screens/Subject/AddSubject";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route exact path="/lecturer/add" component={AddLecturer} />
 
           <Route exact path="/lecturer/view" component={ViewLecturer} />
+          <Route exact path="/subject/add" component={AddSubject} />
+
         </Switch>
       </HashRouter>
     </React.Fragment>

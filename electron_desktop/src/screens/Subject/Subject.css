@@ -1,15 +1,15 @@
-.lecturer__container {
+.subject__container {
     margin: 10px;
 }
 
-.lecturer__navigation {
+.subject__navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
 }
 
-.lecturer__box {
+.subject__box {
     width: auto;
     height: auto;
     display: flex;
@@ -18,11 +18,11 @@
     align-items: center;
 }
 
-.lecturer__message {
+.subject__message {
     height: 30px;
 }
 
-.lecturer__box > form {
+.subject__box > form {
     border: 1px solid rgb(150, 148, 148);
     margin: 10px;
     padding: 8px;
@@ -40,7 +40,7 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-.lecturer_inputs {
+.subject_inputs {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -49,15 +49,15 @@
 }
 
 
-.lecturer_inputs > label {
+.subject_inputs > label {
     width: 200px;
 }
 
-.lecturer_buttons {
+.subject_buttons {
     display: flex;
 }
 
-.lecturer_buttons button {
+.subject_buttons button {
     color: white;
     background-image: linear-gradient(to right, #fc6076, #ff9231);
     border: none;
@@ -66,6 +66,6 @@
     padding: 5px;
 }
 
-.lecturer_buttons button:hover {
+.subject_buttons button:hover {
     background-image: linear-gradient(to right, #e72c45, #f59644);
 }
