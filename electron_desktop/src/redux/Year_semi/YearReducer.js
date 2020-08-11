@@ -10,6 +10,7 @@ import {
   UPDATE_YEAR_SEMISTER_FAILURE,
   GET_ONE_YEAR_SEMISTER_REQUEST,
   GET_ONE_YEAR_SEMISTER_FAILURE,
+  GET_ONE_YEAR_SEMISTER_SUCCESS,
 } from "./yearType";
 
 const initialState = {
@@ -70,7 +71,7 @@ const get_one_year_semisterReducer = (
   switch (action.type) {
     case GET_ONE_YEAR_SEMISTER_REQUEST:
       return { ...state, loading: true };
-    case GET_YEAR_SEMISTER_SUCCESS:
+    case GET_ONE_YEAR_SEMISTER_SUCCESS:
       return { ...state, loading: false, year_semi: action.payload, error: "" };
     case GET_ONE_YEAR_SEMISTER_FAILURE:
       return { ...state, loading: true, year_semi: {}, error: action.error };

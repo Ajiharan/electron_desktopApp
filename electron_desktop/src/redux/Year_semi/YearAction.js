@@ -106,6 +106,7 @@ const getOneYear_semisterDetail = (doc_id) => {
               id: doc.id,
               timestamp: doc.data().timestamp,
             };
+            console.log("getOneDoc", tempData);
             dispatch({
               type: GET_ONE_YEAR_SEMISTER_SUCCESS,
               payload: tempData,
@@ -121,12 +122,12 @@ const getOneYear_semisterDetail = (doc_id) => {
   };
 };
 
-const UpdateviewSemister = (doc_id, input) => {
+const UpdateSemister = (doc_id, input) => {
   return async (dispatch) => {
     dispatch({ type: UPDATE_YEAR_SEMISTER_REQUEST });
     try {
       const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-      db.collection("todos")
+      db.collection("students")
         .doc(doc_id)
         .set(
           {
@@ -159,6 +160,6 @@ const UpdateviewSemister = (doc_id, input) => {
 export {
   addSemisterYear,
   viewSemister,
-  UpdateviewSemister,
+  UpdateSemister,
   getOneYear_semisterDetail,
 };

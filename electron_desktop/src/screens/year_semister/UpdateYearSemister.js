@@ -5,18 +5,19 @@ import { DotLoader, MoonLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
 import ScreenNav from "../screen-nav/ScreenNav";
 import "./UpdateYearSemister.css";
-import {
-  UpdateviewSemister,
-  getOneYear_semisterDetail,
-} from "../../redux/Year_semi/YearAction";
+import { UpdateSemister } from "../../redux/Year_semi/YearAction";
+import useUpdate from "../useHooks/useUpdate";
 const UpdateYearSemister = (props) => {
   console.log("props.history", props.location);
   const dispatch = useDispatch();
   const history = useHistory();
-
   const [year, setYear] = useState("");
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Updated");
+
+  const { loading, error, year_semi } = useSelector(
+    (state) => state.update_year_semister
+  );
 
   useEffect(() => {
     if (!props.location.state) {
@@ -26,7 +27,14 @@ const UpdateYearSemister = (props) => {
     } else {
       setYear(props.location.state.year_semister);
     }
-  }, [props]);
+  }, []);
+
+  const { submitHandler, clearInput } = useUpdate({
+    updateData: UpdateSemister,
+    data: { year_semister: year, id: props.location.state?.id },
+    setData: setYear,
+    isClicked: isClicked,
+  });
 
   const navData = [
     {
@@ -56,16 +64,16 @@ const UpdateYearSemister = (props) => {
       <ScreenNav rightNavData={navData} />
       <div className="yearSemisterUpdate__container">
         <div className="yearSemisterUpdate__box">
-          {/* <div className="lead text-success yearSemister__message">
+          <div className="lead text-success yearSemister__message">
             {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
             <p className={`lead ${error ? "text-danger" : "text-light"}`}>
               {!loading && !error && success}
               {!loading && error && error}
             </p>
-          </div> */}
+          </div>
 
           <h2 className="text-center text-dark">Update year & Semister</h2>
-          <form id="frm">
+          <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="yearSemisterUpdate_inputs">
               <label htmlFor="yearSemisterUpdate" className="text-light">
                 year & semister
@@ -93,7 +101,7 @@ const UpdateYearSemister = (props) => {
               >
                 Cancel
               </button>
-              <button type="button" className="btn">
+              <button type="button" onClick={clearInput} className="btn">
                 Clear
               </button>
             </div>
