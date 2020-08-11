@@ -5,7 +5,7 @@ import {
   update_year_semiReducer,
   get_one_year_semisterReducer,
 } from "./Year_semi/YearReducer";
-
+import { addProgrammeReducer } from "./programme/programmeReducer";
 import { LecturerReducer, get_lecturers } from "./Lecturer/LecturerReducer";
 import { SubjectReducer } from "./Subject/SubjectReducer";
 
@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   get_year_semister: get_year_semiReducer,
   update_year_semister: update_year_semiReducer,
   get_one_year_semister: get_one_year_semisterReducer,
+  programme_add: addProgrammeReducer,
   LecturerReducer: LecturerReducer,
   get_lecturers: get_lecturers,
   SubjectReducer: SubjectReducer,

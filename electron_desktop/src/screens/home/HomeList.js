@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(8),
   },
   sub_nested: {
-    paddingLeft: theme.spacing(11),
+    paddingLeft: theme.spacing(12),
+    color: "white",
   },
 }));
 
@@ -35,7 +36,7 @@ const HomeNestedList = () => {
   const lectureData = usecheck(false);
   const studentData = usecheck(false);
   const sub_studentData = usecheck(false);
-
+  const sub_programmeData = usecheck(false);
   return (
     // nav list
     <List
@@ -89,9 +90,30 @@ const HomeNestedList = () => {
             </List>
           </Collapse>
           {/* student > group number list */}
-          <ListItem button className={classes.nested}>
-            <ListItemText primary="Group Number" />
+          <ListItem
+            button
+            onClick={sub_programmeData.handleClick}
+            className={classes.nested}
+          >
+            <ListItemText primary="Programme" />
+            {sub_programmeData.open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
+          <Collapse in={sub_programmeData.open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {/* student > year & semister > Add sub list */}
+              <Link to="/student/programme/add">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="Add" />
+                </ListItem>
+              </Link>
+              {/* student > year & semister >view sub list */}
+              <Link to="/student/year_semister/view">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="view" />
+                </ListItem>
+              </Link>
+            </List>
+          </Collapse>
         </List>
       </Collapse>
 
@@ -106,14 +128,14 @@ const HomeNestedList = () => {
       <Collapse in={lectureData.open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <Link to="/lecturer/add">
-          <ListItem button className={classes.nested}>
-            <ListItemText primary="Add" />
-          </ListItem>
+            <ListItem button className={classes.nested}>
+              <ListItemText primary="Add" />
+            </ListItem>
           </Link>
           <Link to="/lecturer/view">
-          <ListItem button className={classes.nested}>
-            <ListItemText primary="View" />
-          </ListItem>
+            <ListItem button className={classes.nested}>
+              <ListItemText primary="View" />
+            </ListItem>
           </Link>
         </List>
       </Collapse>
@@ -128,9 +150,9 @@ const HomeNestedList = () => {
       <Collapse in={subjectData.open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <Link to="/subject/add">
-          <ListItem button className={classes.nested}>
-            <ListItemText primary="Add" />
-          </ListItem>
+            <ListItem button className={classes.nested}>
+              <ListItemText primary="Add" />
+            </ListItem>
           </Link>
           <ListItem button className={classes.nested}>
             <ListItemText primary="View" />
