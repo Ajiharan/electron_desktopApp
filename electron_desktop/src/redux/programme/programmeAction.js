@@ -63,5 +63,32 @@ const addProgramme = (programme) => {
     } catch (err) {}
   };
 };
+const viewProgramme = () => {
+  return async (dispatch) => {
+    dispatch({ type: GET_PROGRAMME_REQUEST });
+    try {
+      db.collection("programmes")
+        .orderBy("timestamp", "desc")
+        .onSnapshot(async (snapshot) => {
+          const tempData = await snapshot.docs.map((doc) => ({
+            programme: doc.data().programme,
+            id: doc.id,
+            timestamp: doc.data().timestamp,
+          }));
+          console.log("getTemp Data", tempData);
+          dispatch({
+            type: GET_PROGRAMME_SUCCESS,
+            payload: tempData,
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: GET_PROGRAMME_FAILURE,
+            error: err,
+          });
+        });
+    } catch (err) {}
+  };
+};
 
-export { addProgramme };
+export { addProgramme, viewProgramme };

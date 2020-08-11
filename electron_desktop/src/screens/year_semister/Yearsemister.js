@@ -19,6 +19,12 @@ const Yearsemister = () => {
     (state) => state.year_semister
   );
 
+  useEffect(() => {
+    return () => {
+      console.log("Component will unmount");
+    };
+  }, []);
+
   const { submitHandler, clearInput } = useAdd({
     addData: addSemisterYear,
     data: year,
@@ -34,7 +40,7 @@ const Yearsemister = () => {
     },
     {
       id: 2,
-      name: "Student",
+      name: "Student Semister",
       pathname: "/student/year_semister/add",
     },
   ];

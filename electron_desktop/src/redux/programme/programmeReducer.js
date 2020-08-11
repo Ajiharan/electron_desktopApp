@@ -29,4 +29,25 @@ const addProgrammeReducer = (
   }
 };
 
-export { addProgrammeReducer };
+const viewProgrammeReducer = (
+  state = { loading: true, programme: {}, error: "" },
+  action
+) => {
+  switch (action.type) {
+    case GET_PROGRAMME_REQUEST:
+      return { ...state, loading: true };
+    case GET_PROGRAMME_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        programme: action.payload,
+        error: "",
+      };
+    case GET_PROGRAMME_FAILURE:
+      return { ...state, loading: false, programme: [], error: action.error };
+    default:
+      return state;
+  }
+};
+
+export { addProgrammeReducer, viewProgrammeReducer };

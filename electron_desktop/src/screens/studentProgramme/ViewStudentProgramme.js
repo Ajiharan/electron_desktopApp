@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-import "./ViewYearSemister.css";
+import "./ViewStudentProgramme.css";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { useDispatch, useSelector } from "react-redux";
-import { viewSemister } from "../../redux/Year_semi/YearAction";
+import { viewProgramme } from "../../redux/programme/programmeAction";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader } from "react-spinners";
 import { db } from "../../firebase";
 import Search from "../home/Search";
-import YearSemisterTable from "./YearSemisterTable";
 import { useHistory } from "react-router-dom";
-const ViewYearSemister = () => {
-  const { loading, error, year_semi } = useSelector(
-    (state) => state.get_year_semister
+import ProgrammeTable from "./ProgrammeTable";
+const ViewStudentProgramme = () => {
+  const { loading, error, programme } = useSelector(
+    (state) => state.get_programmmes
   );
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const [checkData, setCheckData] = useState([]);
-  console.log("year and semi", year_semi);
+  console.log("programme", programme);
   const history = useHistory();
   const navData = [
     {
@@ -26,23 +26,23 @@ const ViewYearSemister = () => {
     },
     {
       id: 2,
-      name: "Student > ",
-      pathname: "/student/year_semister/add",
+      name: "Student Programme > ",
+      pathname: "/student/programme/add",
     },
     {
       id: 3,
       name: "view",
-      pathname: "/student/year_semister/view",
+      pathname: "/student/programme/view",
     },
   ];
 
   useEffect(() => {
-    dispatch(viewSemister());
+    dispatch(viewProgramme());
   }, []);
 
   useEffect(() => {
-    setUserData(year_semi);
-  }, [year_semi]);
+    setUserData(programme);
+  }, [programme]);
 
   const Handlebox = (e) => {
     if (e.target.checked) {
@@ -61,7 +61,7 @@ const ViewYearSemister = () => {
   };
 
   const DeleteAll = () => {
-    db.collection("students")
+    db.collection("programmes")
       .get()
       .then((res) => {
         res.forEach((element) => {
@@ -73,13 +73,13 @@ const ViewYearSemister = () => {
 
   const DeleteSelected = () => {
     checkData.map((check_data) => {
-      db.collection("students").doc(check_data.id).delete();
+      db.collection("programmes").doc(check_data.id).delete();
     });
     setCheckData([]);
   };
 
   const handleDelete = (data) => {
-    db.collection("students").doc(data.id).delete();
+    db.collection("programmes").doc(data.id).delete();
     setCheckData(checkData.filter((e) => e.id !== data.id));
     console.log("checkData", checkData);
   };
@@ -88,24 +88,22 @@ const ViewYearSemister = () => {
     console.log("Name Chanage", name);
     setCheckData([]);
     if (name) {
-      setUserData(
-        year_semi.filter((data) => data.year_semister.startsWith(name))
-      );
+      setUserData(programme.filter((data) => data.programme.startsWith(name)));
     } else {
-      setUserData(year_semi);
+      setUserData(programme);
     }
   };
 
   const gotoUpdatePage = (data) => {
     history.push({
-      pathname: "/student/year_semister/update",
+      pathname: "/student/programme/update",
       state: data,
     });
   };
 
   return (
-    <div className="YearViewContainer">
-      <div className="YearViewContainer__nav">
+    <div className="ProgrammeViewContainer">
+      <div className="ProgrammeViewContainer__nav">
         <ScreenNav rightNavData={navData} />
       </div>
       <div className="container table-responsive-lg ">
@@ -113,11 +111,11 @@ const ViewYearSemister = () => {
           <Spinner Loader={DotLoader} size={30} />
         ) : (
           <React.Fragment>
-            <div className="YearViewContainer__top">
+            <div className="ProgrammeViewContainer__top">
               <button
                 onClick={(e) =>
                   history.push({
-                    pathname: "/student/year_semister/add",
+                    pathname: "/student/programme/add",
                   })
                 }
                 className="btn btn-dark btn_new"
@@ -126,8 +124,8 @@ const ViewYearSemister = () => {
               </button>
               <Search searchData={searchData} />
             </div>
-            {userData.length > 0 && (
-              <YearSemisterTable
+            {userData?.length > 0 && (
+              <ProgrammeTable
                 userData={userData}
                 Handlebox={Handlebox}
                 handleDelete={handleDelete}
@@ -135,8 +133,8 @@ const ViewYearSemister = () => {
               />
             )}
 
-            <div className="YearViewContainer__bottom">
-              {userData.length > 0 && userData.length === year_semi.length && (
+            <div className="ProgrammeViewContainer__bottom">
+              {userData?.length > 0 && userData.length === programme.length && (
                 <button onClick={DeleteAll} className="btn btn-danger">
                   Delete All
                 </button>
@@ -155,4 +153,4 @@ const ViewYearSemister = () => {
   );
 };
 
-export default ViewYearSemister;
+export default ViewStudentProgramme;

@@ -44,7 +44,7 @@ const UpdateYearSemister = (props) => {
     },
     {
       id: 2,
-      name: "Student > ",
+      name: "Student Semister> ",
       pathname: "/student/year_semister/add",
     },
     {

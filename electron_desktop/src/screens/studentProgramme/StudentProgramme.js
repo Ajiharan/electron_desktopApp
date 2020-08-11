@@ -33,7 +33,7 @@ const StudentProgramme = () => {
     },
     {
       id: 2,
-      name: "Programme",
+      name: "Student Programme",
       pathname: "/student/Programme/add",
     },
   ];

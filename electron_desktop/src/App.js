@@ -10,6 +10,7 @@ import ViewLecturer from "./screens/Lecturer/ViewLecturer";
 import AddSubject from "./screens/Subject/AddSubject";
 import UpdateYearSemister from "./screens/year_semister/UpdateYearSemister";
 import StudentProgramme from "./screens/studentProgramme/StudentProgramme";
+import ViewStudentProgramme from "./screens/studentProgramme/ViewStudentProgramme";
 
 function App() {
   return (
@@ -37,6 +38,12 @@ function App() {
             exact
             path="/student/programme/add"
             component={StudentProgramme}
+          />
+
+          <Route
+            exact
+            path="/student/programme/view"
+            component={ViewStudentProgramme}
           />
           <Route exact path="/lecturer/add" component={AddLecturer} />
 
