@@ -46,7 +46,7 @@ const Yearsemister = () => {
         <div className="yearSemister__box">
           <div className="lead text-success yearSemister__message">
             {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
-            <p className={`lead ${error ? "text-danger" : "text-light"}`}>
+            <p className={`lead ${error ? "text-danger" : "text-success"}`}>
               {!loading && !error && success}
               {!loading && error && error}
             </p>

@@ -127,13 +127,15 @@ const ViewYearSemister = () => {
               </button>
               <Search searchData={searchData} />
             </div>
+            {userData.length > 0 && (
+              <YearSemisterTable
+                userData={userData}
+                Handlebox={Handlebox}
+                handleDelete={handleDelete}
+                gotoUpdatePage={gotoUpdatePage}
+              />
+            )}
 
-            <YearSemisterTable
-              userData={userData}
-              Handlebox={Handlebox}
-              handleDelete={handleDelete}
-              gotoUpdatePage={gotoUpdatePage}
-            />
             <div className="YearViewContainer__bottom">
               {userData.length > 0 && userData.length === year_semi.length && (
                 <button onClick={DeleteAll} className="btn btn-danger">
