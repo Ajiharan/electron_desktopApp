@@ -5,9 +5,12 @@ import {
   GET_YEAR_SEMISTER_FAILURE,
   GET_YEAR_SEMISTER_REQUEST,
   GET_YEAR_SEMISTER_SUCCESS,
-  DELETE_YEAR_SEMISTER_REQUEST,
-  DELETE_YEAR_SEMISTER_FAILURE,
-  DELETE_YEAR_SEMISTER_SUCCESS,
+  UPDATE_YEAR_SEMISTER_REQUEST,
+  UPDATE_YEAR_SEMISTER_FAILURE,
+  UPDATE_YEAR_SEMISTER_SUCCESS,
+  GET_ONE_YEAR_SEMISTER_REQUEST,
+  GET_ONE_YEAR_SEMISTER_SUCCESS,
+  GET_ONE_YEAR_SEMISTER_FAILURE,
 } from "./yearType";
 import firebase from "firebase";
 import { db } from "../../firebase";
@@ -89,16 +92,73 @@ const viewSemister = () => {
   };
 };
 
-// const deleteOneSemister_detail = (doc_id) => {
-//   return async (dispatch) => {
-//     dispatch({ type: DELETE_YEAR_SEMISTER_REQUEST });
-//     try {
-//       dispatch({
-//         type: DELETE_YEAR_SEMISTER_SUCCESS,
-//         payload: db.collection("todos").doc(doc_id).delete(),
-//       });
-//     } catch (err) {}
-//   };
-// };
+const getOneYear_semisterDetail = (doc_id) => {
+  return async (dispatch) => {
+    dispatch({ type: GET_ONE_YEAR_SEMISTER_REQUEST });
+    try {
+      db.collection("students")
+        .doc(doc_id)
+        .get()
+        .then(async (doc) => {
+          if (doc.exists) {
+            const tempData = await {
+              year_semister: doc.data().year_semister,
+              id: doc.id,
+              timestamp: doc.data().timestamp,
+            };
+            dispatch({
+              type: GET_ONE_YEAR_SEMISTER_SUCCESS,
+              payload: tempData,
+            });
+          } else {
+            dispatch({
+              type: GET_ONE_YEAR_SEMISTER_FAILURE,
+              error: "Sorry Data does not exist",
+            });
+          }
+        });
+    } catch (err) {}
+  };
+};
 
-export { addSemisterYear, viewSemister };
+const UpdateviewSemister = (doc_id, input) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_YEAR_SEMISTER_REQUEST });
+    try {
+      const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+      db.collection("todos")
+        .doc(doc_id)
+        .set(
+          {
+            year_semister: input,
+            timestamp,
+          },
+          { merge: true }
+        )
+        .then(() => {
+          dispatch({
+            type: UPDATE_YEAR_SEMISTER_SUCCESS,
+            message: "upload Sucessfully",
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: UPDATE_YEAR_SEMISTER_FAILURE,
+            error: err,
+          });
+        });
+    } catch (err) {
+      dispatch({
+        type: UPDATE_YEAR_SEMISTER_FAILURE,
+        error: err,
+      });
+    }
+  };
+};
+
+export {
+  addSemisterYear,
+  viewSemister,
+  UpdateviewSemister,
+  getOneYear_semisterDetail,
+};

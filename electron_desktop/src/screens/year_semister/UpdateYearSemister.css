@@ -1,0 +1,61 @@
+.yearSemisterUpdate__container {
+  margin: 100px;
+}
+
+.yearSemisterUpdate__box {
+  width: auto;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.yearSemisterUpdate__message {
+  height: 30px;
+}
+
+.yearSemisterUpdate__box > form {
+  margin: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(
+    720deg,
+    transparent,
+    rgba(82, 85, 85, 0.62),
+    rgb(56, 59, 61)
+  );
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.yearSemisterUpdate_inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+.yearSemisterUpdate_inputs > label {
+  width: 200px;
+}
+
+.yearSemisterUpdate_buttons {
+  display: flex;
+}
+
+.yearSemisterUpdate_buttons button {
+  color: white;
+  background-image: linear-gradient(to right, #fc6076, #ff9231);
+  border: none;
+  margin: 20px;
+  width: 120px;
+  padding: 5px;
+}
+
+.yearSemisterUpdate_buttons button:hover {
+  background-image: linear-gradient(to right, #e72c45, #f59644);
+}

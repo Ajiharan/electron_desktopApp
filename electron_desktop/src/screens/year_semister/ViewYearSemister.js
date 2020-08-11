@@ -86,14 +86,22 @@ const ViewYearSemister = () => {
   };
 
   const searchData = (name) => {
+    console.log("Name Chanage", name);
     setCheckData([]);
     if (name) {
       setUserData(
-        userData.filter((data) => data.year_semister.startsWith(name))
+        year_semi.filter((data) => data.year_semister.startsWith(name))
       );
     } else {
       setUserData(year_semi);
     }
+  };
+
+  const gotoUpdatePage = (data) => {
+    history.push({
+      pathname: "/student/year_semister/update",
+      state: data,
+    });
   };
 
   return (
@@ -124,6 +132,7 @@ const ViewYearSemister = () => {
               userData={userData}
               Handlebox={Handlebox}
               handleDelete={handleDelete}
+              gotoUpdatePage={gotoUpdatePage}
             />
             <div className="YearViewContainer__bottom">
               {userData.length > 0 && userData.length === year_semi.length && (

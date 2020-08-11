@@ -1,6 +1,11 @@
 import React from "react";
 import "./YearSemisterTable.css";
-const YearSemisterTable = ({ userData, Handlebox, handleDelete }) => {
+const YearSemisterTable = ({
+  userData,
+  Handlebox,
+  handleDelete,
+  gotoUpdatePage,
+}) => {
   return (
     <table className="table table-dark table-hover YearViewContainer__table">
       <thead>
@@ -28,7 +33,7 @@ const YearSemisterTable = ({ userData, Handlebox, handleDelete }) => {
               <button onClick={(e) => handleDelete(data)}>Delete</button>
             </td>
             <td>
-              <button>Edit</button>
+              <button onClick={(e) => gotoUpdatePage(data)}>Edit</button>
             </td>
           </tr>
         ))}

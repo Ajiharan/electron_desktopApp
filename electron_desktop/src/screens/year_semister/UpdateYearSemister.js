@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addSemisterYear } from "../../redux/Year_semi/YearAction";
-import "./Yearsemister.css";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader, MoonLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
-import useAdd from "../useHooks/useAdd";
 import ScreenNav from "../screen-nav/ScreenNav";
-
-const Yearsemister = () => {
-  const history = useHistory();
+import "./UpdateYearSemister.css";
+import {
+  UpdateviewSemister,
+  getOneYear_semisterDetail,
+} from "../../redux/Year_semi/YearAction";
+const UpdateYearSemister = (props) => {
+  console.log("props.history", props.location);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [year, setYear] = useState("");
   const [clicked, isClicked] = useState(false);
-  const [success, setSuccess] = useState("Successfully Added");
-  const { loading, error, year_semi } = useSelector(
-    (state) => state.year_semister
-  );
+  const [success, setSuccess] = useState("Successfully Updated");
 
-  const { submitHandler, clearInput } = useAdd({
-    addData: addSemisterYear,
-    data: year,
-    setData: setYear,
-    isClicked: isClicked,
-  });
+  useEffect(() => {
+    if (!props.location.state) {
+      history.replace({
+        pathname: "/student/year_semister/view",
+      });
+    } else {
+      setYear(props.location.state.year_semister);
+    }
+  }, [props]);
 
   const navData = [
     {
@@ -34,28 +36,38 @@ const Yearsemister = () => {
     },
     {
       id: 2,
-      name: "Student",
+      name: "Student > ",
       pathname: "/student/year_semister/add",
+    },
+    {
+      id: 3,
+      name: "view > ",
+      pathname: "/student/year_semister/view",
+    },
+    {
+      id: 4,
+      name: "update",
+      pathname: "/student/year_semister/update",
     },
   ];
 
   return (
-    <div className="yearSemister">
+    <div className="yearSemisterUpdate">
       <ScreenNav rightNavData={navData} />
-      <div className="yearSemister__container">
-        <div className="yearSemister__box">
-          <div className="lead text-success yearSemister__message">
+      <div className="yearSemisterUpdate__container">
+        <div className="yearSemisterUpdate__box">
+          {/* <div className="lead text-success yearSemister__message">
             {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
             <p className={`lead ${error ? "text-danger" : "text-light"}`}>
               {!loading && !error && success}
               {!loading && error && error}
             </p>
-          </div>
+          </div> */}
 
-          <h2 className="text-center text-dark">Add year & Semister</h2>
-          <form id="frm" onSubmit={(e) => submitHandler(e)}>
-            <div className="yearSemister_inputs">
-              <label htmlFor="year_semister" className="text-light">
+          <h2 className="text-center text-dark">Update year & Semister</h2>
+          <form id="frm">
+            <div className="yearSemisterUpdate_inputs">
+              <label htmlFor="yearSemisterUpdate" className="text-light">
                 year & semister
               </label>
               <input
@@ -70,7 +82,7 @@ const Yearsemister = () => {
             </div>
             <div className="yearSemister_buttons">
               <button type="submit" className="btn" disabled={!year}>
-                Add
+                Update
               </button>
               <button
                 type="button"
@@ -79,9 +91,9 @@ const Yearsemister = () => {
                   history.push({ pathname: "/student/year_semister/view" });
                 }}
               >
-                View
+                Cancel
               </button>
-              <button type="button" onClick={clearInput} className="btn">
+              <button type="button" className="btn">
                 Clear
               </button>
             </div>
@@ -92,4 +104,4 @@ const Yearsemister = () => {
   );
 };
 
-export default Yearsemister;
+export default UpdateYearSemister;

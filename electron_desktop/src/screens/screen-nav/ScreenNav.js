@@ -10,7 +10,11 @@ const ScreenNav = ({ rightNavData }) => {
       <div className="yearSemister__navRight">
         <h5>
           {rightNavData.map((data) => (
-            <Link className="text-dark" key={data.id} to={data.pathname}>
+            <Link
+              className="text-dark yearSemister__navRight__link"
+              key={data.id}
+              to={data.pathname}
+            >
               {data.name}
             </Link>
           ))}
