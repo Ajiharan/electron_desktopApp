@@ -21,10 +21,11 @@ const ProgrammeTable = ({
             <td>
               <div className="form-check">
                 <input
-                  onChange={(e) => Handlebox(e)}
+                  onChange={(e) => Handlebox(e, data)}
                   type="checkbox"
                   value={data.id}
                   className="form-check-input"
+                  checked={data.isChecked}
                 />
                 <span>{data.programme}</span>
               </div>

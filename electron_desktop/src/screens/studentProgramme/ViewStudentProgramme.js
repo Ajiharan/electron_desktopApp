@@ -13,6 +13,13 @@ const ViewStudentProgramme = () => {
   const { loading, error, programme } = useSelector(
     (state) => state.get_programmmes
   );
+  let new_programme;
+  if (programme?.length > 0) {
+    new_programme = programme.map((data) => {
+      return { ...data, isChecked: false };
+    });
+  }
+
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const [checkData, setCheckData] = useState([]);
@@ -41,11 +48,12 @@ const ViewStudentProgramme = () => {
   }, []);
 
   useEffect(() => {
-    setUserData(programme);
+    setUserData(new_programme);
   }, [programme]);
 
-  const Handlebox = (e) => {
+  const Handlebox = (e, data) => {
     if (e.target.checked) {
+      data.isChecked = true;
       let tempData = [
         ...checkData,
         {
@@ -54,6 +62,7 @@ const ViewStudentProgramme = () => {
       ];
       setCheckData(tempData);
     } else {
+      data.isChecked = false;
       setCheckData(checkData.filter((data) => data.id !== e.target.value));
     }
 
@@ -86,11 +95,16 @@ const ViewStudentProgramme = () => {
 
   const searchData = (name) => {
     console.log("Name Chanage", name);
+    setUserData(
+      programme.map((data) => {
+        return { ...data, isChecked: false };
+      })
+    );
     setCheckData([]);
     if (name) {
-      setUserData(programme.filter((data) => data.programme.startsWith(name)));
+      setUserData(new_programme.filter((data) => data.programme.match(name)));
     } else {
-      setUserData(programme);
+      setUserData(new_programme);
     }
   };
 

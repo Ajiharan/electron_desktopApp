@@ -13,6 +13,11 @@ const ViewYearSemister = () => {
   const { loading, error, year_semi } = useSelector(
     (state) => state.get_year_semister
   );
+  const new_yearSemi = year_semi.map((data) => {
+    return { ...data, isChecked: false };
+  });
+
+  console.log("new_yearSemo", new_yearSemi);
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const [checkData, setCheckData] = useState([]);
@@ -41,11 +46,12 @@ const ViewYearSemister = () => {
   }, []);
 
   useEffect(() => {
-    setUserData(year_semi);
+    setUserData(new_yearSemi);
   }, [year_semi]);
 
-  const Handlebox = (e) => {
+  const Handlebox = (e, data) => {
     if (e.target.checked) {
+      data.isChecked = true;
       let tempData = [
         ...checkData,
         {
@@ -54,6 +60,7 @@ const ViewYearSemister = () => {
       ];
       setCheckData(tempData);
     } else {
+      data.isChecked = false;
       setCheckData(checkData.filter((data) => data.id !== e.target.value));
     }
 
@@ -86,13 +93,19 @@ const ViewYearSemister = () => {
 
   const searchData = (name) => {
     console.log("Name Chanage", name);
+    setUserData(
+      year_semi.map((data) => {
+        return { ...data, isChecked: false };
+      })
+    );
     setCheckData([]);
+
     if (name) {
       setUserData(
-        year_semi.filter((data) => data.year_semister.startsWith(name))
+        new_yearSemi.filter((data) => data.year_semister.match(name))
       );
     } else {
-      setUserData(year_semi);
+      setUserData(new_yearSemi);
     }
   };
 

@@ -3,15 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addSemisterYear } from "../../redux/Year_semi/YearAction";
 import "./Yearsemister.css";
 import { Spinner } from "../animations/Spinner";
-import { DotLoader, MoonLoader } from "react-spinners";
+import { DotLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
 import useAdd from "../useHooks/useAdd";
 import ScreenNav from "../screen-nav/ScreenNav";
 
 const Yearsemister = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
-
   const [year, setYear] = useState("");
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Added");
