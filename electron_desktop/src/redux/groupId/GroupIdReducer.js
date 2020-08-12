@@ -29,4 +29,20 @@ const groupId_addReducer = (
   }
 };
 
-export { groupId_addReducer };
+const get_groupIdReducer = (
+  state = { loading: true, group_id: [], error: "" },
+  action
+) => {
+  switch (action.type) {
+    case GET_GROUPID_REQUEST:
+      return { ...state, loading: true };
+    case GET_GROUPID_SUCCESS:
+      return { ...state, loading: false, group_id: action.payload, error: "" };
+    case GET_GROUPID_FAILURE:
+      return { ...state, loading: false, error: action.error, group_id: {} };
+    default:
+      return state;
+  }
+};
+
+export { groupId_addReducer, get_groupIdReducer };

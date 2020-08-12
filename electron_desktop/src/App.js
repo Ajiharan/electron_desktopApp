@@ -13,7 +13,7 @@ import StudentProgramme from "./screens/studentProgramme/StudentProgramme";
 import ViewStudentProgramme from "./screens/studentProgramme/ViewStudentProgramme";
 import ProgrammeUpdate from "./screens/studentProgramme/ProgrammeUpdate";
 import StudentGroupId from "./screens/groupId/StudentGroupId";
-
+import StudentGroupIdView from "./screens/groupId/ViewStudentGroupId";
 function App() {
   return (
     <React.Fragment>
@@ -57,6 +57,11 @@ function App() {
             exact
             path="/student/group_id/add"
             component={StudentGroupId}
+          />
+          <Route
+            exact
+            path="/student/group_id/view"
+            component={StudentGroupIdView}
           />
           <Route exact path="/lecturer/add" component={AddLecturer} />
 
