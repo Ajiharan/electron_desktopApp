@@ -42,4 +42,4 @@ const ProgrammeTable = ({
   );
 };
 
-export default ProgrammeTable;
+export default React.memo(ProgrammeTable);

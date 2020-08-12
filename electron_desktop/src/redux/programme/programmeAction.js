@@ -91,4 +91,39 @@ const viewProgramme = () => {
   };
 };
 
-export { addProgramme, viewProgramme };
+const UpdateProgramme = (doc_id, input) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_PROGRAMME_REQUEST });
+    try {
+      const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+      db.collection("programmes")
+        .doc(doc_id)
+        .set(
+          {
+            programme: input,
+            timestamp,
+          },
+          { merge: true }
+        )
+        .then(() => {
+          dispatch({
+            type: UPDATE_PROGRAMME_SUCCESS,
+            message: "update Sucessfully",
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: UPDATE_PROGRAMME_FAILURE,
+            error: err,
+          });
+        });
+    } catch (err) {
+      dispatch({
+        type: UPDATE_PROGRAMME_FAILURE,
+        error: err,
+      });
+    }
+  };
+};
+
+export { addProgramme, viewProgramme, UpdateProgramme };

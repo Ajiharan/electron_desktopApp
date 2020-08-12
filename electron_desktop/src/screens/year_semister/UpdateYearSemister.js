@@ -15,9 +15,7 @@ const UpdateYearSemister = (props) => {
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Updated");
 
-  const { loading, error, year_semi } = useSelector(
-    (state) => state.update_year_semister
-  );
+  const { loading, error } = useSelector((state) => state.update_year_semister);
 
   useEffect(() => {
     if (!props.location.state) {
@@ -31,7 +29,7 @@ const UpdateYearSemister = (props) => {
 
   const { submitHandler, clearInput } = useUpdate({
     updateData: UpdateSemister,
-    data: { year_semister: year, id: props.location.state?.id },
+    data: { inputData: year, id: props.location.state?.id },
     setData: setYear,
     isClicked: isClicked,
   });
@@ -112,4 +110,4 @@ const UpdateYearSemister = (props) => {
   );
 };
 
-export default UpdateYearSemister;
+export default React.memo(UpdateYearSemister);

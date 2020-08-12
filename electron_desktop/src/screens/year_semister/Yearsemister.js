@@ -98,4 +98,4 @@ const Yearsemister = () => {
   );
 };
 
-export default Yearsemister;
+export default React.memo(Yearsemister);

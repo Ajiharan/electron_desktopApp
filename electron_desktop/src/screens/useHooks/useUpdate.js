@@ -6,7 +6,7 @@ const useCheck = ({ updateData, data, setData, isClicked }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     isClicked(true);
-    dispatch(updateData(data.id, data.year_semister));
+    dispatch(updateData(data.id, data.inputData));
   };
 
   const clearInput = () => {

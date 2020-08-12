@@ -50,4 +50,20 @@ const viewProgrammeReducer = (
   }
 };
 
-export { addProgrammeReducer, viewProgrammeReducer };
+const update_programmeReducer = (
+  state = { loading: true, message: "", error: "" },
+  action
+) => {
+  switch (action.type) {
+    case UPDATE_PROGRAMME_REQUEST:
+      return { ...state, loading: true };
+    case UPDATE_PROGRAMME_SUCCESS:
+      return { ...state, loading: false, message: action.message, error: "" };
+    case UPDATE_PROGRAMME_FAILURE:
+      return { ...state, loading: false, message: "", error: action.error };
+    default:
+      return state;
+  }
+};
+
+export { addProgrammeReducer, viewProgrammeReducer, update_programmeReducer };

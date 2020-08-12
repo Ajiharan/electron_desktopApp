@@ -155,4 +155,4 @@ const ViewYearSemister = () => {
   );
 };
 
-export default ViewYearSemister;
+export default React.memo(ViewYearSemister);

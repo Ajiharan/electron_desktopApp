@@ -11,6 +11,7 @@ import AddSubject from "./screens/Subject/AddSubject";
 import UpdateYearSemister from "./screens/year_semister/UpdateYearSemister";
 import StudentProgramme from "./screens/studentProgramme/StudentProgramme";
 import ViewStudentProgramme from "./screens/studentProgramme/ViewStudentProgramme";
+import ProgrammeUpdate from "./screens/studentProgramme/ProgrammeUpdate";
 
 function App() {
   return (
@@ -45,6 +46,12 @@ function App() {
             path="/student/programme/view"
             component={ViewStudentProgramme}
           />
+
+          <Route
+            exact
+            path="/student/programme/update"
+            component={ProgrammeUpdate}
+          />
           <Route exact path="/lecturer/add" component={AddLecturer} />
 
           <Route exact path="/lecturer/view" component={ViewLecturer} />
@@ -55,4 +62,4 @@ function App() {
   );
 }
 
-export default App;
+export default React.memo(App);

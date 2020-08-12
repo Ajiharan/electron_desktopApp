@@ -1,26 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProgramme } from "../../redux/programme/programmeAction";
-import "./StudentProgramme.css";
 import { Spinner } from "../animations/Spinner";
-import { DotLoader, MoonLoader } from "react-spinners";
+import { DotLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
-import useAdd from "../useHooks/useAdd";
 import ScreenNav from "../screen-nav/ScreenNav";
-
-const StudentProgramme = () => {
-  const history = useHistory();
+import "./ProgrammeUpdate.css";
+import { UpdateProgramme } from "../../redux/programme/programmeAction";
+import useUpdate from "../useHooks/useUpdate";
+const ProgrammeUpdate = (props) => {
+  console.log("props.history", props.location);
   const dispatch = useDispatch();
+  const history = useHistory();
   const [programme, setProgramme] = useState("");
   const [clicked, isClicked] = useState(false);
-  const [success, setSuccess] = useState("Successfully Added");
-  const { loading, error, student_programme } = useSelector(
-    (state) => state.programme_add
-  );
+  const [success, setSuccess] = useState("Successfully Updated");
 
-  const { submitHandler, clearInput } = useAdd({
-    addData: addProgramme,
-    data: programme,
+  const { loading, error } = useSelector((state) => state.update_programme);
+
+  useEffect(() => {
+    if (!props.location.state) {
+      history.replace({
+        pathname: "/student/programme/view",
+      });
+    } else {
+      setProgramme(props.location.state.programme);
+    }
+  }, []);
+
+  const { submitHandler, clearInput } = useUpdate({
+    updateData: UpdateProgramme,
+    data: { inputData: programme, id: props.location.state?.id },
     setData: setProgramme,
     isClicked: isClicked,
   });
@@ -33,17 +42,27 @@ const StudentProgramme = () => {
     },
     {
       id: 2,
-      name: "Student Programme",
-      pathname: "/student/Programme/add",
+      name: "Student Programme> ",
+      pathname: "/student/programme/add",
+    },
+    {
+      id: 3,
+      name: "view > ",
+      pathname: "/student/programme/view",
+    },
+    {
+      id: 4,
+      name: "update",
+      pathname: "/student/programme/update",
     },
   ];
 
   return (
-    <div className="student_programme">
+    <div className="programmeUpdate">
       <ScreenNav rightNavData={navData} />
-      <div className="student_programme__container">
-        <div className="student_programme__box">
-          <div className="lead text-success student_programme__message">
+      <div className="programmeUpdate__container">
+        <div className="programmeUpdate__box">
+          <div className="lead text-success programmeUpdate__message">
             {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
             <p className={`lead ${error ? "text-danger" : "text-success"}`}>
               {!loading && !error && success}
@@ -51,25 +70,25 @@ const StudentProgramme = () => {
             </p>
           </div>
 
-          <h2 className="text-center text-dark">Add Programme</h2>
+          <h2 className="text-center text-dark">Update programme</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
-            <div className="student_programme_inputs">
-              <label htmlFor="student_programme" className="text-light">
+            <div className="programmeUpdate_inputs">
+              <label htmlFor="programmeUpdate" className="text-light">
                 programme
               </label>
               <input
                 value={programme}
                 onChange={(e) => setProgramme(e.target.value)}
                 placeholder="eg:IT"
-                id="student_programme"
+                id="programme"
                 type="text"
                 className="form-control"
                 required
               />
             </div>
-            <div className="student_programme_buttons">
+            <div className="programmeUpdate_buttons">
               <button type="submit" className="btn" disabled={!programme}>
-                Add
+                Update
               </button>
               <button
                 type="button"
@@ -78,7 +97,7 @@ const StudentProgramme = () => {
                   history.push({ pathname: "/student/programme/view" });
                 }}
               >
-                View
+                Cancel
               </button>
               <button type="button" onClick={clearInput} className="btn">
                 Clear
@@ -91,4 +110,4 @@ const StudentProgramme = () => {
   );
 };
 
-export default React.memo(StudentProgramme);
+export default React.memo(ProgrammeUpdate);

@@ -153,4 +153,4 @@ const ViewStudentProgramme = () => {
   );
 };
 
-export default ViewStudentProgramme;
+export default React.memo(ViewStudentProgramme);

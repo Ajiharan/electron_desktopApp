@@ -100,14 +100,14 @@ const HomeNestedList = () => {
           </ListItem>
           <Collapse in={sub_programmeData.open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {/* student > year & semister > Add sub list */}
+              {/* student > programme > Add sub list */}
               <Link to="/student/programme/add">
                 <ListItem button className={classes.sub_nested}>
                   <ListItemText primary="Add" />
                 </ListItem>
               </Link>
-              {/* student > year & semister >view sub list */}
-              <Link to="/student/year_semister/view">
+              {/* student > programme >view sub list */}
+              <Link to="/student/programme/view">
                 <ListItem button className={classes.sub_nested}>
                   <ListItemText primary="view" />
                 </ListItem>
@@ -163,4 +163,4 @@ const HomeNestedList = () => {
   );
 };
 
-export default HomeNestedList;
+export default React.memo(HomeNestedList);
