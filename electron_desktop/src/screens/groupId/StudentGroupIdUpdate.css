@@ -1,0 +1,61 @@
+.StudentGroupIdUpdate__container {
+  margin: 100px;
+}
+
+.StudentGroupIdUpdate__box {
+  width: auto;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.StudentGroupIdUpdate__message {
+  height: 30px;
+}
+
+.StudentGroupIdUpdate__box > form {
+  margin: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(
+    720deg,
+    transparent,
+    rgba(82, 85, 85, 0.62),
+    rgb(56, 59, 61)
+  );
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.StudentGroupIdUpdate_inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+.StudentGroupIdUpdate_inputs > label {
+  width: 200px;
+}
+
+.StudentGroupIdUpdate_buttons {
+  display: flex;
+}
+
+.StudentGroupIdUpdate_buttons button {
+  color: white;
+  background-image: linear-gradient(to right, #fc6076, #ff9231);
+  border: none;
+  margin: 20px;
+  width: 120px;
+  padding: 5px;
+}
+
+.StudentGroupIdUpdate_buttons button:hover {
+  background-image: linear-gradient(to right, #e72c45, #f59644);
+}

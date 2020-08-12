@@ -128,7 +128,7 @@ const ViewStudentGroupId = () => {
               <button
                 onClick={(e) =>
                   history.push({
-                    pathname: "/student/year_semister/add",
+                    pathname: "/student/group_id/add",
                   })
                 }
                 className="btn btn-dark btn_new"

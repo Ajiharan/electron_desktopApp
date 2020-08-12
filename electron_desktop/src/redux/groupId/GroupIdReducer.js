@@ -44,5 +44,20 @@ const get_groupIdReducer = (
       return state;
   }
 };
+const update_groupIdReducer = (
+  state = { loading: true, message: "", error: "" },
+  action
+) => {
+  switch (action.type) {
+    case UPDATE_GROUPID_REQUEST:
+      return { ...state, loading: true };
+    case UPDATE_GROUPID_SUCCESS:
+      return { ...state, loading: false, message: action.message, error: "" };
+    case UPDATE_GROUPID_FAILURE:
+      return { ...state, loading: false, message: "", error: action.error };
+    default:
+      return state;
+  }
+};
 
-export { groupId_addReducer, get_groupIdReducer };
+export { groupId_addReducer, get_groupIdReducer, update_groupIdReducer };

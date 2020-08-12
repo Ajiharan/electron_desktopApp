@@ -13,6 +13,7 @@ import {
 import {
   groupId_addReducer,
   get_groupIdReducer,
+  update_groupIdReducer,
 } from "./groupId/GroupIdReducer";
 import { LecturerReducer, get_lecturers } from "./Lecturer/LecturerReducer";
 import { SubjectReducer } from "./Subject/SubjectReducer";
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   update_programme: update_programmeReducer,
   groupid_add: groupId_addReducer,
   get_groupId: get_groupIdReducer,
+  update_groupId: update_groupIdReducer,
   LecturerReducer: LecturerReducer,
   get_lecturers: get_lecturers,
   SubjectReducer: SubjectReducer,
