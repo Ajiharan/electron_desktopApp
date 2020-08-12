@@ -14,7 +14,7 @@ import {
 } from "./GroupIdType";
 
 const groupId_addReducer = (
-  state = { loading: false, groupid: {}, error: "" },
+  state = { loading: true, groupid: {}, error: "" },
   action
 ) => {
   switch (action.type) {

@@ -12,6 +12,7 @@ import UpdateYearSemister from "./screens/year_semister/UpdateYearSemister";
 import StudentProgramme from "./screens/studentProgramme/StudentProgramme";
 import ViewStudentProgramme from "./screens/studentProgramme/ViewStudentProgramme";
 import ProgrammeUpdate from "./screens/studentProgramme/ProgrammeUpdate";
+import StudentGroupId from "./screens/groupId/StudentGroupId";
 
 function App() {
   return (
@@ -51,6 +52,11 @@ function App() {
             exact
             path="/student/programme/update"
             component={ProgrammeUpdate}
+          />
+          <Route
+            exact
+            path="/student/group_id/add"
+            component={StudentGroupId}
           />
           <Route exact path="/lecturer/add" component={AddLecturer} />
 

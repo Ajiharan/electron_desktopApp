@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { addSemisterYear } from "../../redux/Year_semi/YearAction";
-import "./Yearsemister.css";
+import { addGroupId } from "../../redux/groupId/GroupIdAction";
+import "./StudentGroupId.css";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
 import useAdd from "../useHooks/useAdd";
 import ScreenNav from "../screen-nav/ScreenNav";
 
-const Yearsemister = () => {
+const StudentGroupId = () => {
   const history = useHistory();
-  const [year, setYear] = useState("");
+  const [groupid, setGroupid] = useState("");
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Added");
-  const { loading, error } = useSelector((state) => state.year_semister);
+  const { loading, error } = useSelector((state) => state.groupid_add);
 
   useEffect(() => {
     return () => {
@@ -22,9 +22,9 @@ const Yearsemister = () => {
   }, []);
 
   const { submitHandler, clearInput } = useAdd({
-    addData: addSemisterYear,
-    data: year,
-    setData: setYear,
+    addData: addGroupId,
+    data: groupid,
+    setData: setGroupid,
     isClicked: isClicked,
   });
 
@@ -36,17 +36,17 @@ const Yearsemister = () => {
     },
     {
       id: 2,
-      name: "Student Semister",
-      pathname: "/student/year_semister/add",
+      name: "Student GroupId",
+      pathname: "/student/group_id/add",
     },
   ];
 
   return (
-    <div className="yearSemister">
+    <div className="StudentGroupId">
       <ScreenNav rightNavData={navData} />
-      <div className="yearSemister__container">
-        <div className="yearSemister__box">
-          <div className="lead text-success yearSemister__message">
+      <div className="StudentGroupId__container">
+        <div className="StudentGroupId__box">
+          <div className="lead text-success StudentGroupId__message">
             {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
             <p className={`lead ${error ? "text-danger" : "text-success"}`}>
               {!loading && !error && success}
@@ -54,31 +54,31 @@ const Yearsemister = () => {
             </p>
           </div>
 
-          <h2 className="text-center text-dark">Add year & Semister</h2>
+          <h2 className="text-center text-dark">Add Group Id</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
-            <div className="yearSemister_inputs">
-              <label htmlFor="year_semister" className="text-light">
-                year & semister
+            <div className="StudentGroupId_inputs">
+              <label htmlFor="group_id" className="text-light">
+                Group Id
               </label>
               <input
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                placeholder="eg:S1.Y3"
-                id="year_semister"
+                value={groupid}
+                onChange={(e) => setGroupid(e.target.value)}
+                placeholder="eg:01"
+                id="group_id"
                 type="text"
                 className="form-control"
                 required
               />
             </div>
-            <div className="yearSemister_buttons">
-              <button type="submit" className="btn" disabled={!year}>
+            <div className="StudentGroupId_buttons">
+              <button type="submit" className="btn" disabled={!groupid}>
                 Add
               </button>
               <button
                 type="button"
                 className="btn"
                 onClick={(e) => {
-                  history.push({ pathname: "/student/year_semister/view" });
+                  history.push({ pathname: "/student/group_id/view" });
                 }}
               >
                 View
@@ -94,4 +94,4 @@ const Yearsemister = () => {
   );
 };
 
-export default React.memo(Yearsemister);
+export default React.memo(StudentGroupId);
