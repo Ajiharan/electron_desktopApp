@@ -15,7 +15,7 @@ import {
 import firebase from "firebase";
 import { db } from "../../firebase";
 
-const addSubgroupId = (sub_groupId) => {
+const addSubgroupId = (sub_groupid) => {
   return async (dispatch) => {
     dispatch({ type: ADD_SUB_GROUPID_REQUEST });
     try {
@@ -29,20 +29,20 @@ const addSubgroupId = (sub_groupId) => {
           }));
 
           const isExists = await tempData.filter(
-            (data) => data.sub_groupid === sub_groupId
+            (data) => data.sub_groupid === sub_groupid
           );
           // console.log("isExists", isExists);
           if (isExists.length === 0) {
             db.collection("sub_groupids")
               .add({
-                sub_groupId,
+                sub_groupid,
                 timestamp,
               })
               .then(() => {
                 dispatch({
                   type: ADD_SUB_GROUPID_SUCCESS,
                   payload: {
-                    sub_groupId,
+                    sub_groupid,
                     timestamp,
                   },
                 });
@@ -64,4 +64,32 @@ const addSubgroupId = (sub_groupId) => {
   };
 };
 
-export { addSubgroupId };
+const viewSubGroupId = () => {
+  return async (dispatch) => {
+    dispatch({ type: GET_SUB_GROUPID_REQUEST });
+    try {
+      db.collection("sub_groupids")
+        .orderBy("timestamp", "desc")
+        .onSnapshot(async (snapshot) => {
+          const tempData = await snapshot.docs.map((doc) => ({
+            sub_groupid: doc.data().sub_groupid,
+            id: doc.id,
+            timestamp: doc.data().timestamp,
+          }));
+          console.log("getTemp Data", tempData);
+          dispatch({
+            type: GET_SUB_GROUPID_SUCCESS,
+            payload: tempData,
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: GET_SUB_GROUPID_FAILURE,
+            error: err,
+          });
+        });
+    } catch (err) {}
+  };
+};
+
+export { addSubgroupId, viewSubGroupId };

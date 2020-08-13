@@ -16,6 +16,7 @@ import StudentGroupId from "./screens/groupId/StudentGroupId";
 import StudentGroupIdView from "./screens/groupId/ViewStudentGroupId";
 import StudentGroupIdUpdate from "./screens/groupId/StudentGroupIdUpdate";
 import StudentSubGroupId from "./screens/subgroupId/StudentSubGroupId";
+import StudentSubGroupIdView from "./screens/subgroupId/StudentViewSubGroupId";
 function App() {
   return (
     <React.Fragment>
@@ -74,6 +75,11 @@ function App() {
             exact
             path="/student/subgroup_id/add"
             component={StudentSubGroupId}
+          />
+          <Route
+            exact
+            path="/student/subgroup_id/view"
+            component={StudentSubGroupIdView}
           />
           <Route exact path="/lecturer/add" component={AddLecturer} />
 

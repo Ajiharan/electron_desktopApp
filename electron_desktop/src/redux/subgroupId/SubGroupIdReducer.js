@@ -34,4 +34,30 @@ const sub_groupIdReducer = (
   }
 };
 
-export { sub_groupIdReducer };
+const get_SubGroupIdReducer = (
+  state = { loading: true, sub_groupids: [], error: "" },
+  action
+) => {
+  switch (action.type) {
+    case GET_SUB_GROUPID_REQUEST:
+      return { ...state, loading: true };
+    case GET_SUB_GROUPID_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        sub_groupids: action.payload,
+        error: "",
+      };
+    case GET_SUB_GROUPID_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+        sub_groupids: [],
+      };
+    default:
+      return state;
+  }
+};
+
+export { sub_groupIdReducer, get_SubGroupIdReducer };

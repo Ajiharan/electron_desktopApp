@@ -1,0 +1,22 @@
+.btn_new {
+  margin: 10px;
+}
+
+.StudentViewSubGroupIdContainer__top {
+  display: flex;
+  justify-content: space-between;
+}
+.top__search {
+  height: 40px;
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  width: 250px;
+  outline: none;
+}
+
+.StudentViewSubGroupIdContainer__bottom {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
