@@ -18,6 +18,7 @@ import StudentGroupIdUpdate from "./screens/groupId/StudentGroupIdUpdate";
 import StudentSubGroupId from "./screens/subgroupId/StudentSubGroupId";
 import StudentSubGroupIdView from "./screens/subgroupId/StudentViewSubGroupId";
 import StudentSubGroupIdUpdate from "./screens/subgroupId/StudentsubGroupIdUpdate";
+import UpdateLecturer from "./screens/Lecturer/UpdateLecturer";
 function App() {
   return (
     <React.Fragment>
@@ -88,8 +89,8 @@ function App() {
             component={StudentSubGroupIdUpdate}
           />
           <Route exact path="/lecturer/add" component={AddLecturer} />
-
           <Route exact path="/lecturer/view" component={ViewLecturer} />
+          <Route exact path="/lecturer/update" component={UpdateLecturer}/>
           <Route exact path="/subject/add" component={AddSubject} />
         </Switch>
       </HashRouter>
