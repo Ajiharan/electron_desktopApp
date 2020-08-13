@@ -10,7 +10,7 @@ const StudentSubgroupIdTable = ({
     <table className="table table-dark table-hover StudentSubGroupId__table">
       <thead>
         <tr>
-          <th>Sub GroupId</th>
+          <th>Sub Group Number</th>
           <th>Action</th>
           <th>Action</th>
         </tr>

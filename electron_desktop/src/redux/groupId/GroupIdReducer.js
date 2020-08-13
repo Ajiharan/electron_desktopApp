@@ -39,7 +39,7 @@ const get_groupIdReducer = (
     case GET_GROUPID_SUCCESS:
       return { ...state, loading: false, group_id: action.payload, error: "" };
     case GET_GROUPID_FAILURE:
-      return { ...state, loading: false, error: action.error, group_id: {} };
+      return { ...state, loading: false, error: action.error, group_id: [] };
     default:
       return state;
   }

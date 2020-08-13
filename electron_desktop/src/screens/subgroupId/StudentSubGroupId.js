@@ -36,7 +36,7 @@ const StudentSubGroupId = () => {
     },
     {
       id: 2,
-      name: "Student SubGroupId",
+      name: "Student SubGroup Number",
       pathname: "/student/subgroup_id/add",
     },
   ];
@@ -54,11 +54,11 @@ const StudentSubGroupId = () => {
             </p>
           </div>
 
-          <h2 className="text-center text-dark">Add Sub GroupId</h2>
+          <h2 className="text-center text-dark">Add Sub Group Number</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="StudentSubGroupId_inputs">
               <label htmlFor="StudentSubGroupId" className="text-light">
-                sub groupId
+                sub group Number
               </label>
               <input
                 value={sub_groupId}

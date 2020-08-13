@@ -42,7 +42,7 @@ const StudentsubGroupIdUpdate = (props) => {
     },
     {
       id: 2,
-      name: "Student SubGroup Id> ",
+      name: "Student SubGroup Number > ",
       pathname: "/student/subgroup_id/add",
     },
     {
@@ -70,11 +70,11 @@ const StudentsubGroupIdUpdate = (props) => {
             </p>
           </div>
 
-          <h2 className="text-center text-dark">Update SubGroupId</h2>
+          <h2 className="text-center text-dark">Update SubGroup Number</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="StudentSubGroupIdUpdate_inputs">
               <label htmlFor="StudentSubGroupIdUpdates" className="text-light">
-                Sub GroupId
+                Sub Group Number
               </label>
               <input
                 value={sub_groupid}

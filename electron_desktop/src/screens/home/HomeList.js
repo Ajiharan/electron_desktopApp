@@ -122,7 +122,7 @@ const HomeNestedList = () => {
             onClick={sub_groupIdData.handleClick}
             className={classes.nested}
           >
-            <ListItemText primary="GroupId" />
+            <ListItemText primary="Group Number" />
             {sub_groupIdData.open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={sub_groupIdData.open} timeout="auto" unmountOnExit>
@@ -146,7 +146,7 @@ const HomeNestedList = () => {
             onClick={sub_subgroupIdData.handleClick}
             className={classes.nested}
           >
-            <ListItemText primary="Sub GroupId" />
+            <ListItemText primary="Sub Group Number" />
             {sub_subgroupIdData.open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={sub_subgroupIdData.open} timeout="auto" unmountOnExit>

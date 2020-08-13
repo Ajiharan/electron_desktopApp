@@ -31,7 +31,7 @@ const StudentViewSubGroupId = () => {
     },
     {
       id: 2,
-      name: "Student SubGroup Id> ",
+      name: "Student SubGroup Number > ",
       pathname: "/student/subgroup_id/add",
     },
     {
