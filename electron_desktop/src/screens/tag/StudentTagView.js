@@ -29,7 +29,7 @@ const StudentView = () => {
     },
     {
       id: 2,
-      name: "Student > ",
+      name: "Student Tag > ",
       pathname: "/student/tag/add",
     },
     {

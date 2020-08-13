@@ -15,14 +15,22 @@ import {
   get_groupIdReducer,
   update_groupIdReducer,
 } from "./groupId/GroupIdReducer";
-import {LecturerReducer, get_lecturers, update_lecturer_Reducer} from "./Lecturer/LecturerReducer";
+import {
+  LecturerReducer,
+  get_lecturers,
+  update_lecturer_Reducer,
+} from "./Lecturer/LecturerReducer";
 import { SubjectReducer } from "./Subject/SubjectReducer";
 import {
   sub_groupIdReducer,
   get_SubGroupIdReducer,
   update_subgroupIdReducer,
 } from "./subgroupId/SubGroupIdReducer";
-import { get_tagReducer, tagReducer } from "./tag/TagReducer";
+import {
+  get_tagReducer,
+  tagReducer,
+  update_tagReducer,
+} from "./tag/TagReducer";
 
 const rootReducer = combineReducers({
   year_semister: year_semiReducer,
@@ -37,13 +45,14 @@ const rootReducer = combineReducers({
   update_groupId: update_groupIdReducer,
   LecturerReducer: LecturerReducer,
   get_lecturers: get_lecturers,
-  Update_lecturer:update_lecturer_Reducer,
+  Update_lecturer: update_lecturer_Reducer,
   SubjectReducer: SubjectReducer,
   sub_groupId_add: sub_groupIdReducer,
   get_SubGroupId: get_SubGroupIdReducer,
   update_subgroupId: update_subgroupIdReducer,
   tag_add: tagReducer,
   get_tag: get_tagReducer,
+  update_tag: update_tagReducer,
 });
 
 export default rootReducer;

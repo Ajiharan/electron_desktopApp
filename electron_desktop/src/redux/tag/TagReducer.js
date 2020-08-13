@@ -42,4 +42,20 @@ const get_tagReducer = (
   }
 };
 
-export { get_tagReducer, tagReducer };
+const update_tagReducer = (
+  state = { loading: true, message: "", error: "" },
+  action
+) => {
+  switch (action.type) {
+    case UPDATE_TAG_REQUEST:
+      return { ...state, loading: true };
+    case UPDATE_TAG_SUCCESS:
+      return { ...state, loading: false, message: action.message, error: "" };
+    case UPDATE_TAG_FAILURE:
+      return { ...state, loading: false, message: "", error: action.error };
+    default:
+      return state;
+  }
+};
+
+export { get_tagReducer, tagReducer, update_tagReducer };

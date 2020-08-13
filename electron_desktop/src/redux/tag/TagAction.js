@@ -89,5 +89,38 @@ const viewTag = () => {
     } catch (err) {}
   };
 };
-
-export { viewTag, addTag };
+const UpdateTag = (doc_id, input) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_TAG_REQUEST });
+    try {
+      const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+      db.collection("tags")
+        .doc(doc_id)
+        .set(
+          {
+            tag: input,
+            timestamp,
+          },
+          { merge: true }
+        )
+        .then(() => {
+          dispatch({
+            type: UPDATE_TAG_SUCCESS,
+            message: "upload Sucessfully",
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: UPDATE_TAG_FAILURE,
+            error: err,
+          });
+        });
+    } catch (err) {
+      dispatch({
+        type: UPDATE_TAG_FAILURE,
+        error: err,
+      });
+    }
+  };
+};
+export { viewTag, addTag, UpdateTag };
