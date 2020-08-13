@@ -17,6 +17,7 @@ import {
 } from "./groupId/GroupIdReducer";
 import { LecturerReducer, get_lecturers } from "./Lecturer/LecturerReducer";
 import { SubjectReducer } from "./Subject/SubjectReducer";
+import { sub_groupIdReducer } from "./subgroupId/SubGroupIdReducer";
 
 const rootReducer = combineReducers({
   year_semister: year_semiReducer,
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   LecturerReducer: LecturerReducer,
   get_lecturers: get_lecturers,
   SubjectReducer: SubjectReducer,
+  sub_groupId_add: sub_groupIdReducer,
 });
 
 export default rootReducer;
