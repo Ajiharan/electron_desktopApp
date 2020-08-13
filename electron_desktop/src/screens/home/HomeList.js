@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(8),
   },
   sub_nested: {
-    paddingLeft: theme.spacing(12),
+    paddingLeft: theme.spacing(10),
     color: "white",
   },
 }));
@@ -40,6 +40,7 @@ const HomeNestedList = () => {
   const sub_groupIdData = usecheck(false);
   const sub_subgroupIdData = usecheck(false);
   const sub_tagData = usecheck(false);
+  const sub_genData = usecheck(false);
   return (
     // nav list
     <List
@@ -185,6 +186,30 @@ const HomeNestedList = () => {
               <Link to="/student/tag/view">
                 <ListItem button className={classes.sub_nested}>
                   <ListItemText primary="view" />
+                </ListItem>
+              </Link>
+            </List>
+          </Collapse>
+          <ListItem
+            button
+            onClick={sub_genData.handleClick}
+            className={classes.nested}
+          >
+            <ListItemText primary="Generate Id" />
+            {sub_genData.open ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={sub_genData.open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {/* student > group_id > Add sub list */}
+              <Link to="/student/generate/Id">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="Group-Id" />
+                </ListItem>
+              </Link>
+              {/* student > group_id >view sub list */}
+              <Link to="/student/generate/subId">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="Sub Group-Id" />
                 </ListItem>
               </Link>
             </List>

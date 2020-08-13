@@ -22,6 +22,7 @@ import StudentSubGroupIdUpdate from "./screens/subgroupId/StudentsubGroupIdUpdat
 import StudentTagView from "./screens/tag/StudentTagView";
 import StudentTagUpdate from "./screens/tag/StudentTagUpdate";
 import UpdateLecturer from "./screens/Lecturer/UpdateLecturer";
+import GenGroupId from "./screens/genGroupId/GenGroupId";
 function App() {
   return (
     <React.Fragment>
@@ -29,6 +30,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/student/generate/Id" component={GenGroupId} />
           <Route
             exact
             path="/student/year_semister/add"
@@ -99,7 +101,7 @@ function App() {
             component={StudentTagUpdate}
           />
           <Route exact path="/lecturer/add" component={AddLecturer} />
-          <Route exact path="/lecturer/update" component={UpdateLecturer}/>
+          <Route exact path="/lecturer/update" component={UpdateLecturer} />
           <Route exact path="/lecturer/view" component={ViewLecturer} />
           <Route exact path="/subject/add" component={AddSubject} />
         </Switch>
