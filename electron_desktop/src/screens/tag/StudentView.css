@@ -1,0 +1,26 @@
+.btn_new {
+  margin: 10px;
+}
+
+.TagViewContainer__top {
+  display: flex;
+  justify-content: space-between;
+}
+.top__search {
+  height: 40px;
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  width: 250px;
+  outline: none;
+}
+
+.TagViewContainer__bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.TagViewContainer__bottom button {
+  margin-left: 4px;
+}
