@@ -22,6 +22,10 @@
     height: 30px;
 }
 
+.lecturer__error_message {
+    height: 15px;
+}
+
 .lecturer__box > form {
     border: 1px solid rgb(150, 148, 148);
     margin: 10px;

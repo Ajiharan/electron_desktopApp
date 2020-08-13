@@ -12,13 +12,14 @@ import UpdateYearSemister from "./screens/year_semister/UpdateYearSemister";
 import StudentProgramme from "./screens/studentProgramme/StudentProgramme";
 import ViewStudentProgramme from "./screens/studentProgramme/ViewStudentProgramme";
 import ProgrammeUpdate from "./screens/studentProgramme/ProgrammeUpdate";
+import StudentTag from "./screens/tag/StudentTag";
 import StudentGroupId from "./screens/groupId/StudentGroupId";
 import StudentGroupIdView from "./screens/groupId/ViewStudentGroupId";
 import StudentGroupIdUpdate from "./screens/groupId/StudentGroupIdUpdate";
 import StudentSubGroupId from "./screens/subgroupId/StudentSubGroupId";
 import StudentSubGroupIdView from "./screens/subgroupId/StudentViewSubGroupId";
 import StudentSubGroupIdUpdate from "./screens/subgroupId/StudentsubGroupIdUpdate";
-import StudentTag from "./screens/tag/StudentTag";
+
 function App() {
   return (
     <React.Fragment>
