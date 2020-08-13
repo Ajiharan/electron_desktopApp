@@ -4,8 +4,7 @@ import { Spinner } from "../animations/Spinner";
 import { DotLoader, MoonLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
 import ScreenNav from "../screen-nav/ScreenNav";
-import {addLecturer, UpdateLecturerDetails} from "../../redux/Lecturer/LecturerAction";
-import useUpdate from "../useHooks/useUpdate";
+import {UpdateLecturerDetails} from "../../redux/Lecturer/LecturerAction";
 
 const UpdateLecturer = (props) => {
     console.log("props.history", props.location);
@@ -47,7 +46,7 @@ const UpdateLecturer = (props) => {
     const submitHandler =e =>{
         e.preventDefault();
         isClicked(true);
-        dispatch(UpdateLecturerDetails(props.location.state?.id,name,emp_id,faculty,center,department,building,level,level+"."+rank));
+        dispatch(UpdateLecturerDetails(props.location.state?.id,name,emp_id,faculty,center,department,building,level,level+"."+emp_id));
         console.log(name,emp_id,faculty,center,department,building,level,rank);
     }
 
