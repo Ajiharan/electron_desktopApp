@@ -149,15 +149,14 @@ const ViewYearSemister = () => {
             )}
 
             <div className="YearViewContainer__bottom">
-              {userData.length > 0 && userData.length === year_semi.length && (
-                <button onClick={DeleteAll} className="btn btn-danger">
-                  Delete All
-                </button>
-              )}
-
               {checkData.length > 0 && (
                 <button onClick={DeleteSelected} className="btn btn-danger">
                   Delete Selected
+                </button>
+              )}
+              {userData.length > 0 && userData.length === year_semi.length && (
+                <button onClick={DeleteAll} className="btn btn-danger">
+                  Delete All
                 </button>
               )}
             </div>

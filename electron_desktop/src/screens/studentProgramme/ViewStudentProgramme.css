@@ -17,6 +17,9 @@
 
 .ProgrammeViewContainer__bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: 10px;
+}
+.ProgrammeViewContainer__bottom button {
+  margin-left: 4px;
 }

@@ -39,6 +39,7 @@ const HomeNestedList = () => {
   const sub_programmeData = usecheck(false);
   const sub_groupIdData = usecheck(false);
   const sub_subgroupIdData = usecheck(false);
+  const sub_tagData = usecheck(false);
   return (
     // nav list
     <List
@@ -158,6 +159,30 @@ const HomeNestedList = () => {
               </Link>
               {/* student > group_id >view sub list */}
               <Link to="/student/subgroup_id/view">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="view" />
+                </ListItem>
+              </Link>
+            </List>
+          </Collapse>
+          <ListItem
+            button
+            onClick={sub_tagData.handleClick}
+            className={classes.nested}
+          >
+            <ListItemText primary="Student Tag" />
+            {sub_tagData.open ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={sub_tagData.open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {/* student > group_id > Add sub list */}
+              <Link to="/student/tag/add">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="Add" />
+                </ListItem>
+              </Link>
+              {/* student > group_id >view sub list */}
+              <Link to="/student/tag/view">
                 <ListItem button className={classes.sub_nested}>
                   <ListItemText primary="view" />
                 </ListItem>
