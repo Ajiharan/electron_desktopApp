@@ -111,7 +111,7 @@ const StudentViewSubGroupId = () => {
 
   const gotoUpdatePage = (data) => {
     history.push({
-      pathname: "/student/sub_groupid/update",
+      pathname: "/student/subgroup_id/update",
       state: data,
     });
   };

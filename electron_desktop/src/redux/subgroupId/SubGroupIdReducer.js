@@ -60,4 +60,20 @@ const get_SubGroupIdReducer = (
   }
 };
 
-export { sub_groupIdReducer, get_SubGroupIdReducer };
+const update_subgroupIdReducer = (
+  state = { loading: true, message: "", error: "" },
+  action
+) => {
+  switch (action.type) {
+    case UPDATE_SUB_GROUPID_REQUEST:
+      return { ...state, loading: true };
+    case UPDATE_SUB_GROUPID_SUCCESS:
+      return { ...state, loading: false, message: action.message, error: "" };
+    case UPDATE_SUB_GROUPID_FAILURE:
+      return { ...state, loading: false, message: "", error: action.error };
+    default:
+      return state;
+  }
+};
+
+export { sub_groupIdReducer, get_SubGroupIdReducer, update_subgroupIdReducer };

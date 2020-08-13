@@ -91,5 +91,39 @@ const viewSubGroupId = () => {
     } catch (err) {}
   };
 };
+const UpdateSubGroupId = (doc_id, input) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_SUB_GROUPID_REQUEST });
+    try {
+      const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+      db.collection("sub_groupids")
+        .doc(doc_id)
+        .set(
+          {
+            sub_groupid: input,
+            timestamp,
+          },
+          { merge: true }
+        )
+        .then(() => {
+          dispatch({
+            type: UPDATE_SUB_GROUPID_SUCCESS,
+            message: "upload Sucessfully",
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: UPDATE_SUB_GROUPID_FAILURE,
+            error: err,
+          });
+        });
+    } catch (err) {
+      dispatch({
+        type: UPDATE_SUB_GROUPID_FAILURE,
+        error: err,
+      });
+    }
+  };
+};
 
-export { addSubgroupId, viewSubGroupId };
+export { addSubgroupId, viewSubGroupId, UpdateSubGroupId };

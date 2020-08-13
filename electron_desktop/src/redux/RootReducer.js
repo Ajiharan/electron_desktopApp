@@ -20,6 +20,7 @@ import { SubjectReducer } from "./Subject/SubjectReducer";
 import {
   sub_groupIdReducer,
   get_SubGroupIdReducer,
+  update_subgroupIdReducer,
 } from "./subgroupId/SubGroupIdReducer";
 
 const rootReducer = combineReducers({
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   SubjectReducer: SubjectReducer,
   sub_groupId_add: sub_groupIdReducer,
   get_SubGroupId: get_SubGroupIdReducer,
+  update_subgroupId: update_subgroupIdReducer,
 });
 
 export default rootReducer;
