@@ -42,7 +42,7 @@ const get_year_semiReducer = (
     case GET_YEAR_SEMISTER_SUCCESS:
       return { ...state, loading: false, year_semi: action.payload, error: "" };
     case GET_YEAR_SEMISTER_FAILURE:
-      return { ...state, loading: false, error: action.error, year_semi: {} };
+      return { ...state, loading: false, error: action.error, year_semi: [] };
     default:
       return state;
   }
