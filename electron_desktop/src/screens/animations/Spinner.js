@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
-const Spinner = ({ Loader, size }) => {
+const Spinner = ({ Loader, size, color }) => {
   const override = css`
     display: flex;
     justify-content: center;

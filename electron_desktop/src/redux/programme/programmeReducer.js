@@ -30,7 +30,7 @@ const addProgrammeReducer = (
 };
 
 const viewProgrammeReducer = (
-  state = { loading: true, programme: {}, error: "" },
+  state = { loading: true, programme: [], error: "" },
   action
 ) => {
   switch (action.type) {

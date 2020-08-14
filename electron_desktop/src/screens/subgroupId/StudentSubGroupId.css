@@ -29,6 +29,7 @@
     rgba(82, 85, 85, 0.62),
     rgb(56, 59, 61)
   );
+  border: 1px solid black;
   justify-content: center;
   flex-wrap: wrap;
 }
