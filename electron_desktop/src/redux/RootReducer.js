@@ -35,6 +35,10 @@ import {
   genGroupId_addReducer,
   get_genGroupIdReducer,
 } from "./genId/genIdReducer";
+import {
+  genSubGroupId_addReducer,
+  get_genSubGroupIdReducer,
+} from "./gensubId/genSubIdReducer";
 
 const rootReducer = combineReducers({
   year_semister: year_semiReducer,
@@ -59,6 +63,8 @@ const rootReducer = combineReducers({
   update_tag: update_tagReducer,
   genGroupId: genGroupId_addReducer,
   get_genGroupId: get_genGroupIdReducer,
+  genSubGroupId: genSubGroupId_addReducer,
+  get_genSubGroupId: get_genSubGroupIdReducer,
 });
 
 export default rootReducer;

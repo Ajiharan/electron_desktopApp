@@ -23,12 +23,18 @@ import StudentTagView from "./screens/tag/StudentTagView";
 import StudentTagUpdate from "./screens/tag/StudentTagUpdate";
 import UpdateLecturer from "./screens/Lecturer/UpdateLecturer";
 import GenGroupId from "./screens/genGroupId/GenGroupId";
+import GenSubGroupId from "./screens/genSubGroupId/GenSubGroupId";
 function App() {
   return (
     <React.Fragment>
       <HashRouter>
         <Navbar />
         <Switch>
+          <Route
+            exact
+            path="/student/generate/subId"
+            component={GenSubGroupId}
+          />
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/student/generate/Id" component={GenGroupId} />
           <Route

@@ -1,0 +1,73 @@
+.GenSubGroupId__container {
+  margin: 100px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.GenSubGroupId__box {
+  width: auto;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.GenSubGroupId__message {
+  height: 30px;
+}
+
+.GenSubGroupId__box > form {
+  margin: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-image: linear-gradient(
+    720deg,
+    transparent,
+    rgba(82, 85, 85, 0.62),
+    rgb(56, 59, 61)
+  );
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.GenSubGroupId_inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+.GenSubGroupId_inputs > label {
+  width: 300px;
+}
+
+.GenSubGroupId_buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.GenSubGroupId_buttons button {
+  color: white;
+  background-image: linear-gradient(to right, #fc6076, #ff9231);
+  border: none;
+  margin: 20px;
+  width: 180px;
+  padding: 5px;
+}
+
+.GenSubGroupId_buttons button:hover {
+  background-image: linear-gradient(to right, #e72c45, #f59644);
+}
+
+.GenSubGroupId__loader {
+  margin-left: 200px;
+}
+
+.GenSubGroupId__searchList {
+  height: 80px;
+}
