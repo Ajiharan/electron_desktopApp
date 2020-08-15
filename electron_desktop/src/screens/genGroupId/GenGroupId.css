@@ -2,6 +2,7 @@
   margin: 100px;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .GenGroupId__box {
@@ -65,4 +66,8 @@
 
 .GenGroupId__loader {
   margin-left: 200px;
+}
+
+.GenGroupId__searchList {
+  height: 80px;
 }

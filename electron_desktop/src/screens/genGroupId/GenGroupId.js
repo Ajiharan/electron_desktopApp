@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./GenGroupId.css";
 import { Spinner } from "../animations/Spinner";
 import { PropagateLoader } from "react-spinners";
-import { useHistory } from "react-router-dom";
-import useAdd from "../useHooks/useAdd";
 import { useDispatch, useSelector } from "react-redux";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { viewGroupId } from "../../redux/groupId/GroupIdAction";
 import { viewSemister } from "../../redux/Year_semi/YearAction";
 import { viewProgramme } from "../../redux/programme/programmeAction";
 import GenIdForm from "./GenIdForm";
-import formik, { useFormik } from "formik";
+
+import ViewGenGroupId from "./ViewGenGroupId";
 
 const GenGroupId = () => {
   const [year_semister, setYearSemister] = useState([]);
@@ -68,7 +67,10 @@ const GenGroupId = () => {
             </div>
           )}
         </div>
-        <div className="GenGroupId__searchList"></div>
+        <div className="GenGroupId__List">
+          <h4>GROUP ID LISTS</h4>
+          <ViewGenGroupId />
+        </div>
       </div>
     </div>
   );

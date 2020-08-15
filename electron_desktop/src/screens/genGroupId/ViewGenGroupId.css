@@ -1,0 +1,32 @@
+.ViewGenGroupId {
+  width: 100%;
+  object-fit: contain;
+  padding: 10px;
+  background-color: white;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ViewGenGroupId::-webkit-scrollbar {
+  display: none;
+}
+.ViewGenGroupId button {
+  color: white;
+  background-image: linear-gradient(to right, #fc6076, #ff9231);
+  border: none;
+  margin-bottom: 20px;
+  width: 120px;
+  padding: 5px;
+  border-radius: 20px;
+}
+.ViewGenGroupId__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}
+.ViewGenGroupId button:hover {
+  background-image: linear-gradient(to right, #e72c45, #f59644);
+}
