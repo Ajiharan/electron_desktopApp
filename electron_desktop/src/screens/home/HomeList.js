@@ -13,6 +13,7 @@ import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import usecheck from "../useHooks/useCheck";
+import ApartmentIcon from '@material-ui/icons/Apartment';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -41,6 +42,10 @@ const HomeNestedList = () => {
   const sub_subgroupIdData = usecheck(false);
   const sub_tagData = usecheck(false);
   const sub_genData = usecheck(false);
+  const locationData = usecheck(false);
+  const sub_locationData = usecheck(false);
+  const sub_buildingData = usecheck(false);
+  const sub_roomData = usecheck(false);
   return (
     // nav list
     <List
@@ -257,6 +262,69 @@ const HomeNestedList = () => {
           <ListItem button className={classes.nested}>
             <ListItemText primary="View" />
           </ListItem>
+        </List>
+      </Collapse>
+      <ListItem button onClick={locationData.handleClick}>
+        <ListItemIcon>
+          <ApartmentIcon style={{ color: "white" }} />
+        </ListItemIcon>
+        <ListItemText primary="Location" />
+        {locationData.open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      {/* student >year&semister  sub list */}
+  <Collapse in={locationData.open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem
+            button
+            className={classes.nested}
+            onClick={sub_buildingData.handleClick}
+          >
+            <ListItemText primary="Building" />
+            {sub_buildingData.open ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          {/* student > year & semister sub list */}
+          <Collapse in=      {sub_buildingData.open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {/* student > year & semister > Add sub list */}
+              <Link to="/location/building/add">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="Add" />
+                </ListItem>
+              </Link>
+              {/* student > year & semister >view sub list */}
+              <Link to="/location/building/view">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="view" />
+                </ListItem>
+              </Link>
+            </List>
+          </Collapse>
+          {/* student > group number list */}
+          <ListItem
+            button
+            onClick={sub_roomData.handleClick}
+            className={classes.nested}
+          >
+            <ListItemText primary="Room" />
+            {sub_roomData.open ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={sub_roomData.open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {/* student > programme > Add sub list */}
+              <Link to="/room/room/add">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="Add" />
+                </ListItem>
+              </Link>
+              {/* student > programme >view sub list */}
+              <Link to="/room/room/view">
+                <ListItem button className={classes.sub_nested}>
+                  <ListItemText primary="view" />
+                </ListItem>
+              </Link>
+            </List>
+          </Collapse>
+          
         </List>
       </Collapse>
     </List>

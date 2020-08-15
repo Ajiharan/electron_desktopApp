@@ -23,6 +23,9 @@ import StudentTagView from "./screens/tag/StudentTagView";
 import StudentTagUpdate from "./screens/tag/StudentTagUpdate";
 import UpdateLecturer from "./screens/Lecturer/UpdateLecturer";
 import GenGroupId from "./screens/genGroupId/GenGroupId";
+import Building from "./screens/Location/Building";
+import ViewBuilding from "./screens/Location/ViewBuilding";
+import BuildingUpdate from "./screens/Location/BuildingUpdate";
 function App() {
   return (
     <React.Fragment>
@@ -104,6 +107,21 @@ function App() {
           <Route exact path="/lecturer/update" component={UpdateLecturer} />
           <Route exact path="/lecturer/view" component={ViewLecturer} />
           <Route exact path="/subject/add" component={AddSubject} />
+          <Route
+            exact
+            path="/location/building/add"
+            component={Building}
+          />
+         <Route
+            exact
+            path="/location/building/view"
+            component={ViewBuilding}
+          />
+          <Route
+            exact
+            path="/location/building/update"
+            component={BuildingUpdate}
+          />
         </Switch>
       </HashRouter>
     </React.Fragment>
