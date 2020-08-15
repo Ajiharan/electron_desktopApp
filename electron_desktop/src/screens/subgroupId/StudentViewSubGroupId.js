@@ -139,6 +139,11 @@ const StudentViewSubGroupId = () => {
               </button>
               <Search searchData={searchData} />
             </div>
+            {sub_groupids.length === 0 ? (
+              <p className="text-danger lead">data is not available</p>
+            ) : userData?.length === 0 ? (
+              <p className="text-danger lead">No results found</p>
+            ) : null}
             {userData.length > 0 && (
               <SubGroupIdTable
                 userData={userData}

@@ -33,6 +33,11 @@ const ViewGenGroupId = () => {
     <React.Fragment>
       <div className="GenGroupId__searchList">
         <Search searchData={searchData} />
+        {gen_groupids.length === 0 ? (
+          <p className="text-danger lead">data is not available</p>
+        ) : groupids.length === 0 ? (
+          <p className="text-danger lead">No results found</p>
+        ) : null}
       </div>
       <div className="ViewGenGroupId">
         {groupids.map((data, i) => (

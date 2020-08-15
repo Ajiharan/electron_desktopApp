@@ -135,6 +135,11 @@ const StudentView = () => {
               </button>
               <Search searchData={searchData} />
             </div>
+            {tags.length === 0 ? (
+              <p className="text-danger lead">data is not available</p>
+            ) : userData?.length === 0 ? (
+              <p className="text-danger lead">No results found</p>
+            ) : null}
             {userData.length > 0 && (
               <StudentTagTable
                 userData={userData}

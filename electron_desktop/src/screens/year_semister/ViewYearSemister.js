@@ -139,6 +139,11 @@ const ViewYearSemister = () => {
               </button>
               <Search searchData={searchData} />
             </div>
+            {year_semi.length === 0 ? (
+              <p className="text-danger lead">data is not available</p>
+            ) : userData?.length === 0 ? (
+              <p className="text-danger lead">No results found</p>
+            ) : null}
             {userData.length > 0 && (
               <YearSemisterTable
                 userData={userData}

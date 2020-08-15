@@ -101,7 +101,7 @@ const ViewStudentGroupId = () => {
     setCheckData([]);
 
     if (name) {
-      setUserData(new_group_id.filter((data) => data.group_id.match(name)));
+      setUserData(new_group_id.filter((data) => data.groupid.match(name)));
     } else {
       setUserData(new_group_id);
     }
@@ -137,6 +137,11 @@ const ViewStudentGroupId = () => {
               </button>
               <Search searchData={searchData} />
             </div>
+            {group_id.length === 0 ? (
+              <p className="text-danger lead">data is not available</p>
+            ) : userData.length === 0 ? (
+              <p className="text-danger lead">No results found</p>
+            ) : null}
             {userData.length > 0 && (
               <StudentGroupIdTable
                 userData={userData}
