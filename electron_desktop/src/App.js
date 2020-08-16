@@ -27,6 +27,8 @@ import GenSubGroupId from "./screens/genSubGroupId/GenSubGroupId";
 import Building from "./screens/Location/Building";
 import ViewBuilding from "./screens/Location/ViewBuilding";
 import BuildingUpdate from "./screens/Location/BuildingUpdate";
+import Room  from "./screens/Room/Room";
+import ViewRoom  from "./screens/Room/ViewRoom";
 function App() {
   return (
     <React.Fragment>
@@ -127,6 +129,16 @@ function App() {
             exact
             path="/location/building/update"
             component={BuildingUpdate}
+          />
+          <Route
+            exact
+            path="/room/room/add"
+            component={Room}
+          />
+          <Route
+            exact
+            path="/room/room/view"
+            component={ViewRoom}
           />
         </Switch>
       </HashRouter>

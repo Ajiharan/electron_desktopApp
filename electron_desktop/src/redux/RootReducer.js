@@ -44,7 +44,11 @@ import{
   view_BuildingReducer,
   update_BuildingReducer,
 } from "./Building/BuildingReducer";
-
+import{
+  add_RoomReducer,
+  view_RoomReducer,
+  update_RoomReducer,
+} from "./Room/RoomReducer";
 
 const rootReducer = combineReducers({
   year_semister: year_semiReducer,
@@ -74,6 +78,9 @@ const rootReducer = combineReducers({
   building_add: add_BuildingReducer,
   get_building: view_BuildingReducer,
   update_building: update_BuildingReducer,
+  room_add: add_RoomReducer,
+  get_room: view_RoomReducer,
+  update_room: update_RoomReducer, 
 });
 
 export default rootReducer;
