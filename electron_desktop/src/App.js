@@ -29,6 +29,9 @@ import ViewBuilding from "./screens/Location/ViewBuilding";
 import BuildingUpdate from "./screens/Location/BuildingUpdate";
 import Room  from "./screens/Room/Room";
 import ViewRoom  from "./screens/Room/ViewRoom";
+import Addworkingdays from "./screens/Working_days/Addworkingdays";
+import Viewworkingdays from "./screens/Working_days/Viewworkingdays";
+import UpdateWorkingdays from "./screens/Working_days/Updateworkingdays"
 function App() {
   return (
     <React.Fragment>
@@ -140,6 +143,10 @@ function App() {
             path="/room/room/view"
             component={ViewRoom}
           />
+           <Route exact path="/workingdays/add" component={Addworkingdays} />
+          
+          <Route exact path="/workingdays/view" component={Viewworkingdays} />
+          <Route exact path="/workingdays/update" component={UpdateWorkingdays} />
         </Switch>
       </HashRouter>
     </React.Fragment>

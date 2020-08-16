@@ -14,6 +14,7 @@ import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import usecheck from "../useHooks/useCheck";
 import ApartmentIcon from '@material-ui/icons/Apartment';
+import TimerIcon from '@material-ui/icons/Timer'
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -46,6 +47,7 @@ const HomeNestedList = () => {
   const sub_locationData = usecheck(false);
   const sub_buildingData = usecheck(false);
   const sub_roomData = usecheck(false);
+  const workingdaysData = usecheck(false);
   return (
     // nav list
     <List
@@ -244,6 +246,31 @@ const HomeNestedList = () => {
           </Link>
         </List>
       </Collapse>
+
+       {/* working days list */}
+       <ListItem button onClick={workingdaysData.handleClick}>
+        <ListItemIcon>
+          <TimerIcon style={{ color: "white" }} />
+        </ListItemIcon>
+        <ListItemText primary="Working Days and Hours" />
+        {workingdaysData.open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+
+      <Collapse in={workingdaysData.open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <Link to="/workingdays/add">
+          <ListItem button className={classes.nested}>
+            <ListItemText primary="Add" />
+          </ListItem>
+          </Link>
+          <Link to="/workingdays/view">
+          <ListItem button className={classes.nested}>
+            <ListItemText primary="View" />
+          </ListItem>
+          </Link>
+        </List>
+      </Collapse>
+
 
       <ListItem button onClick={subjectData.handleClick}>
         <ListItemIcon>

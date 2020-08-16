@@ -49,6 +49,11 @@ import{
   view_RoomReducer,
   update_RoomReducer,
 } from "./Room/RoomReducer";
+import {
+  WorkingdaysReducer, 
+  get_workingdays,
+  update_workingdays_Reducer,
+} from "./Working_days/WorkingdaysReducer";
 
 const rootReducer = combineReducers({
   year_semister: year_semiReducer,
@@ -80,7 +85,10 @@ const rootReducer = combineReducers({
   update_building: update_BuildingReducer,
   room_add: add_RoomReducer,
   get_room: view_RoomReducer,
-  update_room: update_RoomReducer, 
+  update_room: update_RoomReducer,
+  WorkingdaysReducer: WorkingdaysReducer,
+  get_workingdays: get_workingdays,
+  update_workingdays:update_workingdays_Reducer, 
 });
 
 export default rootReducer;
