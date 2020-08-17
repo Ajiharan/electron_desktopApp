@@ -72,7 +72,7 @@ const viewRoom = () => {
   };
 };
 
-const UpdateRoom = (doc_id, input) => {
+const UpdateRoom = (doc_id, roomData) => {
   return async (dispatch) => {
     dispatch({ type: UPDATE_ROOM_REQUEST });
     try {
@@ -81,7 +81,7 @@ const UpdateRoom = (doc_id, input) => {
         .doc(doc_id)
         .set(
           {
-            room: input,
+            ...roomData,
             timestamp,
           },
           { merge: true }
