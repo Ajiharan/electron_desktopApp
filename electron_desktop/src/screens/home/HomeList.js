@@ -47,6 +47,7 @@ const HomeList = () => {
   const sub_locationData = usecheck(false);
   const sub_buildingData = usecheck(false);
   const sub_roomData = usecheck(false);
+  const workData = usecheck(false);
   return (
     <div>
       <List
@@ -260,9 +261,12 @@ const HomeList = () => {
                 <ListItemText primary="Add" />
               </ListItem>
             </Link>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="View" />
-            </ListItem>
+            <Link to="/subject/view">
+              {" "}
+              <ListItem button className={classes.nested}>
+                <ListItemText primary="View" />
+              </ListItem>
+            </Link>
           </List>
         </Collapse>
         <ListItem button onClick={locationData.handleClick}>
@@ -325,6 +329,28 @@ const HomeList = () => {
                 </Link>
               </List>
             </Collapse>
+          </List>
+        </Collapse>
+        <ListItem button onClick={workData.handleClick}>
+          <ApartmentIcon>
+            <ImportContactsIcon style={{ color: "white" }} />
+          </ApartmentIcon>
+          <ListItemText primary="Working days & hours" />
+          {workData.open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={workData.open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link to="/workingdays/add">
+              <ListItem button className={classes.nested}>
+                <ListItemText primary="Add" />
+              </ListItem>
+            </Link>
+            <Link to="/workingdays/view">
+              {" "}
+              <ListItem button className={classes.nested}>
+                <ListItemText primary="View" />
+              </ListItem>
+            </Link>
           </List>
         </Collapse>
       </List>

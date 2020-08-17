@@ -5,12 +5,7 @@ const Navbar = () => {
   return (
     <div className="nav-container">
       <nav className="navbar sticky-top navbar-dark bg-dark" id="nav-header">
-        <Link
-          to="/student/generate/subId"
-          className="navbar-brand"
-          href="#"
-          id="ul-heading-img"
-        >
+        <Link to="/" className="navbar-brand" href="#" id="ul-heading-img">
           <img className="img-header" src={require("../images/logo.png")} />
         </Link>
 
