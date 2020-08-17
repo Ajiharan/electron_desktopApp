@@ -27,6 +27,11 @@ import GenSubGroupId from "./screens/genSubGroupId/GenSubGroupId";
 import Building from "./screens/Location/Building";
 import ViewBuilding from "./screens/Location/ViewBuilding";
 import BuildingUpdate from "./screens/Location/BuildingUpdate";
+import Room  from "./screens/Room/Room";
+import ViewRoom  from "./screens/Room/ViewRoom";
+import Addworkingdays from "./screens/Working_days/Addworkingdays";
+import Viewworkingdays from "./screens/Working_days/Viewworkingdays";
+import UpdateWorkingdays from "./screens/Working_days/Updateworkingdays"
 function App() {
   return (
     <React.Fragment>
@@ -128,6 +133,20 @@ function App() {
             path="/location/building/update"
             component={BuildingUpdate}
           />
+          <Route
+            exact
+            path="/room/room/add"
+            component={Room}
+          />
+          <Route
+            exact
+            path="/room/room/view"
+            component={ViewRoom}
+          />
+           <Route exact path="/workingdays/add" component={Addworkingdays} />
+          
+          <Route exact path="/workingdays/view" component={Viewworkingdays} />
+          <Route exact path="/workingdays/update" component={UpdateWorkingdays} />
         </Switch>
       </HashRouter>
     </React.Fragment>

@@ -1,0 +1,75 @@
+.room__container {
+  margin: 10px;
+}
+
+.room__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.room__box {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.room__message {
+  height: 30px;
+}
+
+.room__error_message {
+  height: 15px;
+}
+
+.room__box > form {
+  border: 1px solid rgb(150, 148, 148);
+  margin: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(
+          100deg,
+          transparent,
+          rgba(252, 249, 249, 0.62),
+          rgb(187, 184, 184)
+  );
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.room_inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  width:350px
+}
+
+
+.room_inputs > label {
+  width: 200px;
+}
+
+.room_buttons {
+  display: flex;
+}
+
+.room_buttons button {
+  color: white;
+  background-image: linear-gradient(to right, #fc6076, #ff9231);
+  border: none;
+  margin: 20px;
+  width: 120px;
+  padding: 5px;
+}
+
+.room_buttons button:hover {
+  background-image: linear-gradient(to right, #e72c45, #f59644);
+}
