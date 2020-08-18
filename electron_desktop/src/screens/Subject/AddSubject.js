@@ -98,10 +98,10 @@ const AddSubject = () => {
         <div className="subject__box">
         <div className="lead text-success subject__message">
         {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
-    <p className={`lead ${error ? "text-danger" : "text-light"}`}>
-    {!loading && !error && success}
-    {!loading && error && error}
-</p>
+            <p className={`lead ${error ? "text-danger" : "text-success"}`}>
+            {!loading && !error && success}
+            {!loading && error && error}
+            </p>
     </div>
     <h2 className="text-center text-dark">Add subject</h2>
     <form id="myForm" onSubmit={infoSubmit} autoComplete="off">
@@ -112,6 +112,8 @@ const AddSubject = () => {
     name="sname"
     type="text"
     className="form-control"
+    pattern="[A-Z]"
+    title="Should be capital letters!"
     value={sname}
     onChange={handlechangeSubName}
     required
@@ -126,6 +128,8 @@ const AddSubject = () => {
     name="scode"
     type="text"
     className="form-control"
+    pattern="[A-Z]{2}[0-9]{4}"
+    title="Should be the format(IT2030)!"
     value={scode}
     onChange={handlechangeSubCode}
     required
@@ -135,8 +139,8 @@ const AddSubject = () => {
     <div className="subject_inputs">
 
         <label htmlFor="offered_year">Offered Year</label>
-    <select className="form-control" onChange={handlechangeOffYear} name="off_year" value={off_year}>
-        <option>Select Year</option>
+    <select className="form-control" onChange={handlechangeOffYear} name="off_year" value={off_year} required>
+        <option value="">None</option>
     <option value="Y1">Y1</option>
         <option value="Y2">Y2</option>
         <option value="Y3">Y3</option>
@@ -146,9 +150,9 @@ const AddSubject = () => {
         <div className="subject_inputs">
 
         <label htmlFor="offered_semi">Offered Semester</label>
-    <select className="form-control" onChange={handlechangeOffSemi} name="off_semi" value={off_semi}>
-        <option>Select Year</option>
-    <option value="S1">S1</option>
+        <select className="form-control" onChange={handlechangeOffSemi} name="off_semi" value={off_semi} required>
+        <option value="">None</option>
+        <option value="S1">S1</option>
         <option value="S2">S2</option>
         </select>
         </div>

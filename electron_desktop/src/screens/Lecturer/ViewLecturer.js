@@ -27,7 +27,7 @@ const ViewLecturer = () => {
     {
       id: 2,
       name: "Lecturer > ",
-      pathname: "/lecturer/view",
+      pathname: "/lecturer/add",
     },
     {
       id: 3,

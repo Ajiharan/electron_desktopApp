@@ -8,6 +8,7 @@ import ViewYearSemister from "./screens/year_semister/ViewYearSemister";
 import AddLecturer from "./screens/Lecturer/AddLecturer";
 import ViewLecturer from "./screens/Lecturer/ViewLecturer";
 import AddSubject from "./screens/Subject/AddSubject";
+import ViewSubject from "./screens/Subject/ViewSubject";
 import UpdateYearSemister from "./screens/year_semister/UpdateYearSemister";
 import StudentProgramme from "./screens/studentProgramme/StudentProgramme";
 import ViewStudentProgramme from "./screens/studentProgramme/ViewStudentProgramme";
@@ -32,6 +33,7 @@ import ViewRoom  from "./screens/Room/ViewRoom";
 import Addworkingdays from "./screens/Working_days/Addworkingdays";
 import Viewworkingdays from "./screens/Working_days/Viewworkingdays";
 import UpdateWorkingdays from "./screens/Working_days/Updateworkingdays"
+import UpdateSubject from "./screens/Subject/UpdateSubject";
 function App() {
   return (
     <React.Fragment>
@@ -118,6 +120,8 @@ function App() {
           <Route exact path="/lecturer/update" component={UpdateLecturer} />
           <Route exact path="/lecturer/view" component={ViewLecturer} />
           <Route exact path="/subject/add" component={AddSubject} />
+          <Route exact path="/subject/view" component={ViewSubject} />
+            <Route exact path="/subject/update" component={UpdateSubject} />
           <Route
             exact
             path="/location/building/add"
