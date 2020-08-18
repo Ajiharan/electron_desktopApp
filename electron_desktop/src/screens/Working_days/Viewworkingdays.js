@@ -43,7 +43,7 @@ const Viewworkingdays = () => {
     setWorkingdaysData(workingdays);
   }, [workingdays]);
 
-  const Handlebox = (e, data) => {
+  const Handlebox = (e) => {
     if (e.target.checked) {
       let tempData = [
         ...checkData,

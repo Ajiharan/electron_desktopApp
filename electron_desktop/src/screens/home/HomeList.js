@@ -14,6 +14,7 @@ import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import usecheck from "../useHooks/useCheck";
 import ApartmentIcon from "@material-ui/icons/Apartment";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -247,6 +248,29 @@ const HomeList = () => {
           </List>
         </Collapse>
 
+        <ListItem button onClick={workData.handleClick}>
+          <AccessTimeIcon>
+            <ImportContactsIcon style={{ color: "white" }} />
+          </AccessTimeIcon>
+          <ListItemText primary="Working days & hours" />
+          {workData.open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={workData.open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link to="/workingdays/add">
+              <ListItem button className={classes.nested}>
+                <ListItemText primary="Add" />
+              </ListItem>
+            </Link>
+            <Link to="/workingdays/view">
+              {" "}
+              <ListItem button className={classes.nested}>
+                <ListItemText primary="View" />
+              </ListItem>
+            </Link>
+          </List>
+        </Collapse>
+
         <ListItem button onClick={subjectData.handleClick}>
           <ListItemIcon>
             <ImportContactsIcon style={{ color: "white" }} />
@@ -331,28 +355,7 @@ const HomeList = () => {
             </Collapse>
           </List>
         </Collapse>
-        <ListItem button onClick={workData.handleClick}>
-          <ApartmentIcon>
-            <ImportContactsIcon style={{ color: "white" }} />
-          </ApartmentIcon>
-          <ListItemText primary="Working days & hours" />
-          {workData.open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={workData.open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <Link to="/workingdays/add">
-              <ListItem button className={classes.nested}>
-                <ListItemText primary="Add" />
-              </ListItem>
-            </Link>
-            <Link to="/workingdays/view">
-              {" "}
-              <ListItem button className={classes.nested}>
-                <ListItemText primary="View" />
-              </ListItem>
-            </Link>
-          </List>
-        </Collapse>
+        
       </List>
     </div>
   );

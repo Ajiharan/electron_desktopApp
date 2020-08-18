@@ -6,7 +6,6 @@ import {Spinner} from "../animations/Spinner";
 import {DotLoader} from "react-spinners";
 import {addWorkingdays} from "../../redux/Working_days/WorkingdaysAction";
 import ScreenNav from "../screen-nav/ScreenNav";
-import useAdd from "../useHooks/useAdd";
 import {useFormik} from 'formik'
 
 const Addworkingdays = () => {
@@ -18,8 +17,8 @@ const Addworkingdays = () => {
     const { loading, error, workingdays } = useSelector(
         (state) => state.WorkingdaysReducer
     );
-
    
+ 
     const formik = useFormik({
         initialValues : {
             emp_id:'',
@@ -35,6 +34,7 @@ const Addworkingdays = () => {
             dispatch(addWorkingdays(formik.values.emp_id,formik.values.name,formik.values.daysnum,formik.values.days,formik.values.hours,formik.values.timeslot));
         }
     })
+
 
 const navData = [
     {
