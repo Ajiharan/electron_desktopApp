@@ -79,8 +79,8 @@ const viewWorkingdays = () => {
         dispatch({ type: GET_WORKINGDAYS_REQUEST });
         try {
             db.collection("workingdays")
-                .get()
-                .then(async (snapshot) => {
+                .orderBy("emp_id", "asc")
+                .onSnapshot(async (snapshot) => {
                     const tempData = await snapshot.docs.map((doc) => ({
                         emp_id: doc.data().emp_id,
                         name : doc.data().name,
