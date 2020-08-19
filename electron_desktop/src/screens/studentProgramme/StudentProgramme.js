@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProgramme } from "../../redux/programme/programmeAction";
 import "./StudentProgramme.css";
 import { Spinner } from "../animations/Spinner";
-import { DotLoader, MoonLoader } from "react-spinners";
+import { DotLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
 import useAdd from "../useHooks/useAdd";
 import ScreenNav from "../screen-nav/ScreenNav";
