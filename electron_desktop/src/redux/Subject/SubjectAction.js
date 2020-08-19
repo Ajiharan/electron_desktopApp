@@ -193,3 +193,4 @@ const UpdateSubjectDetails = (doc_id, update_sub_name,update_sub_id,update_year,
 };
 
 export {addSubject,viewSubject,getOneSubjectDetail,UpdateSubjectDetails};
+
