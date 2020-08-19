@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Lecturer.css";
 import {Spinner} from "../animations/Spinner";
 import {DotLoader} from "react-spinners";
-import {addLecturer} from "../../redux/Lecturer/LecturerAction";
+import {addLecturer, viewLecturer} from "../../redux/Lecturer/LecturerAction";
 import ScreenNav from "../screen-nav/ScreenNav";
 import {useFormik} from 'formik'
+import {viewBuilding} from "../../redux/Building/BuildingAction";
 
 const AddLecturer = () => {
     const dispatch = useDispatch();
@@ -14,6 +15,23 @@ const AddLecturer = () => {
     const { loading, error, lecturer } = useSelector(
         (state) => state.LecturerReducer
     );
+
+    const { load, err, building } = useSelector(
+        (state) => state.get_building
+    );
+
+    const [buildingData,setBuildingData] = useState([]);
+
+    useEffect(() => {
+        dispatch(viewBuilding());
+    }, []);
+
+    useEffect(() => {
+        setBuildingData(building);
+    }, [building]);
+
+    console.log(buildingData);
+
 
     const formik = useFormik({
         initialValues : {
@@ -28,9 +46,10 @@ const AddLecturer = () => {
             rank:0
         },
         onSubmit :(inputs) =>{
+            formik.values.rank = formik.values.level + "." + formik.values.emp_id;
             console.log(inputs)
             isClicked(true);
-            dispatch(addLecturer(formik.values.title+"."+formik.values.name,formik.values.emp_id,formik.values.faculty,formik.values.center,formik.values.department,formik.values.building,formik.values.level,formik.values.level+"."+formik.values.emp_id));
+            dispatch(addLecturer(inputs));
         }
     })
 
@@ -282,8 +301,9 @@ const AddLecturer = () => {
                                         formik.values.faculty == "Computing" ?(
                                                         <select className="form-control" onChange={formik.handleChange}  name="building" value={formik.values.building} required>
                                                             <option value="">None</option>
-                                                            <option value="Main building">Main building</option>
-                                                            <option value="New building">New building</option>
+                                                            {
+                                                                buildingData.map((e) => <option key={e.id} value={e.building}>{e.building}</option>)
+                                                            }
                                                         </select>
 
 

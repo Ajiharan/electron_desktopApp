@@ -15,7 +15,7 @@ import {
 import firebase from "firebase";
 import { db } from "../../firebase";
 
-const addLecturer = (lecturer_name,lecturer_emp_id,lecturer_faculty,lecturer_center,lecturer_department,lecturer_building,lecturer_level,lecturer_rank) => {
+const addLecturer = (lecturerData) => {
     return async (dispatch) => {
         dispatch({ type: ADD_LECTURER_REQUEST });
         try {
@@ -29,33 +29,19 @@ const addLecturer = (lecturer_name,lecturer_emp_id,lecturer_faculty,lecturer_cen
                     }));
 
                     const isExists = await tempData.filter(
-                        (data) => data.emp_id === lecturer_emp_id
+                        (data) => data.emp_id === lecturerData.emp_id
                     );
 
                     if (isExists.length === 0) {
                         db.collection("lecturers")
                             .add({
-                                emp_id: lecturer_emp_id,
-                                name : lecturer_name,
-                                faculty:lecturer_faculty,
-                                department:lecturer_department,
-                                center:lecturer_center,
-                                building:lecturer_building,
-                                level:lecturer_level,
-                                rank:lecturer_rank
+                              ...lecturerData
                             })
                             .then(() => {
                                 dispatch({
                                     type: ADD_LECTURER_SUCCESS,
                                     payload: {
-                                        emp_id: lecturer_emp_id,
-                                        name : lecturer_name,
-                                        faculty:lecturer_faculty,
-                                        department:lecturer_department,
-                                        center:lecturer_center,
-                                        building:lecturer_building,
-                                        level:lecturer_level,
-                                        rank:lecturer_rank,
+                                        ...lecturerData,
                                         timestamp,
                                     },
                                 });

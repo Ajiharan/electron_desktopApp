@@ -93,135 +93,133 @@ const AddSubject = () => {
 
     return (
         <div className="subject">
-        <ScreenNav rightNavData={navData} />
-    <div className="subject__container">
-        <div className="subject__box">
-        <div className="lead text-success subject__message">
-        {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
-            <p className={`lead ${error ? "text-danger" : "text-success"}`}>
-            {!loading && !error && success}
-            {!loading && error && error}
-            </p>
-    </div>
-    <h2 className="text-center text-dark">Add subject</h2>
-    <form id="myForm" onSubmit={infoSubmit} autoComplete="off">
-        <div className="subject_inputs">
-        <label htmlFor="name">Subject Name</label>
-    <input
-    placeholder="OOC"
-    name="sname"
-    type="text"
-    className="form-control"
-    pattern="[A-Z]"
-    title="Should be capital letters!"
-    value={sname}
-    onChange={handlechangeSubName}
-    required
-    />
-    </div>
+            <ScreenNav rightNavData={navData} />
+            <div className="subject__container">
+                <div className="subject__box">
+                    <div className="lead text-success subject__message">
+                        {loading && clicked && <Spinner Loader={DotLoader} size={30} />}
+                        <p className={`lead ${error ? "text-danger" : "text-success"}`}>
+                            {!loading && !error && success}
+                            {!loading && error && error}
+                        </p>
+                    </div>
+                    <h2 className="text-center text-dark">Add subject</h2>
+                    <form id="myForm" onSubmit={infoSubmit} autoComplete="off">
+                        <div className="subject_inputs">
+                            <label htmlFor="name">Subject Name</label>
+                            <input
+                                placeholder="OOC"
+                                name="sname"
+                                type="text"
+                                className="form-control"
+                                value={sname}
+                                onChange={handlechangeSubName}
+                                required
+                            />
+                        </div>
 
-    <div className="subject_inputs">
+                        <div className="subject_inputs">
 
-        <label htmlFor="scode">Subject Code</label>
-    <input
-    placeholder="IT2030"
-    name="scode"
-    type="text"
-    className="form-control"
-    pattern="[A-Z]{2}[0-9]{4}"
-    title="Should be the format(IT2030)!"
-    value={scode}
-    onChange={handlechangeSubCode}
-    required
-    />
-    </div>
+                            <label htmlFor="scode">Subject Code</label>
+                            <input
+                                placeholder="IT2030"
+                                name="scode"
+                                type="text"
+                                className="form-control"
+                                pattern="[A-Z]{2}[0-9]{4}"
+                                title="Should be the format(IT2030)!"
+                                value={scode}
+                                onChange={handlechangeSubCode}
+                                required
+                            />
+                        </div>
 
-    <div className="subject_inputs">
+                        <div className="subject_inputs">
 
-        <label htmlFor="offered_year">Offered Year</label>
-    <select className="form-control" onChange={handlechangeOffYear} name="off_year" value={off_year} required>
-        <option value="">None</option>
-    <option value="Y1">Y1</option>
-        <option value="Y2">Y2</option>
-        <option value="Y3">Y3</option>
-        <option value="Y4">Y4</option>
-        </select>
+                            <label htmlFor="offered_year">Offered Year</label>
+                            <select className="form-control" onChange={handlechangeOffYear} name="off_year" value={off_year} required>
+                                <option value="">None</option>
+                                <option value="Y1">Y1</option>
+                                <option value="Y2">Y2</option>
+                                <option value="Y3">Y3</option>
+                                <option value="Y4">Y4</option>
+                            </select>
+                        </div>
+                        <div className="subject_inputs">
+
+                            <label htmlFor="offered_semi">Offered Semester</label>
+                            <select className="form-control" onChange={handlechangeOffSemi} name="off_semi" value={off_semi} required>
+                                <option value="">None</option>
+                                <option value="S1">S1</option>
+                                <option value="S2">S2</option>
+                            </select>
+                        </div>
+                        <div className="subject_inputs">
+
+                            <label htmlFor="lecture_hrs">Number of lecture hours</label>
+                            <input
+                                placeholder="hrs"
+                                name="lecture_hrs"
+                                type="text"
+                                className="form-control"
+                                value={lec_hrs}
+                                onChange={handlechangeLectuer}
+                                required
+                            />
+                        </div>
+                        <div className="subject_inputs">
+
+                            <label htmlFor="tutorial_hrs">Number of Tutorial hours</label>
+                            <input
+                                placeholder="hrs"
+                                name="tutorial_hrs"
+                                type="text"
+                                className="form-control"
+                                value={tut_hrs}
+                                onChange={handlechangeTutorial}
+                                required
+                            />
+                        </div>
+                        <div className="subject_inputs">
+
+                            <label htmlFor="lab_hrs">Number of Practical hours</label>
+                            <input
+                                placeholder="hrs"
+                                name="lab_hrs"
+                                type="text"
+                                className="form-control"
+                                value={lab_hrs}
+                                onChange={handlechangeLab}
+                                required
+                            />
+                        </div>
+                        <div className="subject_inputs">
+
+                            <label htmlFor="evaluation_hrs">Number of Evaluation hours</label>
+                            <input
+                                placeholder="hrs"
+                                name="evaluation_hrs"
+                                type="text"
+                                className="form-control"
+                                value={eval_hrs}
+                                onChange={handlechangeEvaluation}
+                                required
+                            />
+                        </div>
+                        <div className="subject_buttons">
+                            <button type="button" className="btn">
+                                Clear
+                            </button>
+                            <button type="submit" className="btn" disabled={!scode}>
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div className="subject_inputs">
 
-        <label htmlFor="offered_semi">Offered Semester</label>
-        <select className="form-control" onChange={handlechangeOffSemi} name="off_semi" value={off_semi} required>
-        <option value="">None</option>
-        <option value="S1">S1</option>
-        <option value="S2">S2</option>
-        </select>
-        </div>
-        <div className="subject_inputs">
-
-        <label htmlFor="lecture_hrs">Number of lecture hours</label>
-    <input
-    placeholder="hrs"
-    name="lecture_hrs"
-    type="text"
-    className="form-control"
-    value={lec_hrs}
-    onChange={handlechangeLectuer}
-    required
-    />
-    </div>
-    <div className="subject_inputs">
-
-        <label htmlFor="tutorial_hrs">Number of Tutorial hours</label>
-    <input
-    placeholder="hrs"
-    name="tutorial_hrs"
-    type="text"
-    className="form-control"
-    value={tut_hrs}
-    onChange={handlechangeTutorial}
-    required
-    />
-    </div>
-    <div className="subject_inputs">
-
-        <label htmlFor="lab_hrs">Number of Practical hours</label>
-    <input
-    placeholder="hrs"
-    name="lab_hrs"
-    type="text"
-    className="form-control"
-    value={lab_hrs}
-    onChange={handlechangeLab}
-    required
-    />
-    </div>
-    <div className="subject_inputs">
-
-        <label htmlFor="evaluation_hrs">Number of Evaluation hours</label>
-    <input
-    placeholder="hrs"
-    name="evaluation_hrs"
-    type="text"
-    className="form-control"
-    value={eval_hrs}
-    onChange={handlechangeEvaluation}
-    required
-    />
-    </div>
-    <div className="subject_buttons">
-        <button type="button" className="btn">
-        Clear
-        </button>
-        <button type="submit" className="btn" disabled={!scode}>
-    Add
-    </button>
-    </div>
-    </form>
-    </div>
-    </div>
-    </div>
-
-)
+    )
 }
 
 export default AddSubject
