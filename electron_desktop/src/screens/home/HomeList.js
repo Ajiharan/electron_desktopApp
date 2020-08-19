@@ -49,6 +49,7 @@ const HomeList = () => {
   const sub_buildingData = usecheck(false);
   const sub_roomData = usecheck(false);
   const workData = usecheck(false);
+  const sub_studentDetailData = usecheck(false);
   return (
     <div>
       <List
@@ -222,6 +223,28 @@ const HomeList = () => {
                 </Link>
               </List>
             </Collapse>
+            <ListItem
+              button
+              onClick={sub_studentDetailData.handleClick}
+              className={classes.nested}
+            >
+              <ListItemText primary="Student Detail" />
+              {sub_studentDetailData.open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse
+              in={sub_studentDetailData.open}
+              timeout="auto"
+              unmountOnExit
+            >
+              <List component="div" disablePadding>
+                {/* student > group_id > Add sub list */}
+                <Link to="/student/viewAll">
+                  <ListItem button className={classes.sub_nested}>
+                    <ListItemText primary="view" />
+                  </ListItem>
+                </Link>
+              </List>
+            </Collapse>
           </List>
         </Collapse>
 
@@ -355,7 +378,6 @@ const HomeList = () => {
             </Collapse>
           </List>
         </Collapse>
-        
       </List>
     </div>
   );

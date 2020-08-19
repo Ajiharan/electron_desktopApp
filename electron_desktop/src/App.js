@@ -35,7 +35,7 @@ import Addworkingdays from "./screens/Working_days/Addworkingdays";
 import Viewworkingdays from "./screens/Working_days/Viewworkingdays";
 import UpdateWorkingdays from "./screens/Working_days/Updateworkingdays";
 import UpdateRoom from "./screens/Room/RoomUpdate";
-
+import ViewStudentDetail from "./screens/view_studentDetail/ViewStudentDetail";
 function App() {
   return (
     <React.Fragment>
@@ -48,6 +48,7 @@ function App() {
             component={GenSubGroupId}
           />
           <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/student/viewAll" component={ViewStudentDetail} />
           <Route exact path="/student/generate/Id" component={GenGroupId} />
           <Route
             exact
