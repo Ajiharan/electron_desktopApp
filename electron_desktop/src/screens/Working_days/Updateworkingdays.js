@@ -1,3 +1,5 @@
+//update  working days
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "../animations/Spinner";
@@ -15,7 +17,7 @@ const UpdateWorkingdays = (props) => {
 
     const { loading, error } = useSelector((state) => state.update_workingdays);
 
-    const [emp_id,setEmpID] = useState('');
+   
     const [name,setName] = useState('');
     const [daysnum,setWorkingdayperweek] =  useState('');
     const [days,setWorkingdays] = useState('');
@@ -30,7 +32,7 @@ const UpdateWorkingdays = (props) => {
         }
         else {
            
-            setEmpID(props.location.state.emp_id);
+           
             setName(props.location.state.name);
             setWorkingdayperweek(props.location.state.daysnum);
             setWorkingdays(props.location.state.days);
@@ -44,8 +46,8 @@ const UpdateWorkingdays = (props) => {
     const submitHandler =e =>{
         e.preventDefault();
         isClicked(true);
-        dispatch(UpdateWorkingdaysDetails(props.location.state?.id,emp_id,name,daysnum,days,hours,timeslot));
-        console.log(emp_id,name,daysnum,days,hours,timeslot);
+        dispatch(UpdateWorkingdaysDetails(props.location.state?.id,name,daysnum,days,hours,timeslot));
+        console.log(name,daysnum,days,hours,timeslot);
     }
 
     const navData = [
@@ -82,7 +84,7 @@ const UpdateWorkingdays = (props) => {
                         </div>
                         <h2 className="text-center text-dark">Add Working Days and Hours</h2>
                         <form id="myForm" onSubmit={(e) => submitHandler(e)} autoComplete="off">
-                <div className="days_inputs">
+                {/* <div className="days_inputs">
 
                 <label htmlFor="eid">Employee Id</label>
                 <input
@@ -94,37 +96,46 @@ const UpdateWorkingdays = (props) => {
                     onChange= {(e) => setEmpID(e.target.value)}
                     required
                 />
-                </div>
+                </div> */}
 
                     <div className="days_inputs">
-                        <label htmlFor="name">Name</label>
-                        <input
-                            placeholder="Ex:Mr.Dilshan De Silva"
-                            name="name"
-                            type="text"
-                            className="form-control"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
+                        <label htmlFor="name">Category</label>
+                
+                        <select className="form-control" onChange={(e) => setName(e.target.value)} name="name" value={name} required>
+                            <option value="None">Select Category</option>
+                            <option value="Weekdays">Weekdays</option>
+                            <option value="Weekends">Weekends</option>
+                               
+                            </select>
                     </div>
                    
 
                     <div className="days_inputs">
 
                         <label htmlFor="center">Working Days per Week</label>
-                        <select required className="form-control "
-                         onChange={(e) => setWorkingdayperweek(e.target.value)}
-                         name="daysnum" value={daysnum} >
-                            <option value="">Select Number of Days</option>
-                            <option value="01">01</option>
-                            <option value="02">02</option>
-                            <option value="03">03</option>
-                            <option value="04">04</option>
-                            <option value="05">05</option>
-                            <option value="06">06</option>
-                            <option value="07">07</option>
-                        </select>
+
+                        {
+                             name == "Weekdays" ? (
+                                <select className="form-control" onChange={(e) => setWorkingdayperweek(e.target.value)} name="daysnum" value={daysnum} required>
+                                    <option value="None">Select Number of Days</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                </select>
+                            ):name == "Weekends" ?(
+                                <select className="form-control" onChange={(e) => setWorkingdayperweek(e.target.value)} name="daysnum" value={daysnum} required>
+                                   <option value="None">Select Number of Days</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                </select>
+                            ):(
+                                <select className="form-control" onChange={(e) => setWorkingdayperweek(e.target.value)} name="daysnum" value={daysnum} disabled>
+                                    <option value="">None</option>
+                                </select>
+                            )
+                        }
                     </div>
 
                         <div className="days_inputs">
@@ -180,7 +191,7 @@ const UpdateWorkingdays = (props) => {
                             View
                         </button>
                        
-                        <button type="submit" className="btn" disabled={!emp_id}>
+                        <button type="submit" className="btn" disabled={!name}>
                             Update
                         </button>
                         <button

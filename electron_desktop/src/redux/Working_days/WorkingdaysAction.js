@@ -1,3 +1,5 @@
+//redux  working days action
+
 import {
     ADD_WORKINGDAYS_REQUEST,
     ADD_WORKINGDAYS_SUCCESS,
@@ -15,7 +17,7 @@ import {
 import firebase from "firebase";
 import { db } from "../../firebase";
 
-const addWorkingdays = (lecturer_emp_id,lecturer_name,workingdays_per_week,working_days,workinghours_per_day,time_slot) => {
+const addWorkingdays = (lecturer_name,workingdays_per_week,working_days,workinghours_per_day,time_slot) => {
     return async (dispatch) => {
         dispatch({ type: ADD_WORKINGDAYS_REQUEST });
         try {
@@ -24,18 +26,18 @@ const addWorkingdays = (lecturer_emp_id,lecturer_name,workingdays_per_week,worki
                 .get()
                 .then(async (snapshot) => {
                     const tempData = await snapshot.docs.map((doc) => ({
-                        emp_id: doc.data().emp_id,
-                        id: doc.id,
+                        name : doc.data().name,
+                        id: doc.id
                     }));
 
                     const isExists = await tempData.filter(
-                        (data) => data.emp_id === lecturer_emp_id
+                        (data) => data.name === lecturer_name
                     );
-                    // console.log("isExists", isExists);
+                    console.log("isExists", isExists);
                     if (isExists.length === 0) {
                         db.collection("workingdays")
                             .add({
-                                emp_id: lecturer_emp_id,
+                                // emp_id: lecturer_emp_id,
                                 name : lecturer_name,
                                 daysnum:workingdays_per_week,
                                 days:working_days,
@@ -47,7 +49,7 @@ const addWorkingdays = (lecturer_emp_id,lecturer_name,workingdays_per_week,worki
                                 dispatch({
                                     type:  ADD_WORKINGDAYS_SUCCESS,
                                     payload: {
-                                        emp_id: lecturer_emp_id,
+                                        // emp_id: lecturer_emp_id,
                                         name : lecturer_name,
                                         daysnum:workingdays_per_week,
                                         days:working_days,
@@ -79,10 +81,10 @@ const viewWorkingdays = () => {
         dispatch({ type: GET_WORKINGDAYS_REQUEST });
         try {
             db.collection("workingdays")
-                .orderBy("emp_id", "asc")
+                // .orderBy("name", "asc")
                 .onSnapshot(async (snapshot) => {
                     const tempData = await snapshot.docs.map((doc) => ({
-                        emp_id: doc.data().emp_id,
+                      
                         name : doc.data().name,
                         daysnum:doc.data().daysnum,
                         days:doc.data().days,
@@ -107,7 +109,7 @@ const viewWorkingdays = () => {
     };
 };
 
-const UpdateWorkingdaysDetails = (doc_id,update_emp_id,update_name,update_daysnum,update_days,update_hours,update_timeslot) => {
+const UpdateWorkingdaysDetails = (doc_id,update_name,update_daysnum,update_days,update_hours,update_timeslot) => {
     return async (dispatch) => {
         dispatch({ type: UPDATE_WORKINGDAYS_REQUEST });
         try {
@@ -116,7 +118,7 @@ const UpdateWorkingdaysDetails = (doc_id,update_emp_id,update_name,update_daysnu
                 .doc(doc_id)
                 .set(
                     {
-                        emp_id: update_emp_id,
+                        
                         name : update_name,
                         daysnum:update_daysnum,
                         days:update_days,
@@ -157,7 +159,7 @@ const getOneWorkingdaysDetail = (doc_id) => {
                 .then(async (doc) => {
                     if (doc.exists) {
                         const tempData = await {
-                            emp_id: doc.data().emp_id,
+                          
                             name : doc.data().name,
                             daysnum:doc.data().daysnum,
                             days:doc.data().days,

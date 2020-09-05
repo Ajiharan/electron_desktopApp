@@ -1,3 +1,5 @@
+//view 
+
 import React, { useState, useEffect } from "react";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { useDispatch, useSelector } from "react-redux";
@@ -127,8 +129,8 @@ const Viewworkingdays = () => {
              <thead>
                <tr>
                   <th></th>
-                 <th>Employee ID</th>
-                 <th>Employee Name</th>
+                 
+                 <th>Category</th>
                  <th>Working<br/>Days per Week</th>
                  <th>Working Days</th>
                  <th>Working<br/> Hours per Day</th>
@@ -151,11 +153,7 @@ const Viewworkingdays = () => {
                      className="form-check-input"/>
                     </div>
                      </td>
-                     <td>
-                     <span>   
-                     {data.emp_id}
-                     </span>
-                   </td>
+                    
                    <td> <span>{data.name}</span></td>
                    <td><span>{data.daysnum}</span> </td>
                    <td> <span>{data.days}</span></td>
