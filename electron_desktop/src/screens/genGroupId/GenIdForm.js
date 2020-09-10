@@ -24,7 +24,7 @@ const GenIdForm = ({ year_semister, student_programme, groupNo }) => {
       programme: yup.string().required("please select any value"),
       groupNo: yup.string().required("please select any value"),
     }),
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       isClicked(true);
       console.log(
         "Values",
@@ -35,6 +35,7 @@ const GenIdForm = ({ year_semister, student_programme, groupNo }) => {
           `${values.year_semister}.${values.programme}.${values.groupNo}`
         )
       );
+      resetForm({ values: "" });
     },
   });
   return (

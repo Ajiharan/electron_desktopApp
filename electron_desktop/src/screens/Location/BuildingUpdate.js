@@ -7,6 +7,8 @@ import ScreenNav from "../screen-nav/ScreenNav";
 import "./BuildingUpdate.css";
 import { UpdateBuilding } from "../../redux/Building/BuildingAction";
 import useUpdate from "../useHooks/useUpdate";
+import { useFormik } from "formik";
+import * as yup from "yup";
 const BuildingUpdate = (props) => {
   console.log("props.history", props.location);
   const dispatch = useDispatch();
@@ -16,6 +18,24 @@ const BuildingUpdate = (props) => {
   const [success, setSuccess] = useState("Successfully Updated");
 
   const { loading, error } = useSelector((state) => state.update_building);
+
+  const formik = useFormik({
+    initialValues: {
+      center: props.location.state?.center || "",
+      building: props.location.state?.building || "",
+    },
+    validationSchema: yup.object({
+      center: yup.string().required("please select any value.."),
+      building: yup.string().required("plesse enter any value.."),
+    }),
+    onSubmit: (values) => {
+      console.log("update table values", values);
+      isClicked(true);
+      dispatch(
+        UpdateBuilding(props.location.state.id, values.building, values.center)
+      );
+    },
+  });
 
   useEffect(() => {
     if (!props.location.state) {
@@ -27,12 +47,7 @@ const BuildingUpdate = (props) => {
     }
   }, []);
 
-  const { submitHandler, clearInput } = useUpdate({
-    updateData: UpdateBuilding,
-    data: { inputData: building, id: props.location.state?.id },
-    setData: setBuilding,
-    isClicked: isClicked,
-  });
+  const clearInput = () => {};
 
   const navData = [
     {
@@ -71,20 +86,53 @@ const BuildingUpdate = (props) => {
           </div>
 
           <h2 className="text-center text-dark">Update Building</h2>
-          <form id="frm" onSubmit={(e) => submitHandler(e)}>
-            <div className="BuildingUpdate_inputs">
+          <form id="frm" onSubmit={formik.handleSubmit}>
+            <div className="BuildingUpdate_inputs form-group">
+              <label htmlFor="center" className="text-light">
+                Center
+              </label>
+              <select
+                value={formik.values.center}
+                onChange={formik.handleChange}
+                name="center"
+                id="center"
+                className="form-control"
+              >
+                <option value="">Select one Option</option>
+                <option value="Malabe">Malabe</option>
+                <option value="Kurunagale">Kurunagale</option>
+                <option value="Kandy"> Kandy</option>
+                <option value="Metro">Metro</option>
+              </select>
+            </div>
+            <div className="error_div error_building">
+              {formik.errors.center && formik.touched.center ? (
+                <h6 className={"text-warning text-center"}>
+                  <i className="fas fa-exclamation"></i>
+                  {formik.errors.center}{" "}
+                </h6>
+              ) : null}
+            </div>
+            <div className="BuildingUpdate_inputs form-group">
               <label htmlFor="building" className="text-light">
-               Building
+                Building
               </label>
               <input
-                value={building}
-                onChange={(e) => setBuilding(e.target.value)}
+                value={formik.values.building}
+                onChange={formik.handleChange}
                 placeholder="eg:Main Building"
                 id="building"
                 type="text"
                 className="form-control"
-                required
               />
+            </div>
+            <div className="error_div error_building">
+              {formik.errors.building && formik.touched.building ? (
+                <h6 className={"text-warning text-center"}>
+                  <i className="fas fa-exclamation"></i>
+                  {formik.errors.building}{" "}
+                </h6>
+              ) : null}
             </div>
             <div className="BuildingUpdate_buttons">
               <button type="submit" className="btn" disabled={!building}>

@@ -11,6 +11,7 @@ const BuildingTable = ({
       <thead>
         <tr>
           <th>Building</th>
+          <th>Center</th>
           <th>Action</th>
           <th>Action</th>
         </tr>
@@ -29,6 +30,9 @@ const BuildingTable = ({
                 />
                 <span>{data.building}</span>
               </div>
+            </td>
+            <td>
+              <span>{data.center}</span>
             </td>
             <td>
               <button onClick={(e) => handleDelete(data)}>Delete</button>

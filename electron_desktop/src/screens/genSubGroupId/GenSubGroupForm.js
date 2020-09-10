@@ -22,10 +22,11 @@ const GenSubGroupForm = ({ gen_groupid, sub_groupid }) => {
       gen_groupid: yup.string().required("Please select any value"),
       sub_groupid: yup.string().required("please select any value"),
     }),
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       isClicked(true);
       console.log("Values", `${values.gen_groupid}.${values.sub_groupid}`);
       dispatch(addGenSubGroupId(`${values.gen_groupid}.${values.sub_groupid}`));
+      resetForm({ values: "" });
     },
   });
   return (

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addBuilding } from "../../redux/Building/BuildingAction";
 import "./Building.css";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
-import useAdd from "../useHooks/useAdd";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import ScreenNav from "../screen-nav/ScreenNav";
 
 const Building = () => {
@@ -14,6 +15,23 @@ const Building = () => {
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Added");
   const { loading, error } = useSelector((state) => state.building_add);
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      center: "",
+      building: "",
+    },
+    validationSchema: yup.object({
+      center: yup.string().required("please select any value.."),
+      building: yup.string().required("Please enter building name"),
+    }),
+    onSubmit: (values, { resetForm }) => {
+      isClicked(true);
+      console.log("Building values", values);
+      dispatch(addBuilding(values.building, values.center));
+      resetForm({ values: "" });
+    },
+  });
 
   useEffect(() => {
     return () => {
@@ -21,12 +39,7 @@ const Building = () => {
     };
   }, []);
 
-  const { submitHandler, clearInput } = useAdd({
-    addData: addBuilding,
-    data: building,
-    setData: setBuilding,
-    isClicked: isClicked,
-  });
+  const clearInput = () => {};
 
   const navData = [
     {
@@ -55,23 +68,57 @@ const Building = () => {
           </div>
 
           <h2 className="text-center text-dark">Add Building Name</h2>
-          <form id="frm" onSubmit={(e) => submitHandler(e)}>
-            <div className="Building_inputs">
+          <form id="frm" onSubmit={formik.handleSubmit}>
+            <div className="Building_inputs form-group">
+              <label htmlFor="Center" className="text-light">
+                Center Name
+              </label>
+              <select
+                id="center"
+                name="center"
+                className="form-control"
+                value={formik.values.center}
+                onChange={formik.handleChange}
+              >
+                <option value="">Select one Option</option>
+                <option value="Malabe">Malabe</option>
+                <option value="Kurunagale">Kurunagale</option>
+                <option value="Kandy"> Kandy</option>
+                <option value="Metro">Metro</option>
+              </select>
+            </div>
+            <div className="error_div error_building">
+              {formik.errors.center && formik.touched.center ? (
+                <h6 className={"text-warning text-center"}>
+                  <i className="fas fa-exclamation"></i>
+                  {formik.errors.center}{" "}
+                </h6>
+              ) : null}
+            </div>
+            <div className="Building_inputs form-group">
               <label htmlFor="Building" className="text-light">
-               Building Name
+                Building Name
               </label>
               <input
-                value={building}
-                onChange={(e) => setBuilding(e.target.value)}
+                value={formik.values.building}
+                onChange={formik.handleChange}
                 placeholder="eg:01"
                 id="building"
+                name="building"
                 type="text"
                 className="form-control"
-                required
               />
             </div>
+            <div className="error_div error_building">
+              {formik.errors.building && formik.touched.building ? (
+                <h6 className={"text-warning text-center"}>
+                  <i className="fas fa-exclamation"></i>
+                  {formik.errors.building}{" "}
+                </h6>
+              ) : null}
+            </div>
             <div className="Building_buttons">
-              <button type="submit" className="btn" disabled={!building}>
+              <button type="submit" className="btn">
                 Add
               </button>
               <button
