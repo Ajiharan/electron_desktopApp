@@ -36,18 +36,20 @@ import Viewworkingdays from "./screens/Working_days/Viewworkingdays";
 import UpdateWorkingdays from "./screens/Working_days/Updateworkingdays";
 import UpdateRoom from "./screens/Room/RoomUpdate";
 import ViewStudentDetail from "./screens/view_studentDetail/ViewStudentDetail";
+import ViewStatistics from "./screens/statistics/ViewStatistics";
 function App() {
   return (
     <React.Fragment>
       <HashRouter>
         <Navbar />
         <Switch>
+          <Route exact path="/" component={HomeScreen} />
           <Route
             exact
             path="/student/generate/subId"
             component={GenSubGroupId}
           />
-          <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/student/statistic" component={ViewStatistics} />
           <Route exact path="/student/viewAll" component={ViewStudentDetail} />
           <Route exact path="/student/generate/Id" component={GenGroupId} />
           <Route

@@ -6,12 +6,14 @@ import { DotLoader } from "react-spinners";
 import { addRoom } from "../../redux/Room/RoomAction";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { useFormik } from "formik";
+import { useHistory } from "react-router-dom";
 
 const Room = () => {
   const dispatch = useDispatch();
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Added!");
   const { loading, error, room } = useSelector((state) => state.room_add);
+  const history = useHistory();
 
   const formik = useFormik({
     initialValues: {
@@ -92,7 +94,8 @@ const Room = () => {
                 <option value="">None</option>
                 <option value="new_building">New Building</option>
                 <option value="main_building">Main Building</option>
-                <option value="auditorium">Auditorium</option>
+                <option value="Engineering">Engineering Buildingt</option>
+                <option value="Business">business Building</option>
               </select>
             </div>
 
@@ -121,6 +124,14 @@ const Room = () => {
                 disabled={!formik.values.name}
               >
                 Add
+              </button>
+              <button
+                onClick={() => {
+                  history.push("/room/room/view");
+                }}
+                className="btn"
+              >
+                View
               </button>
             </div>
           </form>

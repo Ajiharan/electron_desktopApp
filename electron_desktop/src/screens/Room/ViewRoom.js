@@ -84,9 +84,11 @@ const ViewRoom = () => {
 
   const searchData = (name) => {
     setCheckData([]);
-    name
-      ? setRoomData(room.filter((data) => data.name.includes(name)))
-      : setRoomData(room);
+    if (name) {
+      setRoomData(room.filter((data) => data.room.name.match(name)));
+    } else {
+      setRoomData(room);
+    }
   };
 
   const gotoUpdate = (data) => {

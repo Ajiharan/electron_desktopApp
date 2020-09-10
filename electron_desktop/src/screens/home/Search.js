@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
+import { Link } from "react-router-dom";
 import "./Search.css";
 const Search = ({ searchData }) => {
   return (
@@ -13,9 +14,13 @@ const Search = ({ searchData }) => {
             placeholder="Search..."
             onChange={(e) => searchData(e.target.value)}
           />
-          <a href="#" className="search_icon">
-            <SearchIcon />
-          </a>
+          <Link className="search_icon">
+            <SearchIcon
+              onClick={() => {
+                console.log("Clicked..");
+              }}
+            />
+          </Link>
         </div>
       </div>
     </React.Fragment>

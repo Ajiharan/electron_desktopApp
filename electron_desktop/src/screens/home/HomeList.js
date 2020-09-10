@@ -15,6 +15,7 @@ import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import usecheck from "../useHooks/useCheck";
 import ApartmentIcon from "@material-ui/icons/Apartment";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -50,6 +51,7 @@ const HomeList = () => {
   const sub_roomData = usecheck(false);
   const workData = usecheck(false);
   const sub_studentDetailData = usecheck(false);
+  const StatisticData = usecheck(false);
   return (
     <div>
       <List
@@ -316,6 +318,25 @@ const HomeList = () => {
             </Link>
           </List>
         </Collapse>
+
+        <ListItem button onClick={StatisticData.handleClick}>
+          <ListItemIcon>
+            <EqualizerIcon style={{ color: "white" }} />
+          </ListItemIcon>
+          <ListItemText primary="Statistics" />
+          {StatisticData.open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={StatisticData.open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link to="/student/statistic">
+              {" "}
+              <ListItem button className={classes.nested}>
+                <ListItemText primary="View" />
+              </ListItem>
+            </Link>
+          </List>
+        </Collapse>
+
         <ListItem button onClick={locationData.handleClick}>
           <ListItemIcon>
             <ApartmentIcon style={{ color: "white" }} />
