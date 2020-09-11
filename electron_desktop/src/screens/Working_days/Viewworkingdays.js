@@ -131,9 +131,11 @@ const Viewworkingdays = () => {
                   <th></th>
                  
                  <th>Category</th>
-                 <th>Working<br/>Days per Week</th>
-                 <th>Working Days</th>
-                 <th>Working<br/> Hours per Day</th>
+                 <th>No of Days</th>
+                 <th>Working Days</th>              
+                 <th>From</th>
+                 <th>To</th>
+                 <th>No of Hours</th>
                  <th>Time Slot</th>
                  <th>Action</th>
                  <th>Action</th>
@@ -157,6 +159,8 @@ const Viewworkingdays = () => {
                    <td> <span>{data.name}</span></td>
                    <td><span>{data.daysnum}</span> </td>
                    <td> <span>{data.days}</span></td>
+                   <td><span>{data.fromtime}</span></td>
+                   <td><span>{data.totime}</span></td>
                    <td> <span> {data.hours} </span></td>
                    <td><span> {data.timeslot}</span></td>                
                    <td>

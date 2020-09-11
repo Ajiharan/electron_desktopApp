@@ -17,7 +17,7 @@ import {
 import firebase from "firebase";
 import { db } from "../../firebase";
 
-const addWorkingdays = (lecturer_name,workingdays_per_week,working_days,workinghours_per_day,time_slot) => {
+const addWorkingdays = (lecturer_name,workingdays_per_week,working_days,workinghours_per_day,from_time,to_time,time_slot) => {
     return async (dispatch) => {
         dispatch({ type: ADD_WORKINGDAYS_REQUEST });
         try {
@@ -42,6 +42,8 @@ const addWorkingdays = (lecturer_name,workingdays_per_week,working_days,workingh
                                 daysnum:workingdays_per_week,
                                 days:working_days,
                                 hours:workinghours_per_day,
+                                fromtime:from_time,
+                                totime:to_time,
                                 timeslot:time_slot,
                                 
                             })
@@ -54,6 +56,8 @@ const addWorkingdays = (lecturer_name,workingdays_per_week,working_days,workingh
                                         daysnum:workingdays_per_week,
                                         days:working_days,
                                         hours:workinghours_per_day,
+                                        fromtime:from_time,
+                                        totime:to_time,
                                         timeslot:time_slot,
                                         timestamp,
                                     },
@@ -89,6 +93,8 @@ const viewWorkingdays = () => {
                         daysnum:doc.data().daysnum,
                         days:doc.data().days,
                         hours:doc.data().hours,
+                        fromtime:doc.data().fromtime,
+                        totime:doc.data().totime,
                         timeslot:doc.data().timeslot,
                         id: doc.id,
                         timestamp: doc.data().timestamp,
@@ -109,7 +115,8 @@ const viewWorkingdays = () => {
     };
 };
 
-const UpdateWorkingdaysDetails = (doc_id,update_name,update_daysnum,update_days,update_hours,update_timeslot) => {
+const UpdateWorkingdaysDetails = (doc_id,update_name,update_daysnum,update_days,update_fromtime,
+    update_totime,update_hours,update_timeslot) => {
     return async (dispatch) => {
         dispatch({ type: UPDATE_WORKINGDAYS_REQUEST });
         try {
@@ -121,7 +128,9 @@ const UpdateWorkingdaysDetails = (doc_id,update_name,update_daysnum,update_days,
                         
                         name : update_name,
                         daysnum:update_daysnum,
-                        days:update_days,
+                        days:update_days,  
+                        fromtime:update_fromtime,
+                        totime:update_totime,
                         hours:update_hours,
                         timeslot:update_timeslot,
                         timestamp,
@@ -162,7 +171,9 @@ const getOneWorkingdaysDetail = (doc_id) => {
                           
                             name : doc.data().name,
                             daysnum:doc.data().daysnum,
-                            days:doc.data().days,
+                            days:doc.data().days,                        
+                            fromtime:doc.data().fromtime,
+                            totime:doc.data().totime,
                             hours:doc.data().hours,
                             timeslot:doc.data().timeslot,
                             id: doc.id,

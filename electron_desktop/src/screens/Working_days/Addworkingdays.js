@@ -10,6 +10,7 @@ import {addWorkingdays} from "../../redux/Working_days/WorkingdaysAction";
 import ScreenNav from "../screen-nav/ScreenNav";
 import {useFormik} from 'formik'
 
+
 const Addworkingdays = () => {
 
     const history = useHistory();
@@ -27,12 +28,15 @@ const Addworkingdays = () => {
             daysnum : '',
             days:'',
             hours:'',
+            fromtime:'',
+            totime:'',
             timeslot:'',           
         },
         onSubmit :(inputs) =>{
             console.log(inputs)
             isClicked(true);
-            dispatch(addWorkingdays(formik.values.name,formik.values.daysnum,formik.values.days,formik.values.hours,formik.values.timeslot));
+            dispatch(addWorkingdays(formik.values.name,formik.values.daysnum,formik.values.days,formik.values.hours,formik.values.fromtime,
+                formik.values.totime,formik.values.timeslot));
         }
     })
 
@@ -66,17 +70,7 @@ const navData = [
                         </div>
                         <h2 className="text-center text-dark">Add Working Days and Hours</h2>
                         <form id="myForm" onSubmit={formik.handleSubmit} autoComplete="off">
-                {/* <div className="days_inputs">
-
-                <label htmlFor="eid">Type</label>
-                <select required className="form-control " onChange={formik.handleChange}
-                         name="emp_id" value={formik.values.emp_id} >
-                            <option value="">Select Number of Days</option>
-                            <option value="Weekdays">Weekdays</option>
-                            <option value="Weekends">Weekends</option>
-                         
-                        </select>
-                </div> */}
+              
 
                     <div className="days_inputs">
                         <label htmlFor="name">Category</label>
@@ -126,33 +120,91 @@ const navData = [
                         <div className="days_inputs">
 
                         <label htmlFor="center">Working Days</label>
+                        {
+                        formik.values.name == "Weekdays" ? (
 
-                        
-                        <input type="text" id="fname" className="form-control" name="fname"
-                         placeholder="Ex:Monday,Tuesday.."
+                            <select multiple required className="form-control" onChange={formik.handleChange}
+                            name="days" value={formik.values.days}>
+                               
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                               
+                            </select>
+                       
+                        ):formik.values.name == "Weekends" ?(
+
+                            <select multiple required className="form-control" onChange={formik.handleChange}
+                            name="days" value={formik.values.days}>
+                               
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                                
+                               
+                            </select>
+
+                                     ):(
+                            <select  className="form-control" 
+                            onChange={formik.handleChange} name="days" 
+                            
+                            value={formik.values.days} disabled>
+                                <option value="None">Select Working Days</option>
+                                </select>
+                               
+                            
+                            )
+                            }
+                    </div>
+
+<br></br>
+                            
+                    <div className="days_inputs">
+
+                    <label htmlFor="center">Working Time From</label>
+
+                    <input type="time" id="fromtime" className="form-control"
+                            min="08:30" max="20:00"
                          onChange= {formik.handleChange}
-                         name="days" 
-                         value={formik.values.days}
+                         name="fromtime" 
+                         value={formik.values.fromtime}
                          required />
+
+                    </div>
+                    
+                    <div className="days_inputs">
+
+                    <label htmlFor="center">Working Time To</label>
+
+                    <input type="time" id="totime" className="form-control"
+                            min="08:30" max="20:00"
+                         onChange= {formik.handleChange}
+                         name="totime" 
+                         value={formik.values.totime}
+                         required />
+
                     </div>
 
+                    <div className="days_inputs">
 
-                             <div className="days_inputs">
+<label htmlFor="center">Working Hours Per Day</label>
+<select required className="form-control" onChange={formik.handleChange}
+name="hours" value={formik.values.hours}>
+    <option value="">Select Working Hours</option>
+    <option value="01h">01h</option>
+    <option value="02h">02h</option>
+    <option value="03h">03h</option>
+    <option value="04h">04h</option>
+    <option value="05h">05h</option>
+    <option value="06h">06h</option>
+    <option value="07h">07h</option>
+    <option value="08h">08h</option>
+    <option value="09h">09h</option>
+    <option value="10h">10h</option>
+</select>
+</div>
 
-                        <label htmlFor="center">Working Hours Per Day</label>
-                        <select required className="form-control" onChange={formik.handleChange}
-                        name="hours" value={formik.values.hours}>
-                            <option value="">Select Working Hours</option>
-                            <option value="01h">01h</option>
-                            <option value="02h">02h</option>
-                            <option value="03h">03h</option>
-                            <option value="04h">04h</option>
-                            <option value="05h">05h</option>
-                            <option value="06h">06h</option>
-                            <option value="07h">07h</option>
-                            <option value="08h">08h</option>
-                        </select>
-                    </div>
                    
                 
                  <div className="days_inputs">
