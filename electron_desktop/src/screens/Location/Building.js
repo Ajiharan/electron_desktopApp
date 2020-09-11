@@ -102,7 +102,7 @@ const Building = () => {
               <input
                 value={formik.values.building}
                 onChange={formik.handleChange}
-                placeholder="eg:01"
+                placeholder="eg:-new building"
                 id="building"
                 name="building"
                 type="text"

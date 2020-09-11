@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Room.css";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader } from "react-spinners";
 import { addRoom } from "../../redux/Room/RoomAction";
+import { viewBuilding } from "../../redux/Building/BuildingAction";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
@@ -13,14 +14,20 @@ const Room = () => {
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Added!");
   const { loading, error, room } = useSelector((state) => state.room_add);
+  const { building } = useSelector((state) => state.get_building);
+  console.log("Building", building);
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch(viewBuilding());
+  }, []);
 
   const formik = useFormik({
     initialValues: {
       name: "",
       type: "",
       building: "",
-      capacity: 0,
+      capacity: "",
     },
     onSubmit: (inputs) => {
       console.log(inputs);
@@ -59,7 +66,7 @@ const Room = () => {
             <div className="room_inputs">
               <label htmlFor="name">Room Name</label>
               <input
-                placeholder="A640"
+                placeholder="eg:-A640"
                 name="name"
                 type="text"
                 className="form-control"
@@ -72,7 +79,7 @@ const Room = () => {
             <div className="room_inputs">
               <label htmlFor="capacity">Capacity</label>
               <input
-                placeholder="150"
+                placeholder="eg:-150"
                 name="capacity"
                 type="text"
                 className="form-control"
@@ -92,10 +99,9 @@ const Room = () => {
                 required
               >
                 <option value="">None</option>
-                <option value="new_building">New Building</option>
-                <option value="main_building">Main Building</option>
-                <option value="Engineering">Engineering Buildingt</option>
-                <option value="Business">business Building</option>
+                {building.map(({ building }, i) => (
+                  <option key={i}>{building}</option>
+                ))}
               </select>
             </div>
 
