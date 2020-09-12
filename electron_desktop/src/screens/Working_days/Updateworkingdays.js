@@ -226,7 +226,7 @@ const UpdateWorkingdays = (props) => {
                   name="days"
                   value={days}
                   placeholder="Select Working Days"
-                  disabled
+                 
                 >
                   <option value="None">Select Working Days</option>
                 </select>
