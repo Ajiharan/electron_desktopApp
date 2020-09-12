@@ -256,6 +256,7 @@ const Addworkingdays = () => {
                 className="form-control"
                 name="hours"
                 value={hrs}
+                disabled
               />
             </div>
 
