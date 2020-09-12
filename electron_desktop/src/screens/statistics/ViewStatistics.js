@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./ViewStatistics.css";
 import ScreenNav from "../screen-nav/ScreenNav";
 import Search from "../home/Search";
-import { PieChart } from "react-minimal-pie-chart";
+import LectureStatistics from "./LectureStatistics";
 import { viewSemister } from "../../redux/Year_semi/YearAction";
 import { viewProgramme } from "../../redux/programme/programmeAction";
 import { viewGroupId } from "../../redux/groupId/GroupIdAction";
 import { viewSubGroupId } from "../../redux/subgroupId/SubGroupIdAction";
 import { useDispatch, useSelector } from "react-redux";
+import StudentStatistics from "./StudentStatistics";
 const ViewStatistics = () => {
   const searchData = (name) => {};
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const ViewStatistics = () => {
   const { programme } = useSelector((state) => state.get_programmmes);
   const { group_id } = useSelector((state) => state.get_groupId);
   const { sub_groupids } = useSelector((state) => state.get_SubGroupId);
+  const [optionType, setOptionType] = useState("");
   //console.log("yearSemiLength", sub_groupids.length);
   const navData = [
     {
@@ -59,31 +61,20 @@ const ViewStatistics = () => {
         <form className="StatisticContainer__form">
           <div className="form-group">
             <label htmlFor="sel">Type</label>
-            <select id="sel" className="form-control">
-              <option>Student</option>
-              <option>Lecture</option>
-              <option>Subject</option>
+            <select
+              id="sel"
+              className="form-control"
+              value={optionType}
+              onChange={(e) => setOptionType(e.target.value)}
+            >
+              <option>Select</option>
+              <option value="Student">Student</option>
+              <option value="Lecture">Lecture</option>
             </select>
           </div>
         </form>
-
-        <div className="StatisticContainer__chart">
-          <PieChart
-            data={dataEntry}
-            radius={PieChart.defaultProps.radius - 7}
-            label={({ dataEntry }) => Math.round(dataEntry.percentage) + "%"}
-            segmentsShift={(index) => (index === 0 ? 7 : 0.5)}
-            paddingAngle={2}
-            radius={40}
-            labelStyle={{
-              ...defaultLabelStyle,
-            }}
-          />
-          ;
-        </div>
-      </div>
-      <div className="container">
-        <span class="lead">year_semister:{year_semi.length}</span>
+        {optionType === "Student" && <StudentStatistics />}
+        {optionType === "Lecture" && <LectureStatistics />}
       </div>
     </div>
   );
