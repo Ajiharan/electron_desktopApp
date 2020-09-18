@@ -3,6 +3,8 @@ import "./ViewStudentProgramme.css";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { useDispatch, useSelector } from "react-redux";
 import { viewProgramme } from "../../redux/programme/programmeAction";
+import { view_genGroupId } from "../../redux/genId/genIdAction";
+import { view_genSubGroupId } from "../../redux/gensubId/genSubIdAction";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader } from "react-spinners";
 import { db } from "../../firebase";
@@ -13,6 +15,8 @@ const ViewStudentProgramme = () => {
   const { loading, error, programme } = useSelector(
     (state) => state.get_programmmes
   );
+  const { gen_groupids } = useSelector((state) => state.get_genGroupId);
+  const { gen_subgroupids } = useSelector((state) => state.get_genSubGroupId);
   let new_programme;
   if (programme?.length > 0) {
     new_programme = programme.map((data) => {
@@ -45,6 +49,8 @@ const ViewStudentProgramme = () => {
 
   useEffect(() => {
     dispatch(viewProgramme());
+    dispatch(view_genGroupId());
+    dispatch(view_genSubGroupId());
   }, []);
 
   useEffect(() => {
@@ -70,11 +76,43 @@ const ViewStudentProgramme = () => {
   };
 
   const DeleteAll = () => {
+    const tempGroupData = programme.map((data) => {
+      const temp = gen_groupids.filter(
+        (filterData) => filterData.gen_groupid.split(".")[2] === data.programme
+      );
+      return {
+        temp: temp,
+      };
+    });
+    tempGroupData.map(({ temp }) => {
+      temp.map(({ id, gen_groupid }) => {
+        db.collection("gen_groupids").doc(id).delete();
+      });
+    });
+
+    const tempSubGroupData = programme.map((data) => {
+      const temp = gen_subgroupids.filter(
+        (filterData) =>
+          filterData.gen_subgroupid.split(".")[2] === data.programme
+      );
+      return {
+        temp: temp,
+      };
+    });
+
+    tempSubGroupData.map(({ temp }) => {
+      temp.map(({ id, gen_subgroupid }) => {
+        db.collection("gen_subgroupids").doc(id).delete();
+      });
+    });
+
     db.collection("programmes")
       .get()
       .then((res) => {
-        res.forEach((element) => {
-          element.ref.delete();
+        res.forEach(async (element) => {
+          await element.ref.get().then((result) => {
+            element.ref.delete();
+          });
         });
       });
     setCheckData([]);
@@ -88,6 +126,24 @@ const ViewStudentProgramme = () => {
   };
 
   const handleDelete = (data) => {
+    const temp = gen_groupids.filter(
+      (filterData) => filterData.gen_groupid.split(".")[2] === data.programme
+    );
+
+    const tempSub = gen_subgroupids.filter(
+      (filterData) => filterData.gen_subgroupid.split(".")[2] === data.programme
+    );
+
+    // console.log("tempGroupData", tempSub);
+
+    temp.map(({ id, gen_groupid }) => {
+      db.collection("gen_groupids").doc(id).delete();
+    });
+
+    tempSub.map(({ id, gen_subgroupid }) => {
+      db.collection("gen_subgroupids").doc(id).delete();
+    });
+
     db.collection("programmes").doc(data.id).delete();
     setCheckData(checkData.filter((e) => e.id !== data.id));
     console.log("checkData", checkData);

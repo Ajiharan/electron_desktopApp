@@ -3,6 +3,8 @@ import "./ViewYearSemister.css";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { useDispatch, useSelector } from "react-redux";
 import { viewSemister } from "../../redux/Year_semi/YearAction";
+import { view_genGroupId } from "../../redux/genId/genIdAction";
+import { view_genSubGroupId } from "../../redux/gensubId/genSubIdAction";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader } from "react-spinners";
 import { db } from "../../firebase";
@@ -13,6 +15,8 @@ const ViewYearSemister = () => {
   const { loading, error, year_semi } = useSelector(
     (state) => state.get_year_semister
   );
+  const { gen_groupids } = useSelector((state) => state.get_genGroupId);
+  const { gen_subgroupids } = useSelector((state) => state.get_genSubGroupId);
   const new_yearSemi = year_semi.map((data) => {
     return { ...data, isChecked: false };
   });
@@ -43,6 +47,8 @@ const ViewYearSemister = () => {
 
   useEffect(() => {
     dispatch(viewSemister());
+    dispatch(view_genGroupId());
+    dispatch(view_genSubGroupId());
   }, []);
 
   useEffect(() => {
@@ -75,6 +81,20 @@ const ViewYearSemister = () => {
           element.ref.delete();
         });
       });
+    db.collection("gen_groupids")
+      .get()
+      .then((res) => {
+        res.forEach((element) => {
+          element.ref.delete();
+        });
+      });
+    db.collection("gen_subgroupids")
+      .get()
+      .then((res) => {
+        res.forEach((element) => {
+          element.ref.delete();
+        });
+      });
     setCheckData([]);
   };
 
@@ -82,12 +102,34 @@ const ViewYearSemister = () => {
     checkData.map((check_data) => {
       db.collection("students").doc(check_data.id).delete();
     });
+
     setCheckData([]);
   };
 
-  const handleDelete = (data) => {
+  const handleDelete = async (data) => {
+    console.log("Delete Data", data.year_semister);
     db.collection("students").doc(data.id).delete();
     setCheckData(checkData.filter((e) => e.id !== data.id));
+    const groupTempData = await gen_groupids.filter(
+      (res) =>
+        res.gen_groupid.split(".")[0] + "." + res.gen_groupid.split(".")[1] ===
+        data.year_semister
+    );
+    const subgroupTempData = await gen_subgroupids.filter(
+      (res) =>
+        res.gen_subgroupid.split(".")[0] +
+          "." +
+          res.gen_subgroupid.split(".")[1] ===
+        data.year_semister
+    );
+    // console.log("groupTempData", groupTempData);
+    await groupTempData.map((res) => {
+      db.collection("gen_groupids").doc(res.id).delete();
+    });
+
+    await subgroupTempData.map((res) => {
+      db.collection("gen_subgroupids").doc(res.id).delete();
+    });
     console.log("checkData", checkData);
   };
 

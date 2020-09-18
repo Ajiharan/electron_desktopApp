@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ViewGenGroupId.css";
 import { useDispatch, useSelector } from "react-redux";
 import { view_genGroupId } from "../../redux/genId/genIdAction";
+import { view_genSubGroupId } from "../../redux/gensubId/genSubIdAction";
 import Search from "../home/Search";
 import { db } from "../../firebase";
 
@@ -11,10 +12,12 @@ const ViewGenGroupId = () => {
   const { loading, error, gen_groupids } = useSelector(
     (state) => state.get_genGroupId
   );
+  const { gen_subgroupids } = useSelector((state) => state.get_genSubGroupId);
   console.log("gen_groupids", gen_groupids);
 
   useEffect(() => {
     dispatch(view_genGroupId());
+    dispatch(view_genSubGroupId());
     return () => {};
   }, []);
   useEffect(() => {
@@ -28,6 +31,25 @@ const ViewGenGroupId = () => {
     } else {
       setGroupIds(gen_groupids);
     }
+  };
+  const deleteData = (data) => {
+    const tempSub = gen_subgroupids.filter(
+      (filterData) =>
+        filterData.gen_subgroupid.split(".")[0] +
+          "." +
+          filterData.gen_subgroupid.split(".")[1] +
+          "." +
+          filterData.gen_subgroupid.split(".")[2] +
+          "." +
+          filterData.gen_subgroupid.split(".")[3] ===
+        data.gen_groupid
+    );
+
+    console.log("tempSub", tempSub);
+    tempSub.map(({ id, gen_subgroupid }) => {
+      db.collection("gen_subgroupids").doc(id).delete();
+    });
+    db.collection("gen_groupids").doc(data.id).delete();
   };
   return (
     <React.Fragment>
@@ -45,13 +67,7 @@ const ViewGenGroupId = () => {
             <div className="card-body">
               <h5 className="text-center text-light">{data.gen_groupid}</h5>
             </div>
-            <button
-              onClick={() =>
-                db.collection("gen_groupids").doc(data.id).delete()
-              }
-            >
-              Delete
-            </button>
+            <button onClick={() => deleteData(data)}>Delete</button>
           </div>
         ))}
       </div>

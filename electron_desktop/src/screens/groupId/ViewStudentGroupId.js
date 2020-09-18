@@ -3,6 +3,8 @@ import "./ViewStudentGroupId.css";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { useDispatch, useSelector } from "react-redux";
 import { viewGroupId } from "../../redux/groupId/GroupIdAction";
+import { view_genGroupId } from "../../redux/genId/genIdAction";
+import { view_genSubGroupId } from "../../redux/gensubId/genSubIdAction";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader } from "react-spinners";
 import { db } from "../../firebase";
@@ -13,6 +15,8 @@ const ViewStudentGroupId = () => {
   const { loading, error, group_id } = useSelector(
     (state) => state.get_groupId
   );
+  const { gen_groupids } = useSelector((state) => state.get_genGroupId);
+  const { gen_subgroupids } = useSelector((state) => state.get_genSubGroupId);
   const new_group_id = group_id.map((data) => {
     return { ...data, isChecked: false };
   });
@@ -43,6 +47,8 @@ const ViewStudentGroupId = () => {
 
   useEffect(() => {
     dispatch(viewGroupId());
+    dispatch(view_genGroupId());
+    dispatch(view_genSubGroupId());
   }, []);
 
   useEffect(() => {
@@ -68,6 +74,36 @@ const ViewStudentGroupId = () => {
   };
 
   const DeleteAll = () => {
+    const tempGroupData = group_id.map((data) => {
+      const temp = gen_groupids.filter(
+        (filterData) => filterData.gen_groupid.split(".")[3] === data.groupid
+      );
+      return {
+        temp: temp,
+      };
+    });
+    tempGroupData.map(({ temp }) => {
+      temp.map(({ id, gen_groupid }) => {
+        db.collection("gen_groupids").doc(id).delete();
+      });
+    });
+
+    const tempSubGroupData = group_id.map((data) => {
+      const temp = gen_subgroupids.filter(
+        (filterData) => filterData.gen_subgroupid.split(".")[3] === data.groupid
+      );
+      return {
+        temp: temp,
+      };
+    });
+
+    tempSubGroupData.map(({ temp }) => {
+      temp.map(({ id, gen_subgroupid }) => {
+        db.collection("gen_subgroupids").doc(id).delete();
+      });
+    });
+    // console.log("tempSubGroupData", tempSubGroupData);
+
     db.collection("groupids")
       .get()
       .then((res) => {
@@ -86,6 +122,21 @@ const ViewStudentGroupId = () => {
   };
 
   const handleDelete = (data) => {
+    const temp = gen_groupids.filter(
+      (filterData) => filterData.gen_groupid.split(".")[3] === data.groupid
+    );
+
+    const tempSub = gen_subgroupids.filter(
+      (filterData) => filterData.gen_subgroupid.split(".")[3] === data.groupid
+    );
+
+    temp.map(({ id, gen_groupid }) => {
+      db.collection("gen_groupids").doc(id).delete();
+    });
+
+    tempSub.map(({ id, gen_subgroupid }) => {
+      db.collection("gen_subgroupids").doc(id).delete();
+    });
     db.collection("groupids").doc(data.id).delete();
     setCheckData(checkData.filter((e) => e.id !== data.id));
     console.log("checkData", checkData);

@@ -69,7 +69,7 @@ const ViewStatistics = () => {
           No of lecturers in Engineering:
           {lecturer.filter((data) => data.faculty === "Engineering").length}
         </p>
-        <p class="lead">
+        <p class="lead"> 
           No of lecturers in Business:
           {lecturer.filter((data) => data.faculty === "Business").length}
         </p>

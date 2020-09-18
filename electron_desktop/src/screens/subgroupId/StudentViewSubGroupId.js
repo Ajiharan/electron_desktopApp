@@ -3,6 +3,8 @@ import "./StudentViewSubGroupId.css";
 import ScreenNav from "../screen-nav/ScreenNav";
 import { useDispatch, useSelector } from "react-redux";
 import { viewSubGroupId } from "../../redux/subgroupId/SubGroupIdAction";
+import { view_genGroupId } from "../../redux/genId/genIdAction";
+import { view_genSubGroupId } from "../../redux/gensubId/genSubIdAction";
 import { Spinner } from "../animations/Spinner";
 import { DotLoader } from "react-spinners";
 import { db } from "../../firebase";
@@ -13,6 +15,8 @@ const StudentViewSubGroupId = () => {
   const { loading, error, sub_groupids } = useSelector(
     (state) => state.get_SubGroupId
   );
+  const { gen_groupids } = useSelector((state) => state.get_genGroupId);
+  const { gen_subgroupids } = useSelector((state) => state.get_genSubGroupId);
   const new_sub_groupids = sub_groupids.map((data) => {
     return { ...data, isChecked: false };
   });
@@ -43,6 +47,8 @@ const StudentViewSubGroupId = () => {
 
   useEffect(() => {
     dispatch(viewSubGroupId());
+    dispatch(view_genGroupId());
+    dispatch(view_genSubGroupId());
   }, []);
 
   useEffect(() => {
@@ -68,6 +74,23 @@ const StudentViewSubGroupId = () => {
   };
 
   const DeleteAll = () => {
+    const tempSubGroupData = sub_groupids.map((data) => {
+      const temp = gen_subgroupids.filter(
+        (filterData) =>
+          filterData.gen_subgroupid.split(".")[4] === data.sub_groupid
+      );
+      return {
+        temp: temp,
+      };
+    });
+
+    tempSubGroupData.map(({ temp }) => {
+      temp.map(({ id, gen_subgroupid }) => {
+        db.collection("gen_subgroupids").doc(id).delete();
+      });
+    });
+    console.log("tempSubGroupData", tempSubGroupData);
+
     db.collection("sub_groupids")
       .get()
       .then((res) => {
@@ -86,6 +109,14 @@ const StudentViewSubGroupId = () => {
   };
 
   const handleDelete = (data) => {
+    const tempSub = gen_subgroupids.filter(
+      (filterData) =>
+        filterData.gen_subgroupid.split(".")[4] === data.sub_groupid
+    );
+
+    tempSub.map(({ id, gen_subgroupid }) => {
+      db.collection("gen_subgroupids").doc(id).delete();
+    });
     db.collection("sub_groupids").doc(data.id).delete();
     setCheckData(checkData.filter((e) => e.id !== data.id));
     console.log("checkData", checkData);
