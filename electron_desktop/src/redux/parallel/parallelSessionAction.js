@@ -71,18 +71,14 @@ const viewParallelSessions = () => {
   return async (dispatch) => {
     dispatch({ type: GET_PARALLEL_SESSION_REQUEST });
     try {
-      db.collection("consecutive_sessions")
+      db.collection("parallel_sessions")
         .orderBy("timestamp", "desc")
         .onSnapshot(async (snapshot) => {
           const tempData = await snapshot.docs.map((doc) => ({
-            start_time: doc.data().start_time,
-            duration: doc.data().duration,
-            pdate: doc.data().pdate,
-            session: doc.data().session,
+            ...doc.data(),
             id: doc.id,
-            timestamp: doc.data().timestamp,
           }));
-          //   console.log("getTemp Data", tempData);
+          console.log("getTemp Data", tempData);
           dispatch({
             type: GET_PARALLEL_SESSION_SUCCESS,
             payload: tempData,

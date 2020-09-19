@@ -24,7 +24,9 @@ const ViewParallelSession = () => {
 
   const searchData = (name) => {
     if (name) {
-      setSession(sessions.filter((data) => data.lecture.match(name)));
+      setSession(
+        sessions.filter((data) => data.pdate.split("-")[2].match(name))
+      );
     } else {
       setSession(parallel_sessions);
     }
@@ -43,8 +45,16 @@ const ViewParallelSession = () => {
         {sessions.map((data, i) => (
           <div className="card bg-dark ViewParallelSession" key={i}>
             <div className="card-body">
-              <h5 className="text-center text-light">{data.lecture}</h5>
-              <h5 className="text-center text-light">{data.tutorial}</h5>
+              <h5 className="text-center text-light">{data.start_time}</h5>
+              <h5 className="text-center text-light">
+                {data.duration} + " hrs"
+              </h5>
+              <h5 className="text-center text-light">{data.pdate}</h5>
+              {data.session.map((res, i) => (
+                <h5 key={i} className="text-center text-light">
+                  {res}
+                </h5>
+              ))}
             </div>
             <div className="ViewParallelSession__buttons">
               <button

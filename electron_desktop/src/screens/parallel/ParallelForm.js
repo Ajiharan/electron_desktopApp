@@ -23,7 +23,10 @@ const ParallelForm = ({ subject }) => {
     },
     validationSchema: yup.object({
       start_time: yup.string().required("Please select any value"),
-      duration: yup.number().required("please select any value"),
+      duration: yup
+        .number()
+        .typeError("please enter number only")
+        .required("please select any value"),
       pdate: yup.date().required("please selecet any date.."),
       session: yup.array().required("please select any value"),
     }),

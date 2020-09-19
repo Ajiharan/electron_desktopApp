@@ -55,7 +55,7 @@ const ParllelSession = () => {
         </div>
         <div className="ParllelSession__List">
           <h4>Parallel SESSION LISTS</h4>
-          {/* <ViewParallelSession /> */}
+          <ViewParallelSession />
         </div>
       </div>
     </div>
