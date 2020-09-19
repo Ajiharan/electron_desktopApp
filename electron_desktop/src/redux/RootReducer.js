@@ -20,7 +20,11 @@ import {
   get_lecturers,
   update_lecturer_Reducer,
 } from "./Lecturer/LecturerReducer";
-import {get_Subjects, SubjectReducer, update_subject_Reducer} from "./Subject/SubjectReducer";
+import {
+  get_Subjects,
+  SubjectReducer,
+  update_subject_Reducer,
+} from "./Subject/SubjectReducer";
 import {
   sub_groupIdReducer,
   get_SubGroupIdReducer,
@@ -39,23 +43,29 @@ import {
   genSubGroupId_addReducer,
   get_genSubGroupIdReducer,
 } from "./gensubId/genSubIdReducer";
-import{
+import {
   add_BuildingReducer,
   view_BuildingReducer,
   update_BuildingReducer,
 } from "./Building/BuildingReducer";
-import{
+import {
   add_RoomReducer,
   view_RoomReducer,
   update_RoomReducer,
 } from "./Room/RoomReducer";
 import {
-  WorkingdaysReducer, 
+  WorkingdaysReducer,
   get_workingdays,
   update_workingdays_Reducer,
 } from "./Working_days/WorkingdaysReducer";
+import {
+  consecutiveSession_addReducer,
+  get_consecutiveSessionReducer,
+} from "./consecutive/consecutiveReducer";
 
 const rootReducer = combineReducers({
+  add_consecutiveSession: consecutiveSession_addReducer,
+  get_consecutiveSession: get_consecutiveSessionReducer,
   year_semister: year_semiReducer,
   get_year_semister: get_year_semiReducer,
   update_year_semister: update_year_semiReducer,
@@ -71,7 +81,7 @@ const rootReducer = combineReducers({
   Update_lecturer: update_lecturer_Reducer,
   SubjectReducer: SubjectReducer,
   get_subjects: get_Subjects,
-  Update_Subject:update_subject_Reducer,
+  Update_Subject: update_subject_Reducer,
   sub_groupId_add: sub_groupIdReducer,
   get_SubGroupId: get_SubGroupIdReducer,
   update_subgroupId: update_subgroupIdReducer,
@@ -90,7 +100,7 @@ const rootReducer = combineReducers({
   update_room: update_RoomReducer,
   WorkingdaysReducer: WorkingdaysReducer,
   get_workingdays: get_workingdays,
-  update_workingdays:update_workingdays_Reducer, 
+  update_workingdays: update_workingdays_Reducer,
 });
 
 export default rootReducer;

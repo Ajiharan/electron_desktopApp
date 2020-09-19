@@ -1,55 +1,58 @@
 import {
-  ADD_GEN_SUBGROUPID_FAILURE,
-  ADD_GEN_SUBGROUPID_REQUEST,
-  ADD_GEN_SUBGROUPID_SUCCESS,
-  GET_GEN_SUBGROUPID_FAILURE,
-  GET_GEN_SUBGROUPID_REQUEST,
-  GET_GEN_SUBGROUPID_SUCCESS,
-} from "./genSubIdType";
+  ADD_CONSECUTIVE_SESSION_REQUEST,
+  ADD_CONSECUTIVE_SESSION_SUCCESS,
+  ADD_CONSECUTIVE_SESSION_FAILURE,
+  GET_CONSECUTIVE_SESSION_FAILURE,
+  GET_CONSECUTIVE_SESSION_REQUEST,
+  GET_CONSECUTIVE_SESSION_SUCCESS,
+} from "./consecutiveType";
 import { db } from "../../firebase";
 import firebase from "firebase";
 
-const addGenSubGroupId = (gen_subgroupid) => {
+const addConsecutiveSessions = (lecture, tutorial) => {
   return async (dispatch) => {
-    dispatch({ type: ADD_GEN_SUBGROUPID_REQUEST });
+    dispatch({ type: ADD_CONSECUTIVE_SESSION_REQUEST });
     try {
       const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-      db.collection("gen_subgroupids")
+      db.collection("consecutive_sessions")
         .get()
         .then(async (snapshot) => {
           const tempData = await snapshot.docs.map((doc) => ({
-            gen_subgroupid: doc.data().gen_subgroupid,
+            lecture: doc.data().lecture,
+            tutorial: doc.data().tutorial,
             id: doc.id,
           }));
 
           const isExists = await tempData.filter(
-            (data) => data.gen_subgroupid === gen_subgroupid
+            (data) => data.lecture === lecture && data.tutorial === tutorial
           );
           // console.log("isExists", isExists);
           if (isExists.length === 0) {
-            db.collection("gen_subgroupids")
+            db.collection("consecutive_sessions")
               .add({
-                gen_subgroupid,
+                lecture,
+                tutorial,
                 timestamp,
               })
               .then(() => {
                 dispatch({
-                  type: ADD_GEN_SUBGROUPID_SUCCESS,
+                  type: ADD_CONSECUTIVE_SESSION_SUCCESS,
                   payload: {
-                    gen_subgroupid,
+                    lecture,
+                    tutorial,
                     timestamp,
                   },
                 });
               })
               .catch((err) => {
                 dispatch({
-                  type: ADD_GEN_SUBGROUPID_FAILURE,
+                  type: ADD_CONSECUTIVE_SESSION_FAILURE,
                   error: err,
                 });
               });
           } else {
             dispatch({
-              type: ADD_GEN_SUBGROUPID_FAILURE,
+              type: ADD_CONSECUTIVE_SESSION_FAILURE,
               error: "data already exists",
             });
           }
@@ -58,27 +61,28 @@ const addGenSubGroupId = (gen_subgroupid) => {
   };
 };
 
-const view_genSubGroupId = () => {
+const viewConsecutiveSessions = () => {
   return async (dispatch) => {
-    dispatch({ type: GET_GEN_SUBGROUPID_REQUEST });
+    dispatch({ type: GET_CONSECUTIVE_SESSION_REQUEST });
     try {
-      db.collection("gen_subgroupids")
+      db.collection("consecutive_sessions")
         .orderBy("timestamp", "desc")
         .onSnapshot(async (snapshot) => {
           const tempData = await snapshot.docs.map((doc) => ({
-            gen_subgroupid: doc.data().gen_subgroupid,
+            lecture: doc.data().lecture,
+            tutorial: doc.data().tutorial,
             id: doc.id,
             timestamp: doc.data().timestamp,
           }));
           console.log("getTemp Data", tempData);
           dispatch({
-            type: GET_GEN_SUBGROUPID_SUCCESS,
+            type: GET_CONSECUTIVE_SESSION_SUCCESS,
             payload: tempData,
           });
         })
         .catch((err) => {
           dispatch({
-            type: GET_GEN_SUBGROUPID_FAILURE,
+            type: GET_CONSECUTIVE_SESSION_FAILURE,
             error: err,
           });
         });
@@ -86,4 +90,4 @@ const view_genSubGroupId = () => {
   };
 };
 
-export { addGenSubGroupId, view_genSubGroupId };
+export { addConsecutiveSessions, viewConsecutiveSessions };

@@ -15,6 +15,7 @@ import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import usecheck from "../useHooks/useCheck";
 import ApartmentIcon from "@material-ui/icons/Apartment";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import VerticalSplitIcon from "@material-ui/icons/VerticalSplit";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,7 @@ const HomeList = () => {
   const classes = useStyles();
   const subjectData = usecheck(false);
   const lectureData = usecheck(false);
+  const sessionData = usecheck(false);
   const studentData = usecheck(false);
   const sub_studentData = usecheck(false);
   const sub_programmeData = usecheck(false);
@@ -247,6 +249,29 @@ const HomeList = () => {
                 </Link>
               </List>
             </Collapse>
+          </List>
+        </Collapse>
+
+        <ListItem button onClick={sessionData.handleClick}>
+          <ListItemIcon>
+            <VerticalSplitIcon style={{ color: "white" }} />
+          </ListItemIcon>
+          <ListItemText primary="Sessions" />
+          {sessionData.open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+
+        <Collapse in={sessionData.open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link to="/consecutive">
+              <ListItem button className={classes.sub_nested}>
+                <ListItemText primary="consecutive" />
+              </ListItem>
+            </Link>
+            <Link to="/parallel">
+              <ListItem button className={classes.sub_nested}>
+                <ListItemText primary="parallel" />
+              </ListItem>
+            </Link>
           </List>
         </Collapse>
 
