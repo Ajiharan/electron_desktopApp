@@ -38,6 +38,7 @@ import UpdateRoom from "./screens/Room/RoomUpdate";
 import ViewStudentDetail from "./screens/view_studentDetail/ViewStudentDetail";
 import ViewStatistics from "./screens/statistics/ViewStatistics";
 import ConsecutiveSession from "./screens/consecutive_sessions/Consecutive";
+import ParallelSession from "./screens/parallel/ParllelSession";
 function App() {
   return (
     <React.Fragment>
@@ -46,6 +47,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/consecutive" component={ConsecutiveSession} />
+          <Route exact path="/parallel" component={ParallelSession} />
           <Route
             exact
             path="/student/generate/subId"

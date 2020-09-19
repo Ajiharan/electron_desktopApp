@@ -1,0 +1,36 @@
+.ViewParallelSession {
+  width: 100%;
+  object-fit: contain;
+  padding: 15px;
+  background-color: white;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ViewParallelSession::-webkit-scrollbar {
+  display: none;
+}
+.ViewParallelSession button {
+  color: white;
+  background-image: linear-gradient(to right, #fc6076, #ff9231);
+  border: none;
+  margin-bottom: 20px;
+  width: 120px;
+  padding: 5px;
+  border-radius: 20px;
+}
+.ViewParallelSession__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}
+.ViewParallelSession__buttons {
+  display: flex;
+  justify-content: center;
+}
+.ViewParallelSession button:hover {
+  background-image: linear-gradient(to right, #e72c45, #f59644);
+}

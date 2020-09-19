@@ -9,7 +9,7 @@ import {
 import { db } from "../../firebase";
 import firebase from "firebase";
 
-const addParallelSessions = (start_time, duration, pdate, session, id) => {
+const addParallelSessions = (start_time, duration, pdate, session) => {
   return async (dispatch) => {
     dispatch({ type: ADD_PARALLEL_SESSION_REQUEST });
     try {

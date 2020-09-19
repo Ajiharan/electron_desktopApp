@@ -1,0 +1,9 @@
+.error_div {
+  height: 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+.error_div h6 {
+  margin-right: 20px;
+  margin-bottom: 14px;
+}
