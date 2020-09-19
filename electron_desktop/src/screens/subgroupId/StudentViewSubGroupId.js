@@ -25,6 +25,7 @@ const StudentViewSubGroupId = () => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const [checkData, setCheckData] = useState([]);
+  const [tempCheckData, setTempCheckData] = useState([]);
   //   console.log("year and semi", year_semi);
   const history = useHistory();
   const navData = [
@@ -64,10 +65,14 @@ const StudentViewSubGroupId = () => {
           id: e.target.value,
         },
       ];
+      setTempCheckData([...tempCheckData, { ...data, id: e.target.value }]);
       setCheckData(tempData);
     } else {
       data.isChecked = false;
       setCheckData(checkData.filter((data) => data.id !== e.target.value));
+      setTempCheckData(
+        tempCheckData.filter((data) => data.id !== e.target.value)
+      );
     }
 
     console.log("checkData", checkData);
@@ -99,13 +104,31 @@ const StudentViewSubGroupId = () => {
         });
       });
     setCheckData([]);
+    setTempCheckData([]);
   };
 
   const DeleteSelected = () => {
+    const tempSubGroupData = tempCheckData.map((data) => {
+      const temp = gen_subgroupids.filter(
+        (filterData) =>
+          filterData.gen_subgroupid.split(".")[4] === data.sub_groupid
+      );
+      return {
+        temp: temp,
+      };
+    });
+
+    tempSubGroupData.map(({ temp }) => {
+      temp.map(({ id, gen_subgroupid }) => {
+        db.collection("gen_subgroupids").doc(id).delete();
+      });
+    });
+
     checkData.map((check_data) => {
       db.collection("sub_groupids").doc(check_data.id).delete();
     });
     setCheckData([]);
+    setTempCheckData([]);
   };
 
   const handleDelete = (data) => {
@@ -130,6 +153,7 @@ const StudentViewSubGroupId = () => {
       })
     );
     setCheckData([]);
+    setTempCheckData([]);
 
     if (name) {
       setUserData(

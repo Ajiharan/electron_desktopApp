@@ -25,6 +25,7 @@ const ViewStudentGroupId = () => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const [checkData, setCheckData] = useState([]);
+  const [tempCheckData, setTempCheckData] = useState([]);
   //   console.log("year and semi", year_semi);
   const history = useHistory();
   const navData = [
@@ -64,10 +65,14 @@ const ViewStudentGroupId = () => {
           id: e.target.value,
         },
       ];
+      setTempCheckData([...tempCheckData, { ...data, id: e.target.value }]);
       setCheckData(tempData);
     } else {
       data.isChecked = false;
       setCheckData(checkData.filter((data) => data.id !== e.target.value));
+      setTempCheckData(
+        tempCheckData.filter((data) => data.id !== e.target.value)
+      );
     }
 
     console.log("checkData", checkData);
@@ -112,13 +117,46 @@ const ViewStudentGroupId = () => {
         });
       });
     setCheckData([]);
+    setTempCheckData([]);
   };
 
   const DeleteSelected = () => {
+    const tempGroupData = tempCheckData.map((data) => {
+      const temp = gen_groupids.filter(
+        (filterData) => filterData.gen_groupid.split(".")[3] === data.groupid
+      );
+      return {
+        temp: temp,
+      };
+    });
+
+    tempGroupData.map(({ temp }) => {
+      temp.map(({ id, gen_groupid }) => {
+        db.collection("gen_groupids").doc(id).delete();
+      });
+    });
+    // console.log("tempGroupData", tempGroupData);
+
+    const tempSubGroupData = tempCheckData.map((data) => {
+      const temp = gen_subgroupids.filter(
+        (filterData) => filterData.gen_subgroupid.split(".")[3] === data.groupid
+      );
+      return {
+        temp: temp,
+      };
+    });
+
+    tempSubGroupData.map(({ temp }) => {
+      temp.map(({ id, gen_subgroupid }) => {
+        db.collection("gen_subgroupids").doc(id).delete();
+      });
+    });
+
     checkData.map((check_data) => {
       db.collection("groupids").doc(check_data.id).delete();
     });
     setCheckData([]);
+    setTempCheckData([]);
   };
 
   const handleDelete = (data) => {
@@ -150,6 +188,7 @@ const ViewStudentGroupId = () => {
       })
     );
     setCheckData([]);
+    setTempCheckData([]);
 
     if (name) {
       setUserData(new_group_id.filter((data) => data.groupid.match(name)));
