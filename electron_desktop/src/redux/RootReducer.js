@@ -15,26 +15,31 @@ import {
   get_groupIdReducer,
   update_groupIdReducer,
 } from "./groupId/GroupIdReducer";
+
 import {
   LecturerReducer,
   get_lecturers,
   update_lecturer_Reducer,
 } from "./Lecturer/LecturerReducer";
+
 import {
   get_Subjects,
   SubjectReducer,
   update_subject_Reducer,
 } from "./Subject/SubjectReducer";
+
 import {
   sub_groupIdReducer,
   get_SubGroupIdReducer,
   update_subgroupIdReducer,
 } from "./subgroupId/SubGroupIdReducer";
+
 import {
   get_tagReducer,
   tagReducer,
   update_tagReducer,
 } from "./tag/TagReducer";
+
 import {
   genGroupId_addReducer,
   get_genGroupIdReducer,
@@ -43,27 +48,38 @@ import {
   genSubGroupId_addReducer,
   get_genSubGroupIdReducer,
 } from "./gensubId/genSubIdReducer";
+
 import {
   add_BuildingReducer,
   view_BuildingReducer,
   update_BuildingReducer,
 } from "./Building/BuildingReducer";
+
 import {
   add_RoomReducer,
   view_RoomReducer,
   update_RoomReducer,
 } from "./Room/RoomReducer";
+
 import {
   WorkingdaysReducer,
   get_workingdays,
   update_workingdays_Reducer,
 } from "./Working_days/WorkingdaysReducer";
+
 import {
   consecutiveSession_addReducer,
   get_consecutiveSessionReducer,
 } from "./consecutive/consecutiveReducer";
 
+import {
+  parallelSession_addReducer,
+  get_parallelSessionReducer,
+} from "./parallel/parallelSessionReducer";
+
 const rootReducer = combineReducers({
+  add_parallelSession: parallelSession_addReducer,
+  get_parallelSession: get_parallelSessionReducer,
   add_consecutiveSession: consecutiveSession_addReducer,
   get_consecutiveSession: get_consecutiveSessionReducer,
   year_semister: year_semiReducer,
