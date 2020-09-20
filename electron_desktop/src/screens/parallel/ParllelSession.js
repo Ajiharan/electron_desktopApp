@@ -4,26 +4,24 @@ import { Spinner } from "../animations/Spinner";
 import { PropagateLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 import ScreenNav from "../screen-nav/ScreenNav";
-import { viewSubject } from "../../redux/Subject/SubjectAction";
-
+import { viewSessions } from "../../redux/session/sessionAction";
 import ParallelForm from "./ParallelForm";
-
 import ViewParallelSession from "./ViewParallelSession";
 
 const ParllelSession = () => {
-  const [subData, setsubData] = useState([]);
+  const [sessionData, setSessionData] = useState([]);
 
   const dispatch = useDispatch();
 
-  const { subject } = useSelector((state) => state.get_subjects);
+  const { sessions } = useSelector((state) => state.get_Session);
 
   useEffect(() => {
-    dispatch(viewSubject());
+    dispatch(viewSessions());
   }, []);
 
   useEffect(() => {
-    setsubData(subject);
-  }, [subject]);
+    setSessionData(sessions);
+  }, [sessions]);
   const navData = [
     {
       id: 1,
@@ -33,7 +31,7 @@ const ParllelSession = () => {
     {
       id: 2,
       name: "sessions",
-      pathname: "/Parallel",
+      pathname: "/Session",
     },
   ];
 
@@ -42,10 +40,10 @@ const ParllelSession = () => {
       <ScreenNav rightNavData={navData} />
       <div className="ParllelSession__container">
         <div className="ParllelSession__box">
-          {subData.length > 0 ? (
+          {sessionData.length > 0 ? (
             <React.Fragment>
-              <h2 className="text-center text-dark">Parallel Sessions</h2>
-              <ParallelForm subject={subject} />
+              <h2 className="text-center text-dark">Sessions</h2>
+              <ParallelForm subject={sessions} />
             </React.Fragment>
           ) : (
             <div className="ParllelSession__loader">
@@ -54,7 +52,7 @@ const ParllelSession = () => {
           )}
         </div>
         <div className="ParllelSession__List">
-          <h4>Parallel SESSION LISTS</h4>
+          <h4>SESSION LISTS</h4>
           <ViewParallelSession />
         </div>
       </div>

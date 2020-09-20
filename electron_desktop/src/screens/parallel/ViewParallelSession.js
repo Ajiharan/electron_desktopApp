@@ -43,18 +43,18 @@ const ViewParallelSession = () => {
       </div>
       <div className="ViewParallelSession">
         {sessions.map((data, i) => (
-          <div className="card bg-dark ViewParallelSession" key={i}>
+          <div className="card bg-dark cardStyle" key={i}>
             <div className="card-body">
+              {data.session.map((res, i) => (
+                <div key={i}>
+                  <h5 className="text-center text-light">{res}</h5>
+                </div>
+              ))}
               <h5 className="text-center text-light">{data.start_time}</h5>
               <h5 className="text-center text-light">
-                {data.duration} + " hrs"
+                {data.duration + " "} hrs
               </h5>
               <h5 className="text-center text-light">{data.pdate}</h5>
-              {data.session.map((res, i) => (
-                <h5 key={i} className="text-center text-light">
-                  {res}
-                </h5>
-              ))}
             </div>
             <div className="ViewParallelSession__buttons">
               <button
@@ -62,7 +62,7 @@ const ViewParallelSession = () => {
                   db.collection("parallel_sessions").doc(data.id).delete()
                 }
               >
-                Delete
+                Remove
               </button>
             </div>
           </div>

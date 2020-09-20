@@ -77,7 +77,21 @@ import {
   get_parallelSessionReducer,
 } from "./parallel/parallelSessionReducer";
 
+import {
+  session_addReducer,
+  session_getReducer,
+} from "./session/sessionReducer";
+
+import {
+  allocated_addReducer,
+  allocated_getReducer,
+} from "./notAllocated/notAllocatedReducer";
+
 const rootReducer = combineReducers({
+  add_notAllocated: allocated_addReducer,
+  get_notAllocated: allocated_getReducer,
+  add_Session: session_addReducer,
+  get_Session: session_getReducer,
   add_parallelSession: parallelSession_addReducer,
   get_parallelSession: get_parallelSessionReducer,
   add_consecutiveSession: consecutiveSession_addReducer,

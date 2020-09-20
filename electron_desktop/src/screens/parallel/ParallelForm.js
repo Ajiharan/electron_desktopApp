@@ -14,6 +14,7 @@ const ParallelForm = ({ subject }) => {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.add_parallelSession);
   //start_time, duration, pdate, session
+
   const formik = useFormik({
     initialValues: {
       start_time: "",

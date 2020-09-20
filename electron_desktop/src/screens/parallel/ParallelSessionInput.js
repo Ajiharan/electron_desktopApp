@@ -8,7 +8,7 @@ const ParallelSessionInput = ({
   divName,
   fvalue,
 }) => {
-  //   console.log("subject", data);
+  console.log("subject", data);
   return (
     <div className="Consecutive_inputs form-group">
       <label htmlFor={id_name} className="text-light">
@@ -23,9 +23,11 @@ const ParallelSessionInput = ({
         value={fvalue}
       >
         <option value="">{data.length > 0 ? "select" : "No Data"}</option>
-        {data.map((data, i) => (
-          <option key={i} value={data.sub_name}>
-            {data.sub_name}
+        {data.map((result, i) => (
+          <option key={i} data-value={result}>
+            ( {result.lectures}) {result.subject}({result.subject_code}){" "}
+            {result.tag} {result.group_id} {"  "}
+            {result.count}({result.duration})
           </option>
         ))}
       </select>

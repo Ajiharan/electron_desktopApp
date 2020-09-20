@@ -8,6 +8,16 @@
   overflow-x: hidden;
 }
 
+.cardStyle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ViewParallelSession > div {
+  margin-top: 10px;
+}
+
 .ViewParallelSession::-webkit-scrollbar {
   display: none;
 }
