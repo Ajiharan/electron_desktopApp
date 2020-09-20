@@ -1,11 +1,11 @@
-.ParllelSession__container {
+.NotAllocated__container {
   margin: 100px;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
 }
 
-.ParllelSession__box {
+.NotAllocated__box {
   width: auto;
   height: fit-content;
   display: flex;
@@ -14,11 +14,11 @@
   align-items: center;
 }
 
-.ParllelSession__message {
+.NotAllocated__message {
   height: 30px;
 }
 
-.ParllelSession__box > form {
+.NotAllocated__box > form {
   margin: 10px;
   padding: 8px;
   border-radius: 8px;
@@ -35,23 +35,23 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.ParllelSession_inputs {
+.NotAllocated_inputs {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: nowrap;
 }
 
-.ParllelSession_inputs > label {
+.NotAllocated_inputs > label {
   width: 300px;
 }
 
-.ParllelSession_buttons {
+.NotAllocated_buttons {
   display: flex;
   justify-content: flex-end;
 }
 
-.ParllelSession_buttons button {
+.NotAllocated_buttons button {
   color: white;
   background-image: linear-gradient(to right, #fc6076, #ff9231);
   border: none;
@@ -60,14 +60,14 @@
   padding: 5px;
 }
 
-.ParllelSession_buttons button:hover {
+.NotAllocated_buttons button:hover {
   background-image: linear-gradient(to right, #e72c45, #f59644);
 }
 
-.ParllelSession__loader {
+.NotAllocated__loader {
   margin-left: 200px;
 }
 
-.ParllelSession__searchList {
+.NotAllocated__searchList {
   height: 80px;
 }

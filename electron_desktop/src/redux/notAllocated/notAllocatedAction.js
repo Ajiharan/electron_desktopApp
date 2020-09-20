@@ -9,7 +9,7 @@ import {
 import { db } from "../../firebase";
 import firebase from "firebase";
 
-const addNotAllocatedTime = (type_value, start_time, end_time, date) => {
+const addNotAllocatedTime = (type_value, start_time, end_time, pdate) => {
   return async (dispatch) => {
     dispatch({ type: ADD_NOT_ALLOCATED_REQUEST });
 
@@ -20,7 +20,7 @@ const addNotAllocatedTime = (type_value, start_time, end_time, date) => {
         type_value,
         start_time,
         end_time,
-        date,
+        pdate,
         timestamp,
       })
       .then(() => {
@@ -30,7 +30,7 @@ const addNotAllocatedTime = (type_value, start_time, end_time, date) => {
             type_value,
             start_time,
             end_time,
-            date,
+            pdate,
             timestamp,
           },
         });

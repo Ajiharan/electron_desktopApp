@@ -39,6 +39,7 @@ import ViewStudentDetail from "./screens/view_studentDetail/ViewStudentDetail";
 import ViewStatistics from "./screens/statistics/ViewStatistics";
 import ConsecutiveSession from "./screens/consecutive_sessions/Consecutive";
 import ParallelSession from "./screens/parallel/ParllelSession";
+import NotAllocated from "./screens/notAllocated/NotAllocated";
 function App() {
   return (
     <React.Fragment>
@@ -47,6 +48,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/consecutive" component={ConsecutiveSession} />
+          <Route exact path="/notAllocated" component={NotAllocated} />
           <Route exact path="/parallel" component={ParallelSession} />
           <Route
             exact

@@ -272,6 +272,11 @@ const HomeList = () => {
                 <ListItemText primary="parallel" />
               </ListItem>
             </Link>
+            <Link to="/notAllocated">
+              <ListItem button className={classes.sub_nested}>
+                <ListItemText primary="Not Allocated" />
+              </ListItem>
+            </Link>
           </List>
         </Collapse>
 

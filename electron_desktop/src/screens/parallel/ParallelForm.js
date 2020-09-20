@@ -55,7 +55,7 @@ const ParallelForm = ({ subject }) => {
         </p>
       </div>
       <form id="frm" onSubmit={formik.handleSubmit}>
-        <div className="Consecutive_inputs form-group">
+        <div className="ParllelSession_inputs form-group">
           <label htmlFor="duration" className="text-light">
             starting time
           </label>
@@ -72,7 +72,7 @@ const ParallelForm = ({ subject }) => {
           error={formik.errors.start_time}
           touched={formik.touched.start_time}
         />
-        <div className="Consecutive_inputs form-group">
+        <div className="ParllelSession_inputs form-group">
           <label htmlFor="duration" className="text-light">
             Duration
           </label>
@@ -90,7 +90,7 @@ const ParallelForm = ({ subject }) => {
           error={formik.errors.duration}
           touched={formik.touched.duration}
         />
-        <div className="Consecutive_inputs form-group">
+        <div className="ParllelSession_inputs form-group">
           <label htmlFor="duration" className="text-light">
             Date
           </label>
