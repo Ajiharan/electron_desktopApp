@@ -25,9 +25,10 @@ const ParallelSessionInput = ({
         <option value="">{data.length > 0 ? "select" : "No Data"}</option>
         {data.map((result, i) => (
           <option key={i} data-value={result}>
-            ( {result.lectures}) {result.subject}({result.subject_code}){" "}
-            {result.tag} {result.group_id} {"  "}
-            {result.count}({result.duration})
+            ( {result.selectedValueLecturer}) {result.selectedValueSubject}(
+            {result.subCode}) {result.selectedValueTag}{" "}
+            {result.selectedValueGroup.label} {"  "}
+            {result.noOfstudents}({result.timeDuration})
           </option>
         ))}
       </select>

@@ -19,7 +19,7 @@ const NotAllocated = () => {
 
   const dispatch = useDispatch();
 
-  const { sessions } = useSelector((state) => state.get_Session);
+  const { session } = useSelector((state) => state.get_Session);
   const { lecturer } = useSelector((state) => state.get_lecturers);
   const { gen_groupids } = useSelector((state) => state.get_genGroupId);
   const { gen_subgroupids } = useSelector((state) => state.get_genSubGroupId);
@@ -32,11 +32,11 @@ const NotAllocated = () => {
   }, []);
 
   useEffect(() => {
-    setSessionData(sessions);
+    setSessionData(session);
     setGroupId(gen_groupids);
     setLectures(lecturer);
     setSubgroupId(gen_subgroupids);
-  }, [sessions, lecturer, gen_groupids, gen_subgroupids]);
+  }, [session, lecturer, gen_groupids, gen_subgroupids]);
   const navData = [
     {
       id: 1,
@@ -62,7 +62,7 @@ const NotAllocated = () => {
             <React.Fragment>
               <h2 className="text-center text-dark">Sessions</h2>
               <NotAllocatedForm
-                sessions={sessions}
+                sessions={session}
                 lectures={lecturer}
                 groupId={gen_groupids}
                 subgroupId={gen_subgroupids}

@@ -93,9 +93,11 @@ const NotAllocatedForm = ({ sessions, lectures, groupId, subgroupId }) => {
             {formik.values.categoryType === "sessions" &&
               sessions.map((result, i) => (
                 <option key={i} data-value={result}>
-                  ( {result.lectures}) {result.subject}({result.subject_code}){" "}
-                  {result.tag} {result.group_id} {"  "}
-                  {result.count}({result.duration})
+                  ( {result.selectedValueLecturer}){" "}
+                  {result.selectedValueSubject}({result.subCode}){" "}
+                  {result.selectedValueTag} {result.selectedValueGroup.label}{" "}
+                  {"  "}
+                  {result.noOfstudents}({result.timeDuration})
                 </option>
               ))}
             {formik.values.categoryType === "lectures" &&

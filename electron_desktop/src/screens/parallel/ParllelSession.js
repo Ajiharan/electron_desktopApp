@@ -13,15 +13,15 @@ const ParllelSession = () => {
 
   const dispatch = useDispatch();
 
-  const { sessions } = useSelector((state) => state.get_Session);
+  const { session } = useSelector((state) => state.get_Session);
 
   useEffect(() => {
     dispatch(viewSessions());
   }, []);
 
   useEffect(() => {
-    setSessionData(sessions);
-  }, [sessions]);
+    setSessionData(session);
+  }, [session]);
   const navData = [
     {
       id: 1,
@@ -43,7 +43,7 @@ const ParllelSession = () => {
           {sessionData.length > 0 ? (
             <React.Fragment>
               <h2 className="text-center text-dark">Sessions</h2>
-              <ParallelForm subject={sessions} />
+              <ParallelForm subject={session} />
             </React.Fragment>
           ) : (
             <div className="ParllelSession__loader">
