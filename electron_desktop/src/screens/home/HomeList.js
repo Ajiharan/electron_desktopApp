@@ -262,6 +262,16 @@ const HomeList = () => {
 
         <Collapse in={sessionData.open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
+            <Link to="/session/add">
+              <ListItem button className={classes.sub_nested}>
+                <ListItemText primary="Add session" />
+              </ListItem>
+            </Link>
+            <Link to="/session/view">
+              <ListItem button className={classes.sub_nested}>
+                <ListItemText primary="View session" />
+              </ListItem>
+            </Link>
             <Link to="/consecutive">
               <ListItem button className={classes.sub_nested}>
                 <ListItemText primary="consecutive" />

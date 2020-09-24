@@ -9,82 +9,73 @@ import {
 import { db } from "../../firebase";
 import firebase from "firebase";
 
-const addSessions = (
-  lectures,
-  subject,
-  subject_code,
-  tag,
-  group_id,
-  count,
-  duration
-) => {
-  return async (dispatch) => {
-    dispatch({ type: ADD_SESSION_REQUEST });
+const addSession = (sessiondata) => {
+    return async (dispatch) => {
+        dispatch({ type: ADD_SESSION_REQUEST });
+        try {
+            const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+            db.collection("sessions")
+                .get()
+                .then(async (snapshot) => {
+                    const tempData = await snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                    }));
 
-    const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-
-    db.collection("sessions")
-      .add({
-        lectures,
-        subject,
-        subject_code,
-        tag,
-        group_id,
-        count,
-        duration,
-        timestamp,
-      })
-      .then(() => {
-        dispatch({
-          type: ADD_SESSION_SUCCESS,
-          payload: {
-            lectures,
-            subject,
-            subject_code,
-            tag,
-            group_id,
-            count,
-            duration,
-            timestamp,
-          },
-        });
-      })
-      .catch((err) => {
-        dispatch({
-          type: ADD_SESSION_FAILURE,
-          error: err,
-        });
-      });
-  };
+                        db.collection("sessions")
+                            .add({
+                                ...sessiondata
+                            })
+                            .then(() => {
+                                dispatch({
+                                    type: ADD_SESSION_SUCCESS,
+                                    payload: {
+                                        ...sessiondata,
+                                        timestamp,
+                                    },
+                                });
+                            })
+                            .catch((err) => {
+                                dispatch({
+                                    type: ADD_SESSION_FAILURE,
+                                    error: err,
+                                });
+                            });
+                });
+        } catch (err) {}
+    };
 };
 
 const viewSessions = () => {
-  return async (dispatch) => {
-    dispatch({ type: GET_SESSION_REQUEST });
-    try {
-      db.collection("sessions")
-        .orderBy("timestamp", "desc")
-        .onSnapshot(async (snapshot) => {
-          const tempData = await snapshot.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-          }));
-          console.log("getTemp Data", tempData);
-          dispatch({
-            type: GET_SESSION_SUCCESS,
-            payload: tempData,
-          });
-        })
-        .catch((err) => {
-          dispatch({
-            type: GET_SESSION_FAILURE,
-            error: err,
-          });
-        });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    return async (dispatch) => {
+        dispatch({ type: GET_SESSION_REQUEST });
+        try {
+            db.collection("sessions")
+                .onSnapshot(async (snapshot) => {
+                    const tempData = await snapshot.docs.map((doc) => ({
+                        subCode: doc.data().subCode,
+                        selectedValueSubject : doc.data().selectedValueSubject,
+                        selectedValueGroup: doc.data().selectedValueGroup,
+                        selectedValueTag:doc.data().selectedValueTag,
+                        selectedValueLecturer:doc.data().selectedValueLecturer,
+                        noOfstudents:doc.data().noOfstudents,
+                        timeDuration:doc.data().timeDuration,
+                        id: doc.id,
+                        timestamp: doc.data().timestamp,
+                    }));
+                    console.log("getTemp Data", tempData);
+                    dispatch({
+                        type: GET_SESSION_SUCCESS,
+                        payload: tempData,
+                    });
+                })
+                .catch((err) => {
+                    dispatch({
+                        type: GET_SESSION_FAILURE,
+                        error: err,
+                    });
+                });
+        } catch (err) {}
+    };
 };
 
-export { addSessions, viewSessions };
+export { addSession, viewSessions };
