@@ -42,6 +42,7 @@ import ParallelSession from "./screens/parallel/ParllelSession";
 import AddSession from "./screens/session/AddSession";
 import ViewSession from "./screens/session/ViewSession";
 import NotAllocated from "./screens/notAllocated/NotAllocated";
+import GenerateTimetable from "./screens/generate_timetables/main";
 function App() {
   return (
     <React.Fragment>
@@ -157,6 +158,11 @@ function App() {
             exact
             path="/workingdays/update"
             component={UpdateWorkingdays}
+          />
+          <Route
+            exact
+            path="/generate_timetables/main"
+            component={GenerateTimetable}
           />
         </Switch>
       </HashRouter>

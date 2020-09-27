@@ -17,6 +17,7 @@ import ApartmentIcon from "@material-ui/icons/Apartment";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import VerticalSplitIcon from "@material-ui/icons/VerticalSplit";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
+import PrintIcon from "@material-ui/icons/Print";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -54,6 +55,7 @@ const HomeList = () => {
   const workData = usecheck(false);
   const sub_studentDetailData = usecheck(false);
   const StatisticData = usecheck(false);
+  const GenerateTimetableData = usecheck(false);
   return (
     <div>
       <List
@@ -437,6 +439,24 @@ const HomeList = () => {
                 </Link>
               </List>
             </Collapse>
+          </List>
+        </Collapse>
+
+        <ListItem button onClick={GenerateTimetableData.handleClick}>
+          <ListItemIcon>
+            <PrintIcon style={{ color: "white" }} />
+          </ListItemIcon>
+          <ListItemText primary="Generate Time Table" />
+          {GenerateTimetableData.open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={GenerateTimetableData.open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link to="/generate_timetables/main">
+              {" "}
+              <ListItem button className={classes.nested}>
+                <ListItemText primary="Generate" />
+              </ListItem>
+            </Link>
           </List>
         </Collapse>
       </List>
