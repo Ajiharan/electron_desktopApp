@@ -44,21 +44,21 @@ const ViewSession = () => {
         setSessionData(session);
     }, [session]);
 
-    // const Handlebox = (e) => {
-    //     if (e.target.checked) {
-    //         let tempData = [
-    //             ...checkData,
-    //             {
-    //                 id: e.target.value,
-    //             },
-    //         ];
-    //         setCheckData(tempData);
-    //     } else {
-    //         setCheckData(checkData.filter((data) => data.id !== e.target.value));
-    //     }
-    //
-    //     console.log("checkData", checkData);
-    // };
+    const Handlebox = (e) => {
+        if (e.target.checked) {
+            let tempData = [
+                ...checkData,
+                {
+                    id: e.target.value,
+                },
+            ];
+            setCheckData(tempData);
+        } else {
+            setCheckData(checkData.filter((data) => data.id !== e.target.value));
+        }
+
+        console.log("checkData", checkData);
+    };
     //
     // const DeleteAll = () => {
     //     db.collection("sessions")
@@ -78,11 +78,11 @@ const ViewSession = () => {
     //     setCheckData([]);
     // };
     //
-    // const handleDelete = (data) => {
-    //     db.collection("sessions").doc(data.id).delete();
-    //     setCheckData(checkData.filter((e) => e.id !== data.id));
-    //     console.log("checkData", checkData);
-    // };
+    const handleDelete = (data) => {
+        db.collection("sessions").doc(data.id).delete();
+        setCheckData(checkData.filter((e) => e.id !== data.id));
+        console.log("checkData", checkData);
+    };
 
     // const searchData = (name) => {
     //     setCheckData([]);
@@ -94,12 +94,12 @@ const ViewSession = () => {
     //         )
     // };
     //
-    // const gotoUpdate = (data) => {
-    //     history.push({
-    //         pathname: "/lecturer/update",
-    //         state: data,
-    //     });
-    // };
+    const gotoUpdate = (data) => {
+        history.push({
+            pathname: "/session/update",
+            state: data,
+        });
+    };
 
     return (
         <div className="LecturerViewContainer">
@@ -115,7 +115,7 @@ const ViewSession = () => {
                             <button
                                 onClick={(e) =>
                                     history.push({
-                                        pathname: "/lecturer/add",
+                                        pathname: "/session/add",
                                     })
                                 }
                                 className="btn btn-dark btn_new"
@@ -135,9 +135,8 @@ const ViewSession = () => {
                                     <th>Lecturers</th>
                                     <th>Duration</th>
                                     <th>No Of Students</th>
-                                    {/*<th>Rank</th>*/}
-                                    {/*<th>Action</th>*/}
-                                    {/*<th>Action</th>*/}
+                                    <th>Action</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -165,13 +164,13 @@ const ViewSession = () => {
                                         <td><span>{data.timeDuration}hr</span> </td>
                                         <td><span>{data.noOfstudents}</span> </td>
 
-                                        {/*<td>*/}
-                                        {/*    <button onClick={(e) => gotoUpdate(data)}>Edit</button>*/}
-                                        {/*</td>*/}
+                                        <td>
+                                            <button onClick={(e) => gotoUpdate(data)}>Edit</button>
+                                        </td>
 
-                                        {/*<td>*/}
-                                        {/*    <button onClick={(e) => handleDelete(data)}>Delete</button>*/}
-                                        {/*</td>*/}
+                                        <td>
+                                            <button onClick={(e) => handleDelete(data)}>Delete</button>
+                                        </td>
                                     </tr>
                                 ))}
                                 </tbody>

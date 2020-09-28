@@ -50,22 +50,25 @@ const AddSession = () => {
 
     useEffect(() => {
         setLecturerData(lecturer);
-    }, [lecturer]);
-
-    useEffect(() => {
         setSubjectData(subject);
-    }, [subject]);
-
-    useEffect(() => {
         setsubgroupIds(gen_subgroupids);
-    }, [gen_subgroupids]);
-
-    useEffect(() => {
         setgroupIds(gen_groupids);
-    }, [gen_groupids]);
+    }, [lecturer,subject,gen_subgroupids,gen_groupids]);
 
-    const lectureroptions = [{ value: 'None', label: 'None',isFixed: true }]
-    lecturerData.map((data) => lectureroptions.push({value:data.name,label:data.name,isFixed: true}));
+    const Clectureroptions = [{ value:'', label: '',isFixed: true }]
+    const Electureroptions = [{ value:'', label: '',isFixed: true }]
+    const Blectureroptions = [{ value:'', label: '',isFixed: true }]
+    const Hlectureroptions = [{ value:'', label: '',isFixed: true }]
+    const Olectureroptions = [{ value:'', label: '',isFixed: true }]
+    const lectureroptions = [{ value:'', label: '',isFixed: true }]
+    lecturerData.map((data) => data.faculty == 'Computing' ? Clectureroptions.push({value:data.name,label:data.name,isFixed: true})
+        : data.faculty == 'Engineering' ? Electureroptions.push({value:data.name,label:data.name,isFixed: true})
+            :data.faculty == 'Business' ? Blectureroptions.push({value:data.name,label:data.name,isFixed: true})
+                :data.faculty == 'Humanity science' ? Hlectureroptions.push({value:data.name,label:data.name,isFixed: true})
+                    :Olectureroptions.push({value:data.name,label:data.name,isFixed: true})
+    );
+
+    lecturerData.map((data) => lectureroptions.push({value:data.name,label: data.name,isFixed: true}));
 
     const subjectoptions = [{ value: 'None', label: 'None',isFixed: true }]
     subjectData.map((data) => subjectoptions.push({value:data,label:data.sub_name,isFixed: true}));
@@ -77,6 +80,52 @@ const AddSession = () => {
     ]
 
     const[selectedValueLecturer,setselectedValueLecturer] = useState([]);
+    const groupedOptions = [
+        {
+            label: 'Computing',
+            options: Clectureroptions,
+        },
+        {
+            label: 'Engineering',
+            options: Electureroptions,
+        },
+        {
+            label: 'Business',
+            options: Blectureroptions,
+        },
+        {
+            label: 'Humanity & Science',
+            options: Hlectureroptions,
+        },
+        {
+            label: 'Other',
+            options: Olectureroptions,
+        }
+    ];
+    const groupStyles = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    };
+    const groupBadgeStyles = {
+        backgroundColor: '#EBECF0',
+        borderRadius: '2em',
+        color: '#172B4D',
+        display: 'inline-block',
+        fontSize: 12,
+        fontWeight: 'normal',
+        lineHeight: '1',
+        minWidth: 1,
+        padding: '0.16666666666667em 0.5em',
+        textAlign: 'center',
+    };
+
+    const formatGroupLabel = data => (
+        <div style={groupStyles}>
+            <span>{data.label}</span>
+        </div>
+    );
+
     const handleChangeLecturers = (e) =>{
         setselectedValueLecturer(Array.isArray(e) ? e.map(x => x.value) : []);
     }
@@ -162,7 +211,7 @@ const AddSession = () => {
                             <Select options={subjectoptions}
                                     onChange={handleChangeSubject}
                                     name="subject"
-                                    value={selectedValueSubject}
+                                    value={e}
                             />
 
                             <label htmlFor="title">Subject code</label>
@@ -186,10 +235,12 @@ const AddSession = () => {
                             />
 
                             <label htmlFor="title">Select Lecturers</label>
-                            <Select closeMenuOnSelect={false} components={animatedComponents} isMulti options={lectureroptions}
+                            <Select closeMenuOnSelect={false} components={animatedComponents} isMulti options={groupedOptions}
+                                    formatGroupLabel={formatGroupLabel}
                                     onChange={handleChangeLecturers}
                                     name="lecturers"
-                                    value={lectureroptions.filter(obj => selectedValueLecturer.includes(obj.value))}
+                                    value={
+                                        lectureroptions.filter(obj => selectedValueLecturer.includes(obj.value))}
                             />
 
                         <label htmlFor="title">No of Students</label>

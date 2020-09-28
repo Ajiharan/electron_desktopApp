@@ -94,8 +94,6 @@ const UpdateSubject = (props) => {
                                 name="sname"
                                 type="text"
                                 className="form-control"
-                                pattern="[A-Z]{4}"
-                                title="Should be capital letters!"
                                 value={sname}
                                 onChange={(e) => setName(e.target.value)}
                                 required
