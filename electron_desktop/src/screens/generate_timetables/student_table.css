@@ -1,0 +1,21 @@
+/* .btn_new {
+  margin: 10px;
+} */
+
+
+  .top__search {
+    height: 40px;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    width: 250px;
+    outline: none;
+  }
+  .student_input {
+    display: flex;
+    align-items: center;
+  }
+  .student_input label {
+    margin-right: 12px;
+  }
+  

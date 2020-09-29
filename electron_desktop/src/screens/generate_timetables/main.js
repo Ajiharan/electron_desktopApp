@@ -1,26 +1,39 @@
-import React from "react";
-import "./main.css";
-import { Spinner } from "../animations/Spinner";
-import { Link } from "react-router-dom";
+
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { BeatLoader, BounceLoader } from "react-spinners";
+import { Link, useHistory } from "react-router-dom";
+import { Spinner } from "../animations/Spinner";
+import { DotLoader } from "react-spinners";
+import { addWorkingdays } from "../../redux/Working_days/WorkingdaysAction";
 import ScreenNav from "../screen-nav/ScreenNav";
-const main = () => {
-    const navData = [
-        {
-          id: 1,
-          name: "TimeTable > Generate Time Table",
-          pathname: "/",
-        },
-        {
-        id: 2,
-        name: "Add Working Days and Hours",
-        pathname: "/generate_timetables/main",
-      },
-      ];
-    
+import { useFormik } from "formik";
+import "./main.css";
+
+const Addworkingdays = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [clicked, isClicked] = useState(false);
+  
+ 
+
+  const navData = [
+    {
+      id: 1,
+      name: "TimeTable > ",
+      pathname: "/",
+    },
+
+    {
+      id: 2,
+      name: "Generate Timetable",
+      pathname: "/generate_timetables/main",
+    },
+  ];
+
   
   return (
-    <React.Fragment>
+    <div className="container-fluid">
       <div className="container-fluid">
       <ScreenNav rightNavData={navData} />
         <div className="row">
@@ -35,37 +48,38 @@ const main = () => {
           
         </div>
         <div className="container-fluid" >
-        <div className="days_buttons" id="bt" >
+        <div className="gen_buttons" id="bt" >
               <button
                 type="button"
-                className="btn" 
-                // onClick={(e) => {
-                //     history.push({ pathname: "/Lecturer_timetable/view" });
-                // }}
+                className="btn1" 
+                  onClick={(e) => {
+                     history.push({ pathname: "/generate_timetables/lecturer_table" });
+                  }}
                 >
-                Lecturer
+                Lecturers
               </button>
+              
               <button
                 type="button"
-                className="btn"
-                // onClick={(e) => {
-                //   history.push({ pathname: "/Student_timetable/view" });
-                // }}
+                className="btn1"
+                onClick={(e) => {
+                   history.push({ pathname: "/generate_timetables/student_timetable" });
+                 }}
               >
                 Student Groups
               </button>
               <button
                 type="button"
-                className="btn"
-                // onClick={(e) => {
-                //   history.push({ pathname: "/Hall_timetable/view" });
-                // }}
+                className="btn1"
+                 onClick={(e) => {
+                history.push({ pathname: "/generate_timetables/location_table" });
+                 }}
               >
-               Lecture Halls
+               Locations
               </button>
             </div>
         </div>
-        <br></br>
+        
         <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -83,8 +97,8 @@ const main = () => {
       <div className="container-fluid">
         <p className="lead text-center home__footer">@copyright 2020</p>
       </div>
-    </React.Fragment>
+      </div>
   );
 };
 
-export default main;
+export default Addworkingdays;

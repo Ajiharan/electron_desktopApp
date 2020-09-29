@@ -43,6 +43,9 @@ import AddSession from "./screens/session/AddSession";
 import ViewSession from "./screens/session/ViewSession";
 import NotAllocated from "./screens/notAllocated/NotAllocated";
 import GenerateTimetable from "./screens/generate_timetables/main";
+import Lecturer_table from "./screens/generate_timetables/lecturer_table";
+import Student_table from "./screens/generate_timetables/student_timetable";
+import Location_table from "./screens/generate_timetables/location_table"
 function App() {
   return (
     <React.Fragment>
@@ -163,6 +166,21 @@ function App() {
             exact
             path="/generate_timetables/main"
             component={GenerateTimetable}
+          />
+           <Route
+            exact
+            path="/generate_timetables/lecturer_table"
+            component={Lecturer_table}
+          />
+           <Route
+            exact
+            path="/generate_timetables/student_timetable"
+            component={Student_table}
+          />
+            <Route
+            exact
+            path="/generate_timetables/location_table"
+            component={Location_table}
           />
         </Switch>
       </HashRouter>
