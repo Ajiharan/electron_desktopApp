@@ -77,17 +77,17 @@ import {
   get_parallelSessionReducer,
 } from "./parallel/parallelSessionReducer";
 
-import {
-  get_session,
-  session_addReducer
-} from "./session/sessionReducer";
+import { get_session, session_addReducer } from "./session/sessionReducer";
 
 import {
   allocated_addReducer,
   allocated_getReducer,
 } from "./notAllocated/notAllocatedReducer";
 
+import { addSuitableRoomReducer } from "./suitableRoom/SuitableRoomReducer";
+
 const rootReducer = combineReducers({
+  addSuitableRoom: addSuitableRoomReducer,
   add_notAllocated: allocated_addReducer,
   get_notAllocated: allocated_getReducer,
   add_Session: session_addReducer,

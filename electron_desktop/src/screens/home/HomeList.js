@@ -437,6 +437,11 @@ const HomeList = () => {
                     <ListItemText primary="view" />
                   </ListItem>
                 </Link>
+                <Link to="/suitableRoom/add">
+                  <ListItem button className={classes.sub_nested}>
+                    <ListItemText primary="Add SuitableRoom" />
+                  </ListItem>
+                </Link>
               </List>
             </Collapse>
           </List>

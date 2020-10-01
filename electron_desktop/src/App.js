@@ -46,6 +46,7 @@ import GenerateTimetable from "./screens/generate_timetables/main";
 import Lecturer_table from "./screens/generate_timetables/lecturer_table";
 import Student_table from "./screens/generate_timetables/student_timetable";
 import Location_table from "./screens/generate_timetables/location_table";
+import SuitableRoom from "./screens/suitableRooms/SuitableRoom";
 function App() {
   return (
     <React.Fragment>
@@ -53,6 +54,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/suitableRoom/add" component={SuitableRoom} />
           <Route exact path="/notAllocated" component={NotAllocated} />
           <Route exact path="/consecutive" component={ConsecutiveSession} />
           <Route exact path="/parallel" component={ParallelSession} />
