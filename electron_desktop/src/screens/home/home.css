@@ -1,4 +1,11 @@
-.homeContainer {
+#homeContainer .col-md-3 {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 90vh;
+}
+
+#homeContainer .col-md-3::-webkit-scrollbar {
+  display: none;
 }
 .home__footer {
   border-top: 2px solid lightgray;
@@ -10,4 +17,20 @@
 
 #homeContainer::-webkit-scrollbar {
   display: none;
+}
+
+.gifContainers {
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 5px;
+}
+
+.gifContainers > img {
+  width: 250px;
+  height: 250px;
+  margin: 7px;
 }

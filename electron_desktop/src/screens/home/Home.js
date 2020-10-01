@@ -15,11 +15,37 @@ const Home = () => {
             <HomeList />
           </div>
           <div className="col-md-5">
-            <Spinner Loader={BeatLoader} />
-            <img
-              className="img-fluid img-thumbnail"
-              src={require("../images/imageHome1.gif")}
-            />
+            <div style={{ marginLeft: "450px" }}>
+              <Spinner Loader={BeatLoader} />
+            </div>
+
+            <div className="gifContainers">
+              <img
+                className=" img-thumbnail"
+                src={require("../images/imageHome1.gif")}
+              />
+              <img
+                className=" img-thumbnail"
+                src={require("../images/imageHome1.gif")}
+              />
+
+              <img
+                className=" img-thumbnail"
+                src={require("../images/imageHome1.gif")}
+              />
+              <img
+                className=" img-thumbnail"
+                src={require("../images/imageHome1.gif")}
+              />
+              <img
+                className=" img-thumbnail"
+                src={require("../images/imageHome1.gif")}
+              />
+              <img
+                className=" img-thumbnail"
+                src={require("../images/imageHome1.gif")}
+              />
+            </div>
           </div>
         </div>
         <div className="row"></div>
