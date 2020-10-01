@@ -57,7 +57,7 @@ const StudentGroupId = () => {
           <h2 className="text-center text-dark">Add Group Number</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="StudentGroupId_inputs">
-              <label htmlFor="group_id" className="text-light">
+              <label htmlFor="group_id" className="text">
                 Group Number
               </label>
               <input

@@ -7,6 +7,7 @@
   margin-left: 5px;
   overflow-y: scroll;
   overflow-x: hidden;
+  max-height: 80vh;
 }
 
 .cardStyle {
@@ -29,6 +30,7 @@
   margin-bottom: 20px;
   width: 120px;
   padding: 5px;
+  margin-right: 5px;
   border-radius: 20px;
 }
 .ViewParallelSession__card {

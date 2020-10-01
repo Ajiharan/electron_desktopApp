@@ -73,7 +73,7 @@ const ProgrammeUpdate = (props) => {
           <h2 className="text-center text-dark">Update programme</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="programmeUpdate_inputs">
-              <label htmlFor="programmeUpdate" className="text-light">
+              <label htmlFor="programmeUpdate" className="text">
                 programme
               </label>
               <input

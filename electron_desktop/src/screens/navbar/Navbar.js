@@ -11,7 +11,7 @@ const Navbar = () => {
 
         <ul className="navbar-nav" id="ul-heading">
           <li className="nav-item" id="nav-title">
-            <h3 className="nav-link text-light" href="#">
+            <h3 className="nav-link text-dark" href="#">
               Time Table Management System
             </h3>
           </li>

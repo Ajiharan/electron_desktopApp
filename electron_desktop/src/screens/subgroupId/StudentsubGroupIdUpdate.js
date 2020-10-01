@@ -73,7 +73,7 @@ const StudentsubGroupIdUpdate = (props) => {
           <h2 className="text-center text-dark">Update SubGroup Number</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="StudentSubGroupIdUpdate_inputs">
-              <label htmlFor="StudentSubGroupIdUpdates" className="text-light">
+              <label htmlFor="StudentSubGroupIdUpdates" className="text">
                 Sub Group Number
               </label>
               <input

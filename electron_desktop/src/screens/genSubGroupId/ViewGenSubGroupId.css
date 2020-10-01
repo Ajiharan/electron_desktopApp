@@ -3,9 +3,9 @@
   object-fit: contain;
   padding: 15px;
   background-color: white;
-
   overflow-y: scroll;
   overflow-x: hidden;
+  max-height: 60vh;
 }
 
 .ViewGenSubGroupId::-webkit-scrollbar {
@@ -17,6 +17,7 @@
   border: none;
   margin-bottom: 20px;
   width: 120px;
+  margin-right: 5px;
   padding: 5px;
   border-radius: 20px;
 }

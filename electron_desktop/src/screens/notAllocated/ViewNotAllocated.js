@@ -45,7 +45,6 @@ const ViewNotAllocated = () => {
         {sessions.map((data, i) => (
           <div className="card bg-dark cardStyle" key={i}>
             <div className="card-body">
-              {"["}
               {data.type_value.map((res, i) => (
                 <div key={i}>
                   <h5 className="text-center text-light">
@@ -54,7 +53,7 @@ const ViewNotAllocated = () => {
                   </h5>
                 </div>
               ))}
-              {"]"}
+
               <h5 className="text-center text-light">
                 Start Time : {data.start_time}
               </h5>

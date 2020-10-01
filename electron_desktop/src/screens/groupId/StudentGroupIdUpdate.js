@@ -73,7 +73,7 @@ const StudentGroupIdUpdate = (props) => {
           <h2 className="text-center text-dark">Update GroupNumber</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="StudentGroupIdUpdate_inputs">
-              <label htmlFor="groupId" className="text-light">
+              <label htmlFor="groupId" className="text">
                 Group Number
               </label>
               <input

@@ -57,7 +57,7 @@ const StudentTag = () => {
           <h2 className="text-center text-dark">Add Tag</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="StudentTag_inputs">
-              <label htmlFor="StudentTags" className="text-light">
+              <label htmlFor="StudentTags" className="text">
                 Tag
               </label>
               <input

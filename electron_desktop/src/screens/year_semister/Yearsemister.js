@@ -57,7 +57,7 @@ const Yearsemister = () => {
           <h2 className="text-center text-dark">Add year & Semister</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="yearSemister_inputs">
-              <label htmlFor="year_semister" className="text-light">
+              <label htmlFor="year_semister" className="text">
                 year & semister
               </label>
               <input

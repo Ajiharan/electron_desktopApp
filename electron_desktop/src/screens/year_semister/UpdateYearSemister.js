@@ -73,7 +73,7 @@ const UpdateYearSemister = (props) => {
           <h2 className="text-center text-dark">Update year & Semister</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="yearSemisterUpdate_inputs">
-              <label htmlFor="yearSemisterUpdate" className="text-light">
+              <label htmlFor="yearSemisterUpdate" className="text">
                 year & semister
               </label>
               <input

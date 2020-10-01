@@ -3,7 +3,7 @@ import React from "react";
 const GenIdInput = ({ labelName, id_name, formik, data, divName, fvalue }) => {
   return (
     <div className="GenGroupId_inputs form-group">
-      <label htmlFor="group_id" className="text-light">
+      <label htmlFor="group_id" className="text">
         {labelName}
       </label>
       <select

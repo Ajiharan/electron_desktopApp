@@ -73,7 +73,7 @@ const StudentTagUpdate = (props) => {
           <h2 className="text-center text-dark">Update Tag</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="StudentTagUpdate_inputs">
-              <label htmlFor="StudentTagUpdates" className="text-light">
+              <label htmlFor="StudentTagUpdates" className="text">
                 Tag
               </label>
               <input

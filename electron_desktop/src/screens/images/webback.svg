@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="Ellipse_3" x="1077" y="-190" width="1160" height="1499" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#e96a6a" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Web_1920_1">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_1" data-name="Web 1920 – 1" clip-path="url(#clip-Web_1920_1)">
+    <rect width="1920" height="1080" fill="#fff"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_3)">
+      <ellipse id="Ellipse_3-2" data-name="Ellipse 3" cx="571" cy="740" rx="571" ry="740" transform="translate(1086 -190)" fill="#ef5cd2" opacity="0.12"/>
+    </g>
+    <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1150 911)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <ellipse cx="57" cy="41" rx="57" ry="41" stroke="none"/>
+      <ellipse cx="57" cy="41" rx="56.5" ry="40.5" fill="none"/>
+    </g>
+    <g id="Ellipse_5" data-name="Ellipse 5" transform="translate(1039 401)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <circle cx="47" cy="47" r="47" stroke="none"/>
+      <circle cx="47" cy="47" r="46.5" fill="none"/>
+    </g>
+    <g id="Ellipse_6" data-name="Ellipse 6" transform="translate(1390 -55)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <ellipse cx="54.5" cy="49.5" rx="54.5" ry="49.5" stroke="none"/>
+      <ellipse cx="54.5" cy="49.5" rx="54" ry="49" fill="none"/>
+    </g>
+    <g id="Ellipse_7" data-name="Ellipse 7" transform="translate(1727 679)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <ellipse cx="42.5" cy="47" rx="42.5" ry="47" stroke="none"/>
+      <ellipse cx="42.5" cy="47" rx="42" ry="46.5" fill="none"/>
+    </g>
+    <g id="Ellipse_8" data-name="Ellipse 8" transform="translate(1622 203)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <ellipse cx="52.5" cy="43.5" rx="52.5" ry="43.5" stroke="none"/>
+      <ellipse cx="52.5" cy="43.5" rx="52" ry="43" fill="none"/>
+    </g>
+    <g id="Ellipse_9" data-name="Ellipse 9" transform="translate(755 358)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <ellipse cx="48" cy="43" rx="48" ry="43" stroke="none"/>
+      <ellipse cx="48" cy="43" rx="47.5" ry="42.5" fill="none"/>
+    </g>
+    <g id="Ellipse_10" data-name="Ellipse 10" transform="translate(521 511)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <ellipse cx="48" cy="39.5" rx="48" ry="39.5" stroke="none"/>
+      <ellipse cx="48" cy="39.5" rx="47.5" ry="39" fill="none"/>
+    </g>
+    <g id="Ellipse_11" data-name="Ellipse 11" transform="translate(851 122)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <ellipse cx="41" cy="40.5" rx="41" ry="40.5" stroke="none"/>
+      <ellipse cx="41" cy="40.5" rx="40.5" ry="40" fill="none"/>
+    </g>
+    <g id="Ellipse_12" data-name="Ellipse 12" transform="translate(1100 97)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.06">
+      <ellipse cx="107" cy="96.5" rx="107" ry="96.5" stroke="none"/>
+      <ellipse cx="107" cy="96.5" rx="106.5" ry="96" fill="none"/>
+    </g>
+    <g id="Ellipse_13" data-name="Ellipse 13" transform="translate(725 632)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <circle cx="47" cy="47" r="47" stroke="none"/>
+      <circle cx="47" cy="47" r="46.5" fill="none"/>
+    </g>
+    <g id="Ellipse_14" data-name="Ellipse 14" transform="translate(867 876)" fill="#5cefb0" stroke="#707070" stroke-width="1" opacity="0.07">
+      <ellipse cx="37" cy="38" rx="37" ry="38" stroke="none"/>
+      <ellipse cx="37" cy="38" rx="36.5" ry="37.5" fill="none"/>
+    </g>
+  </g>
+</svg>

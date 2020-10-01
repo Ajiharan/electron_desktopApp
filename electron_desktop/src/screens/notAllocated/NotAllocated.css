@@ -25,7 +25,8 @@
   height: fit-content;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid rgb(236, 225, 225);
+  background-color: white;
 
   justify-content: center;
   flex-wrap: wrap;

@@ -57,7 +57,7 @@ const StudentSubGroupId = () => {
           <h2 className="text-center text-dark">Add Sub Group Number</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="StudentSubGroupId_inputs">
-              <label htmlFor="StudentSubGroupId" className="text-light">
+              <label htmlFor="StudentSubGroupId" className="text">
                 sub group Number
               </label>
               <input

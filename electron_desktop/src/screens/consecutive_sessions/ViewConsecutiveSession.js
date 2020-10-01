@@ -41,7 +41,7 @@ const ViewConsecutiveSession = () => {
       </div>
       <div className="ViewConsecutiveSession">
         {sessions.map((data, i) => (
-          <div className="card bg-dark ViewConsecutiveSession" key={i}>
+          <div className="card bg-dark ViewConsecutiveSession__list" key={i}>
             <div className="card-body">
               <h5 className="text-center text-light">{data.lecture}</h5>
               <h5 className="text-center text-light">{data.tutorial}</h5>

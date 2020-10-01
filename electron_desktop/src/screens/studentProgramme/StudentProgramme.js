@@ -54,7 +54,7 @@ const StudentProgramme = () => {
           <h2 className="text-center text-dark">Add Programme</h2>
           <form id="frm" onSubmit={(e) => submitHandler(e)}>
             <div className="student_programme_inputs">
-              <label htmlFor="student_programme" className="text-light">
+              <label htmlFor="student_programme" className="text">
                 programme
               </label>
               <input

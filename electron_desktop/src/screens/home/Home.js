@@ -21,32 +21,8 @@ const Home = () => {
               src={require("../images/imageHome1.gif")}
             />
           </div>
-          <div className="col-md-4">
-            <Search searchData={searchData} />
-          </div>
         </div>
-        <div className="row">
-          <p className="lead">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley Lorem
-            Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since
-            the 1500s, when an unknown printer took a galley Lorem Ipsum is
-            simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the industry's standard dummy text ever since the
-            1500s, when an unknown printer took a galley Lorem Ipsum is simply
-            dummy text of the printing and typesetting industry. Lorem Ipsum has
-            been the industry's standard dummy text ever since the 1500s, when
-            an unknown printer took a galley Lorem Ipsum is simply dummy text of
-            the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley
-          </p>
-        </div>
-      </div>
-      <div className="container-fluid">
-        <p className="lead text-center home__footer">@copyright 2020</p>
+        <div className="row"></div>
       </div>
     </React.Fragment>
   );

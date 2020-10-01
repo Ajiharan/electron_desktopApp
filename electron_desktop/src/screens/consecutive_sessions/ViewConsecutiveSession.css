@@ -3,11 +3,13 @@
   object-fit: contain;
   padding: 15px;
   background-color: white;
-
   overflow-y: scroll;
   overflow-x: hidden;
+  max-height: 60vh;
 }
-
+.ViewConsecutiveSession__list {
+  margin-top: 10px;
+}
 .ViewConsecutiveSession::-webkit-scrollbar {
   display: none;
 }
