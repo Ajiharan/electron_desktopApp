@@ -49,6 +49,8 @@ import Location_table from "./screens/generate_timetables/location_table";
 import SuitableRoom from "./screens/suitableRooms/SuitableRoom";
 import SuitableLecturer from "./screens/suitableLecturer/SuitableLecturer";
 import OverlapSession from "./screens/overlap/OverlapSession";
+import suitableSession from "./screens/suitableSession/SuitableSession";
+import SuitableGroupId from "./screens/suitableGroupId/SuitableGroupId";
 function App() {
   return (
     <React.Fragment>
@@ -57,6 +59,21 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomeScreen} />
           <Route exact path="/overlap/add" component={OverlapSession} />
+          <Route
+            exact
+            path="/suitableLecturer/add"
+            component={SuitableLecturer}
+          />
+          <Route
+            exact
+            path="/suitableGroupId/add"
+            component={SuitableGroupId}
+          />
+          <Route
+            exact
+            path="/suitableSession/add"
+            component={suitableSession}
+          />
           <Route
             exact
             path="/suitableLecturer/add"

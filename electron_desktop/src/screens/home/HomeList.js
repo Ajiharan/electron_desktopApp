@@ -444,12 +444,22 @@ const HomeList = () => {
                 </Link>
                 <Link to="/suitableRoom/add">
                   <ListItem button className={classes.sub_nested}>
-                    <ListItemText primary="Add SuitableRoom" />
+                    <ListItemText primary="Add SuitableTag" />
                   </ListItem>
                 </Link>
                 <Link to="/suitableLecturer/add">
                   <ListItem button className={classes.sub_nested}>
                     <ListItemText primary="Add SuitableLecturer" />
+                  </ListItem>
+                </Link>
+                <Link to="/suitableSession/add">
+                  <ListItem button className={classes.sub_nested}>
+                    <ListItemText primary="Add SuitableSession" />
+                  </ListItem>
+                </Link>
+                <Link to="/suitableGroupId/add">
+                  <ListItem button className={classes.sub_nested}>
+                    <ListItemText primary="Add SuitableGroupId" />
                   </ListItem>
                 </Link>
               </List>
