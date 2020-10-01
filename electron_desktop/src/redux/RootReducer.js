@@ -86,8 +86,12 @@ import {
 
 import { addSuitableRoomReducer } from "./suitableRoom/SuitableRoomReducer";
 import{addSuitableLecturerReducer} from "./SuitableLecturer/SuitableLecturerReducer";
+import{addSuitableSessionReducer} from "./suitableSession/SuitableSessionReducer";
+import{addSuitableGroupIdReducer} from "./suitableGroupId/SuitableGroupIdReducer";
 
 const rootReducer = combineReducers({
+  addSuitableGroupId:addSuitableSessionReducer,
+  addSuitableSession:addSuitableSessionReducer,
   addSuitableLecturer:addSuitableLecturerReducer,
   addSuitableRoom: addSuitableRoomReducer,
   add_notAllocated: allocated_addReducer,

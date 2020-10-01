@@ -1,25 +1,25 @@
 import {
-    ADD_SUITABLE_LECTURER_REQUEST,
-    ADD_SUITABLE_LECTURER_SUCCESS,
-    ADD_SUITABLE_LECTURER_FAILURE,
-  } from "./SuitableLecturerType";
+    ADD_SUITABLE_GROUPID_REQUEST,
+    ADD_SUITABLE_GROUPID_SUCCESS,
+    ADD_SUITABLE_GROUPID_FAILURE,
+  } from "./SuitableGroupIdType";
   
   import { db } from "../../firebase";
   import firebase from "firebase";
   
-  const addSuitableLecturer = (roomData) => {
+  const addSuitableGroupId = (roomData) => {
     return async (dispatch) => {
-      dispatch({ type: ADD_SUITABLE_LECTURER_REQUEST });
+      dispatch({ type: ADD_SUITABLE_GROUPID_REQUEST });
       try {
         const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-        db.collection("SuitableLecturer")
+        db.collection("SuitableGroupId")
           .add({
             ...roomData,
             timestamp,
           })
           .then(() => {
             dispatch({
-              type: ADD_SUITABLE_LECTURER_SUCCESS,
+              type: ADD_SUITABLE_GROUPID_SUCCESS,
               payload: {
                 ...roomData,
                 timestamp,
@@ -28,7 +28,7 @@ import {
           })
           .catch((err) => {
             dispatch({
-              type: ADD_SUITABLE_LECTURER_FAILURE,
+              type: ADD_SUITABLE_GROUPID_FAILURE,
               error: err,
             });
           });
@@ -36,5 +36,5 @@ import {
     };
   };
   
-  export { addSuitableLecturer };
+  export { addSuitableGroupId };
   
