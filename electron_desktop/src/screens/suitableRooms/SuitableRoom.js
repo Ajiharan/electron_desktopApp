@@ -15,14 +15,14 @@ const SuitableRoom = () => {
   const dispatch = useDispatch();
   const [tag_data, setTags] = useState("");
   const [room_data, setRooms] = useState("");
-  const [selectTag, setSelectTag] = useState(null);
+  const [selectTag, setSelectTag] = useState([]);
   const [selectRoom, setSelectRoom] = useState([]);
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Added");
   const { loading, error } = useSelector((state) => state.addSuitableRoom);
   const { room } = useSelector((state) => state.get_room);
   const { tags } = useSelector((state) => state.get_tag);
-
+  const [room_options, setRoomOptions] = useState([]);
   useEffect(() => {
     dispatch(viewRoom());
     dispatch(viewTag());
@@ -33,16 +33,44 @@ const SuitableRoom = () => {
     setTags(tags);
   }, [room, tags]);
 
-  const room_options = room.map((data) => {
-    console.log(data);
-    return {
-      value: data.room.name,
-      label: data.room.name,
-    };
-  });
+  useEffect(() => {
+    if (selectTag.value === "lecture") {
+      const temp = room.filter((data) => {
+        if (data.room.type === "lecture") {
+          return data;
+        }
+      });
+      setRoomOptions(
+        temp.map((data) => {
+          return { value: data.room.name, label: data.room.name };
+        })
+      );
+    } else if (selectTag.value === "lab") {
+      const temp = room.filter((data) => {
+        if (data.room.type === "lab") {
+          return data;
+        }
+      });
+      setRoomOptions(
+        temp.map((data) => {
+          return { value: data.room.name, label: data.room.name };
+        })
+      );
+    } else {
+      const temp = room.filter((data) => {
+        if (data.room.type === "tutorial") {
+          return data;
+        }
+      });
+      setRoomOptions(
+        temp.map((data) => {
+          return { value: data.room.name, label: data.room.name };
+        })
+      );
+    }
+  }, [selectTag]);
 
   const tag_options = tags.map((data) => {
-    console.log(data);
     return {
       value: data.tag,
       label: data.tag,
@@ -71,7 +99,7 @@ const SuitableRoom = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log(selectRoom);
+
     dispatch(
       addSuitableRoom({
         selectRoom,
