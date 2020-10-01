@@ -19,9 +19,7 @@ const SuitableRoom = () => {
   const [selectRoom, setSelectRoom] = useState([]);
   const [clicked, isClicked] = useState(false);
   const [success, setSuccess] = useState("Successfully Added");
-  const { loading, error, suitableRoom } = useSelector(
-    (state) => state.addSuitableRoom
-  );
+  const { loading, error } = useSelector((state) => state.addSuitableRoom);
   const { room } = useSelector((state) => state.get_room);
   const { tags } = useSelector((state) => state.get_tag);
 

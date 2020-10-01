@@ -289,6 +289,11 @@ const HomeList = () => {
                 <ListItemText primary="Not Allocated" />
               </ListItem>
             </Link>
+            <Link to="/overlap/add">
+              <ListItem button className={classes.sub_nested}>
+                <ListItemText primary="Overlap Session" />
+              </ListItem>
+            </Link>
           </List>
         </Collapse>
 
