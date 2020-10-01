@@ -6,6 +6,7 @@ import { viewSemister } from "../../redux/Year_semi/YearAction";
 import { view_genGroupId } from "../../redux/genId/genIdAction";
 import { view_genSubGroupId } from "../../redux/gensubId/genSubIdAction";
 import Search from "../home/Search";
+import { useHistory } from "react-router-dom";
 const ViewStudentDetail = () => {
   const [type, setType] = useState("");
   const [tableData, setTableData] = useState([]);
@@ -14,12 +15,25 @@ const ViewStudentDetail = () => {
   const { year_semi } = useSelector((state) => state.get_year_semister);
   const { gen_groupids } = useSelector((state) => state.get_genGroupId);
   const { gen_subgroupids } = useSelector((state) => state.get_genSubGroupId);
+
+  const history = useHistory();
+
+  const gotostudent = (data) => {
+    history.push({
+      pathname: "/generate_timetables/timetable_student",
+      state: data,
+    });
+  };
+
+
   useEffect(() => {
     dispatch(viewSemister());
     dispatch(view_genGroupId());
     dispatch(view_genSubGroupId());
     return () => {};
   }, []);
+
+
   useEffect(() => {
     setTableData(
       year_semi.map((data) => {
@@ -61,7 +75,7 @@ const ViewStudentDetail = () => {
       },
   ];
 
-
+  
 
   const searchData = (name) => {
   };
@@ -105,7 +119,7 @@ const ViewStudentDetail = () => {
                   ))}
                 </td>
                 <td>
-                <button >View</button>
+                <button onClick={(e) => gotostudent(data)} >View</button>
                 </td>
               </tr>
             ))}

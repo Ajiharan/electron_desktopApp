@@ -25,6 +25,8 @@
     "firebase": "^7.17.1",
     "formik": "^2.1.5",
     "jquery": "^3.5.1",
+    "jspdf": "^2.1.1",
+    "jspdf-autotable": "^3.5.13",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-minimal-pie-chart": "^8.0.1",

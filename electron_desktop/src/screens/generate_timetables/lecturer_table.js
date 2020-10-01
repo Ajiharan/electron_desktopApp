@@ -31,7 +31,7 @@ const Lecturer_table = () => {
     },
     {
       id: 3,
-      name: "Lecturer  ",
+      name: "Lecturer Details ",
       pathname: "/generate_timetables/lecturer_table",
     }
   ];
@@ -44,7 +44,12 @@ const Lecturer_table = () => {
     setLecturerData(lecturer);
   }, [lecturer]);
 
-  
+  const gototimetable = (data) => {
+    history.push({
+      pathname: "/generate_timetables/timetable_lecturer",
+      state: data,
+    });
+  };
 
   
   const searchData = (name) => {
@@ -91,7 +96,7 @@ const Lecturer_table = () => {
                             <td><span>{data.name}</span></td>
 
                             <td>
-                              <button >View</button>
+                              <button onClick={(e) => gototimetable(data)}>View</button>
                             </td>
                           </tr>
                       ))}

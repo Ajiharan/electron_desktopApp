@@ -88,6 +88,11 @@ import { addSuitableRoomReducer } from "./suitableRoom/SuitableRoomReducer";
 import { addSuitableLecturerReducer } from "./SuitableLecturer/SuitableLecturerReducer";
 import { addOverlapReducer } from "./overlap/OverlapReducer";
 
+import {
+  lecturertimetable_addReducer,
+  
+} from "./generate_lecturertimetable/lecturertimetableReducer";
+
 const rootReducer = combineReducers({
   addOverlapReducer: addOverlapReducer,
   addSuitableLecturer: addSuitableLecturerReducer,
@@ -96,6 +101,7 @@ const rootReducer = combineReducers({
   get_notAllocated: allocated_getReducer,
   add_Session: session_addReducer,
   get_Session: get_session,
+  lecturertimetable_addReducer: lecturertimetable_addReducer,
   add_parallelSession: parallelSession_addReducer,
   get_parallelSession: get_parallelSessionReducer,
   add_consecutiveSession: consecutiveSession_addReducer,

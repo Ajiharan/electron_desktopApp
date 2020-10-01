@@ -68,9 +68,9 @@ const ViewRoom = () => {
     }
   };
 
-  const gotoUpdate = (data) => {
+  const gotolocation = (data) => {
     history.push({
-      pathname: "/room/room/update",
+      pathname: "/generate_timetables/timetable_location",
       state: data,
     });
   };
@@ -115,7 +115,7 @@ const ViewRoom = () => {
                      
 
                       <td>
-                        <button >View</button>
+                        <button  onClick={(e) => gotolocation(data)}>View</button>
                       </td>
 
                     </tr>
