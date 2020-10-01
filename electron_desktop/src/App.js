@@ -51,6 +51,10 @@ import SuitableLecturer from "./screens/suitableLecturer/SuitableLecturer";
 import OverlapSession from "./screens/overlap/OverlapSession";
 import suitableSession from "./screens/suitableSession/SuitableSession";
 import SuitableGroupId from "./screens/suitableGroupId/SuitableGroupId";
+import TimeTable_lecturer from "./screens/generate_timetables/timetable_lecturer";
+import TimeTable_location from "./screens/generate_timetables/timetable_location";
+import TimeTable_student from "./screens/generate_timetables/timetable_student";
+ import Lec_timetable from "./screens/generate_lecturertimetable/lec_timetable";
 function App() {
   return (
     <React.Fragment>
@@ -189,7 +193,7 @@ function App() {
             path="/workingdays/update"
             component={UpdateWorkingdays}
           />
-          <Route
+        <Route
             exact
             path="/generate_timetables/main"
             component={GenerateTimetable}
@@ -208,6 +212,26 @@ function App() {
             exact
             path="/generate_timetables/location_table"
             component={Location_table}
+          />
+           <Route
+            exact
+            path="/generate_timetables/timetable_lecturer"
+            component={TimeTable_lecturer}
+          />
+           <Route
+            exact
+            path="/generate_timetables/timetable_location"
+            component={TimeTable_location}
+          />
+          <Route
+            exact
+            path="/generate_timetables/timetable_student"
+            component={TimeTable_student}
+          />
+           <Route
+            exact
+            path="/generate_lecturertimetable/lec_timetable"
+            component={Lec_timetable}
           />
         </Switch>
       </HashRouter>
