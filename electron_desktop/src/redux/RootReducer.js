@@ -85,8 +85,10 @@ import {
 } from "./notAllocated/notAllocatedReducer";
 
 import { addSuitableRoomReducer } from "./suitableRoom/SuitableRoomReducer";
+import{addSuitableLecturerReducer} from "./SuitableLecturer/SuitableLecturerReducer";
 
 const rootReducer = combineReducers({
+  addSuitableLecturer:addSuitableLecturerReducer,
   addSuitableRoom: addSuitableRoomReducer,
   add_notAllocated: allocated_addReducer,
   get_notAllocated: allocated_getReducer,
