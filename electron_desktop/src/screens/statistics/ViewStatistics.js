@@ -69,7 +69,7 @@ const ViewStatistics = () => {
             >
               <option>Select</option>
               <option value="Student">Student</option>
-              <option value="Lecture">Lecture</option>
+              <option value="Lecture">Lecturer</option>
             </select>
           </div>
         </form>

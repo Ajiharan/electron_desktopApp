@@ -60,7 +60,7 @@ const ViewStatistics = () => {
   return (
     <React.Fragment>
       <div className="container card bg-info text-light view_statistics">
-        <h2 className="text-center">Student Statistics</h2>
+        <h2 className="text-center">Lecturer Statistics</h2>
         <p class="lead">
           No of lecturers in Computing:
           {lecturer.filter((data) => data.faculty === "Computing").length}
