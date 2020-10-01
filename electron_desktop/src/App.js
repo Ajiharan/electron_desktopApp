@@ -55,7 +55,9 @@ import TimeTable_lecturer from "./screens/generate_timetables/timetable_lecturer
 import TimeTable_location from "./screens/generate_timetables/timetable_location";
 import TimeTable_student from "./screens/generate_timetables/timetable_student";
  import Lec_timetable from "./screens/generate_lecturertimetable/lec_timetable";
- import stud_timetable from "./screens/generate_studenttimetable/stud_timetable"
+ import stud_timetable from "./screens/generate_studenttimetable/stud_timetable";
+import loca_timetable from "./screens/generate_locationtimetable/loca_timetable";
+
 function App() {
   return (
     <React.Fragment>
@@ -238,6 +240,11 @@ function App() {
             exact
             path="/generate_lecturertimetable/stud_timetable"
             component={stud_timetable}
+          />
+            <Route
+            exact
+            path="/generate_locationtimetable/loca_timetable"
+            component={loca_timetable}
           />
         </Switch>
       </HashRouter>

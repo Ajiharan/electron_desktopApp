@@ -504,7 +504,7 @@ const HomeList = () => {
                     <ListItemText primary="Add Student Time Table" />
                   </ListItem>
                 </Link>
-                <Link to="/location/building/view">
+                <Link to="/generate_locationtimetable/loca_timetable">
                   <ListItem button className={classes.sub_nested}>
                     <ListItemText primary="Add Location Time Table" />
                   </ListItem>

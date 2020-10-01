@@ -118,6 +118,12 @@ const Room = (props) => {
                       <tbody>
                       <tr>
                               <td>8.30</td>
+                              <td>IT2030-OOP(lecture)
+                              <br></br>
+                                    Ms.Kushnara
+                                    <br></br>
+                                    Y2.S1.03(IT)
+                                    </td>
                               
 
                           </tr>

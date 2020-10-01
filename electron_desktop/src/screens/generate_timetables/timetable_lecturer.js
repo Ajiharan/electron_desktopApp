@@ -122,6 +122,10 @@ const ViewLecturer = (props) => {
                       <tbody>
                           <tr>
                               <td>8.30</td>
+                              <td>IT2030-OOP(lecture)
+                                <br></br>Y2.S1.03(IT)
+                                    <br></br>B501
+                                </td>
                              
 
                           </tr>

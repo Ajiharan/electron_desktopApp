@@ -93,6 +93,10 @@ import {
   
 } from "./generate_lecturertimetable/lecturertimetableReducer";
 
+import {
+  locationtimetable_addReducer,
+}from "./generate_locationtimetable/locationtimetableReducer";
+
 const rootReducer = combineReducers({
   addOverlapReducer: addOverlapReducer,
   addSuitableLecturer: addSuitableLecturerReducer,
@@ -141,6 +145,7 @@ const rootReducer = combineReducers({
   WorkingdaysReducer: WorkingdaysReducer,
   get_workingdays: get_workingdays,
   update_workingdays: update_workingdays_Reducer,
+  locationtimetable_addReducer: locationtimetable_addReducer,
 });
 
 export default rootReducer;

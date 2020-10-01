@@ -13,11 +13,11 @@ import {view_genGroupId} from "../../redux/genId/genIdAction";
 import {viewWorkingdays} from "../../redux/Working_days/WorkingdaysAction";
 import {viewRoom} from "../../redux/Room/RoomAction";
 
-import {Addstudenttimetable} from "../../redux/generate_studenttimetable/studenttimetableAction";
+import {Addlocationtimetable} from "../../redux/generate_locationtimetable/locationtimetableAction";
 
 const animatedComponents = makeAnimated();
 
-const Studenttimetableadd = () => {
+const Locationtimetableadd = () => {
     const dispatch = useDispatch();
     const [clicked, isClicked] = useState(false);
     const [success, setSuccess] = useState("Successfully Added!");
@@ -225,7 +225,7 @@ const Studenttimetableadd = () => {
             selectedValueLecturer,selectedValueSubject,subCode,selectedValueTag,selectedValueGroup,noOfstudents,timeDuration,selectedValueWorkingday,selectedValueWorkinghour,selectedValueroom
         }
         console.log(data);
-        dispatch(Addstudenttimetable(data))
+        dispatch(Addlocationtimetable(data))
     }
 
     const navData = [
@@ -241,8 +241,8 @@ const Studenttimetableadd = () => {
         },
         {
             id: 3,
-            name: "Add Student Time Table",
-            pathname: "/generate_lecturertimetable/stud_timetable",
+            name: "Add Location Time Table",
+            pathname: "/generate_lecturertimetable/loca_timetable",
         }
     ];
 
@@ -259,18 +259,18 @@ const Studenttimetableadd = () => {
                             {!loading && error && error}
                         </p>
                     </div>
-                    <h2 className="text-center text-dark">Generate Student Time Table</h2>
+                    <h2 className="text-center text-dark">Generate Location Time Table</h2>
                     <form id="myForm" onSubmit={handleSubmit} autoComplete="off">
 
-                  
+                    <label htmlFor="title">Select Location</label>
+                            <Select closeMenuOnSelect={false}   options={roomoptions}
+                                    onChange={handleChangeroom}
+                                    name="room"
+                                    value={e}
+                            />
 
                   
-                    <label htmlFor="title">Select Group Id</label>
-                            <Select options={studentgroupIdOptions}
-                                    onChange={handleChangeGroup}
-                                    name="group"
-                                    value={selectedValueGroup}
-                            />
+                   
                             
                                 <label htmlFor="title">Select Working Day</label>
                             <Select closeMenuOnSelect={false}   options={workingdaysoptions}
@@ -284,7 +284,12 @@ const Studenttimetableadd = () => {
                                     name="workinghours"
                                     value={e}
                             />
-
+                        <label htmlFor="title">Select Group Id</label>
+                            <Select options={studentgroupIdOptions}
+                                    onChange={handleChangeGroup}
+                                    name="group"
+                                    value={selectedValueGroup}
+                            />
 
                             <label htmlFor="title">Select subject</label>
                             <Select options={subjectoptions}
@@ -307,12 +312,7 @@ const Studenttimetableadd = () => {
                             />
 
                           
-                               <label htmlFor="title">Select Location</label>
-                            <Select closeMenuOnSelect={false}   options={roomoptions}
-                                    onChange={handleChangeroom}
-                                    name="room"
-                                    value={e}
-                            />
+                             
 
 
                          <br></br>
@@ -330,4 +330,4 @@ const Studenttimetableadd = () => {
 };
 
 
-export default Studenttimetableadd;
+export default Locationtimetableadd;
