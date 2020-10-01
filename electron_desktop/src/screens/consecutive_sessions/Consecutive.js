@@ -4,26 +4,23 @@ import { Spinner } from "../animations/Spinner";
 import { PropagateLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 import ScreenNav from "../screen-nav/ScreenNav";
-import { viewSubject } from "../../redux/Subject/SubjectAction";
-
+import { viewSessions } from "../../redux/session/sessionAction";
 import ConsecutiveForm from "./ConsecutiveForm";
 
 import ViewConsecutiveSession from "./ViewConsecutiveSession";
 
 const Consecutive = () => {
-  const [subData, setsubData] = useState([]);
-
+  const [sessionData, setSessionData] = useState([]);
   const dispatch = useDispatch();
 
-  const { subject } = useSelector((state) => state.get_subjects);
-
+  const { session } = useSelector((state) => state.get_Session);
   useEffect(() => {
-    dispatch(viewSubject());
+    dispatch(viewSessions());
   }, []);
 
   useEffect(() => {
-    setsubData(subject);
-  }, [subject]);
+    setSessionData(session);
+  }, [session]);
   const navData = [
     {
       id: 1,
@@ -42,12 +39,12 @@ const Consecutive = () => {
       <ScreenNav rightNavData={navData} />
       <div className="Consecutive__container">
         <div className="Consecutive__box">
-          {subData.length > 0 ? (
+          {sessionData.length > 0 ? (
             <React.Fragment>
               <h2 className="text-center text-dark">
                 Generate Consecutive Sessions
               </h2>
-              <ConsecutiveForm subject={subject} />
+              <ConsecutiveForm subject={session} />
             </React.Fragment>
           ) : (
             <div className="Consecutive__loader">
