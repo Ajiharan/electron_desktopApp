@@ -55,9 +55,13 @@ const ViewNotAllocated = () => {
                 </div>
               ))}
               {"]"}
-              <h5 className="text-center text-light">{data.start_time}</h5>
-              <h5 className="text-center text-light">{data.end_time}</h5>
-              <h5 className="text-center text-light">{data.pdate}</h5>
+              <h5 className="text-center text-light">
+                Start Time : {data.start_time}
+              </h5>
+              <h5 className="text-center text-light">
+                End Time : {data.end_time}
+              </h5>
+              <h5 className="text-center text-light">Date : {data.pdate}</h5>
             </div>
             <div className="ViewNotAllocated__buttons">
               <button

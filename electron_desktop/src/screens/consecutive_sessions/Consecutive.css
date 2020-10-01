@@ -26,12 +26,7 @@
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  background-image: linear-gradient(
-    720deg,
-    transparent,
-    rgba(82, 85, 85, 0.62),
-    rgb(56, 59, 61)
-  );
+
   justify-content: center;
   flex-wrap: wrap;
 }

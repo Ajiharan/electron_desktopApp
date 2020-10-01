@@ -60,7 +60,7 @@ const NotAllocated = () => {
           gen_groupids.length > 0 ||
           gen_subgroupids.length > 0 ? (
             <React.Fragment>
-              <h2 className="text-center text-dark">Sessions</h2>
+              <h2 className="text-center text-dark">NOT ALLOCATED</h2>
               <NotAllocatedForm
                 sessions={session}
                 lectures={lecturer}
@@ -75,7 +75,7 @@ const NotAllocated = () => {
           )}
         </div>
         <div className="NotAllocated__List">
-          <h4>SESSION LISTS</h4>
+          <h4 className="text-center">NOT ALLOCATED LISTS</h4>
           <ViewNotAllocated />
         </div>
       </div>

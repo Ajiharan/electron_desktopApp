@@ -39,6 +39,7 @@
 }
 .ViewNotAllocated__buttons {
   display: flex;
+  margin-right: 10px;
   justify-content: center;
 }
 .ViewNotAllocated button:hover {

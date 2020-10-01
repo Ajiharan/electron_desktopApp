@@ -1,9 +1,10 @@
 .ViewParallelSession {
-  width: 100%;
+  width: fit-content;
   object-fit: contain;
   padding: 15px;
   background-color: white;
   margin-top: 10px;
+  margin-left: 5px;
   overflow-y: scroll;
   overflow-x: hidden;
 }

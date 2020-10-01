@@ -10,7 +10,7 @@ const ConsecutiveSessionInput = ({
 }) => {
   return (
     <div className="Consecutive_inputs form-group">
-      <label htmlFor={id_name} className="text-light">
+      <label htmlFor={id_name} className="text">
         {labelName}
       </label>
       <select

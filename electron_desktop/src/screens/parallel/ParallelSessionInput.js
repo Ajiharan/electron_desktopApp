@@ -11,7 +11,7 @@ const ParallelSessionInput = ({
   console.log("subject", data);
   return (
     <div className="Consecutive_inputs form-group">
-      <label htmlFor={id_name} className="text-light">
+      <label htmlFor={id_name} className="text">
         {labelName}
       </label>
       <select

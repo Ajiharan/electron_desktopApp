@@ -23,13 +23,13 @@ const ParallelForm = ({ subject }) => {
       session: [],
     },
     validationSchema: yup.object({
-      start_time: yup.string().required("Please select any value"),
+      start_time: yup.string().required("Please enter starting time"),
       duration: yup
         .number()
         .typeError("please enter number only")
-        .required("please select any value"),
-      pdate: yup.date().required("please selecet any date.."),
-      session: yup.array().required("please select any value"),
+        .required("please enter duration"),
+      pdate: yup.date().required("please select any date.."),
+      session: yup.array().required("please select any session"),
     }),
     onSubmit: (values, { resetForm }) => {
       isClicked(true);
@@ -56,7 +56,7 @@ const ParallelForm = ({ subject }) => {
       </div>
       <form id="frm" onSubmit={formik.handleSubmit}>
         <div className="ParllelSession_inputs form-group">
-          <label htmlFor="duration" className="text-light">
+          <label htmlFor="duration" className="text-dark">
             starting time
           </label>
           <input
@@ -73,7 +73,7 @@ const ParallelForm = ({ subject }) => {
           touched={formik.touched.start_time}
         />
         <div className="ParllelSession_inputs form-group">
-          <label htmlFor="duration" className="text-light">
+          <label htmlFor="duration" className="text">
             Duration
           </label>
           <input
@@ -91,7 +91,7 @@ const ParallelForm = ({ subject }) => {
           touched={formik.touched.duration}
         />
         <div className="ParllelSession_inputs form-group">
-          <label htmlFor="duration" className="text-light">
+          <label htmlFor="duration" className="text">
             Date
           </label>
           <input

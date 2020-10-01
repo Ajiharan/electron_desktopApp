@@ -21,8 +21,8 @@ const ConsecutiveForm = ({ subject }) => {
       tutorial: "",
     },
     validationSchema: yup.object({
-      lecture: yup.string().required("Please select any value"),
-      tutorial: yup.string().required("please select any value"),
+      lecture: yup.string().required("Please select any lecture"),
+      tutorial: yup.string().required("please select any tutorial"),
     }),
     onSubmit: (values, { resetForm }) => {
       isClicked(true);

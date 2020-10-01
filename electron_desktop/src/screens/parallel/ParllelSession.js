@@ -42,7 +42,7 @@ const ParllelSession = () => {
         <div className="ParllelSession__box">
           {sessionData.length > 0 ? (
             <React.Fragment>
-              <h2 className="text-center text-dark">Sessions</h2>
+              <h2 className="text-center text-dark">PARALLEL SESSIONS</h2>
               <ParallelForm subject={session} />
             </React.Fragment>
           ) : (
@@ -52,7 +52,7 @@ const ParllelSession = () => {
           )}
         </div>
         <div className="ParllelSession__List">
-          <h4>SESSION LISTS</h4>
+          <h4 className="text-center">PARALLEL SESSION LISTS</h4>
           <ViewParallelSession />
         </div>
       </div>

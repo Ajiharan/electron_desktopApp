@@ -23,11 +23,11 @@ const NotAllocatedForm = ({ sessions, lectures, groupId, subgroupId }) => {
       pdate: "",
     },
     validationSchema: yup.object({
-      start_time: yup.string().required("Please select any value"),
-      categoryType: yup.string().required("please select any type"),
-      categoryValue: yup.array().required("please select any value"),
+      start_time: yup.string().required("Please enter start time"),
+      categoryType: yup.string().required("please select category type"),
+      categoryValue: yup.array().required("please select category value"),
       pdate: yup.date().required("please selecet any date.."),
-      end_time: yup.string().required("please select any value"),
+      end_time: yup.string().required("please select end time"),
     }),
     onSubmit: (values, { resetForm }) => {
       isClicked(true);
@@ -54,7 +54,7 @@ const NotAllocatedForm = ({ sessions, lectures, groupId, subgroupId }) => {
       </div>
       <form id="frm" onSubmit={formik.handleSubmit}>
         <div className="NotAllocated_inputs form-group">
-          <label htmlFor="categoryType" className="text-light">
+          <label htmlFor="categoryType" className="text">
             category type
           </label>
           <select
@@ -77,7 +77,7 @@ const NotAllocatedForm = ({ sessions, lectures, groupId, subgroupId }) => {
           touched={formik.touched.categoryType}
         />
         <div className="NotAllocated_inputs form-group">
-          <label htmlFor="categoryValue" className="text-light">
+          <label htmlFor="categoryValue" className="text">
             category value
           </label>
           <select
@@ -125,7 +125,7 @@ const NotAllocatedForm = ({ sessions, lectures, groupId, subgroupId }) => {
           touched={formik.touched.categoryValue}
         />
         <div className="NotAllocated_inputs form-group">
-          <label htmlFor="start_time" className="text-light">
+          <label htmlFor="start_time" className="text">
             starting time
           </label>
           <input
@@ -142,7 +142,7 @@ const NotAllocatedForm = ({ sessions, lectures, groupId, subgroupId }) => {
           touched={formik.touched.start_time}
         />
         <div className="NotAllocated_inputs form-group">
-          <label htmlFor="end_time" className="text-light">
+          <label htmlFor="end_time" className="text">
             Ending time
           </label>
           <input
@@ -160,7 +160,7 @@ const NotAllocatedForm = ({ sessions, lectures, groupId, subgroupId }) => {
         />
 
         <div className="NotAllocated_inputs form-group">
-          <label htmlFor="pdate" className="text-light">
+          <label htmlFor="pdate" className="text">
             Date
           </label>
           <input

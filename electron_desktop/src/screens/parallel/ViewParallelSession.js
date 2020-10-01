@@ -50,11 +50,13 @@ const ViewParallelSession = () => {
                   <h5 className="text-center text-light">{res}</h5>
                 </div>
               ))}
-              <h5 className="text-center text-light">{data.start_time}</h5>
               <h5 className="text-center text-light">
-                {data.duration + " "} hrs
+                Start Time : {data.start_time}
               </h5>
-              <h5 className="text-center text-light">{data.pdate}</h5>
+              <h5 className="text-center text-light">
+                Duration : {data.duration + " "} hrs
+              </h5>
+              <h5 className="text-center text-light">Date : {data.pdate}</h5>
             </div>
             <div className="ViewParallelSession__buttons">
               <button
