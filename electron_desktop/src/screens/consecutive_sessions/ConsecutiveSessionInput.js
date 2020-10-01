@@ -22,15 +22,21 @@ const ConsecutiveSessionInput = ({
       >
         <option value="">{data.length > 0 ? "select" : "No Data"}</option>
         {divName === "lecture" &&
-          data.map((data, i) => (
-            <option key={i} value={data.sub_name}>
-              {data.sub_name}
+          data.map((result, i) => (
+            <option key={i} data-value={result}>
+              ( {result.selectedValueLecturer}) {result.selectedValueSubject}(
+              {result.subCode}) {result.selectedValueTag}{" "}
+              {result.selectedValueGroup?.label} {"  "}
+              {result.noOfstudents}({result.timeDuration})
             </option>
           ))}
         {divName === "tutorial" &&
-          data.map((data, i) => (
-            <option key={i} value={data.sub_name}>
-              {data.sub_name}
+          data.map((result, i) => (
+            <option key={i} data-value={result}>
+              ( {result.selectedValueLecturer}) {result.selectedValueSubject}(
+              {result.subCode}) {result.selectedValueTag}{" "}
+              {result.selectedValueGroup?.label} {"  "}
+              {result.noOfstudents}({result.timeDuration})
             </option>
           ))}
       </select>
