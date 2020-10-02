@@ -11,7 +11,7 @@ const addReservedTimeReducer = (
   switch (action.type) {
     case ADD_RESERVED_TIME_REQUEST:
       return { ...state, loading: true };
-    case ADD_RESERVED_TIME_REQUEST:
+    case ADD_RESERVED_TIME_SUCCESS:
       return {
         ...state,
         loading: false,

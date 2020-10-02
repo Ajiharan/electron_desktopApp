@@ -77,7 +77,11 @@ import {
   get_parallelSessionReducer,
 } from "./parallel/parallelSessionReducer";
 
-import {get_session, session_addReducer, update_session_Reducer} from "./session/sessionReducer";
+import {
+  get_session,
+  session_addReducer,
+  update_session_Reducer,
+} from "./session/sessionReducer";
 
 import {
   allocated_addReducer,
@@ -93,6 +97,7 @@ import { addSuitableGroupIdReducer } from "./suitableGroupId/SuitableGroupIdRedu
 import { locationtimetable_addReducer } from "./generate_locationtimetable/locationtimetableReducer";
 import { addpreferredRoomReducer } from "./preferedRoom/PreferedRoomReducer";
 import { addReservedTimeReducer } from "./reservedTime/ReservedTimeReducer";
+
 const rootReducer = combineReducers({
   addReservedTime: addReservedTimeReducer,
   addpreferredRoom: addpreferredRoomReducer,
@@ -105,7 +110,7 @@ const rootReducer = combineReducers({
   get_notAllocated: allocated_getReducer,
   add_Session: session_addReducer,
   get_Session: get_session,
-  update_session:update_session_Reducer,
+  update_session: update_session_Reducer,
   lecturertimetable_addReducer: lecturertimetable_addReducer,
   add_parallelSession: parallelSession_addReducer,
   get_parallelSession: get_parallelSessionReducer,
