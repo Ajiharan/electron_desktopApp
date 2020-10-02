@@ -59,41 +59,47 @@ const ViewSession = () => {
 
         console.log("checkData", checkData);
     };
-    //
-    // const DeleteAll = () => {
-    //     db.collection("sessions")
-    //         .get()
-    //         .then((res) => {
-    //             res.forEach((element) => {
-    //                 element.ref.delete();
-    //             });
-    //         });
-    //     setCheckData([]);
-    // };
-    //
-    // const DeleteSelected = () => {
-    //     checkData.map((check_data) => {
-    //         db.collection("sessions").doc(check_data.id).delete();
-    //     });
-    //     setCheckData([]);
-    // };
-    //
+
+    const DeleteAll = () => {
+        db.collection("sessions")
+            .get()
+            .then((res) => {
+                res.forEach((element) => {
+                    element.ref.delete();
+                });
+            });
+        setCheckData([]);
+    };
+
+    const DeleteSelected = () => {
+        checkData.map((check_data) => {
+            db.collection("sessions").doc(check_data.id).delete();
+        });
+        setCheckData([]);
+    };
+
     const handleDelete = (data) => {
         db.collection("sessions").doc(data.id).delete();
         setCheckData(checkData.filter((e) => e.id !== data.id));
         console.log("checkData", checkData);
     };
 
-    // const searchData = (name) => {
-    //     setCheckData([]);
-    //     name?
-    //         setLecturerData(
-    //             session.filter((data) => data.subject.includes(name))
-    //         ):setLecturerData(
-    //         session
-    //         )
-    // };
-    //
+    const searchData = (name) => {
+        setCheckData([]);
+        name?
+            setSessionData(
+                session.filter((data) => data.selectedValueSubject.includes(name)|| data.subCode.includes(name)
+                    // ||data.selectedValueLecturer.filter((data) => data.includes(name))
+                    // ||data.selectedValueTag.filter((data) => data.includes(name))
+                    // ||data.selectedValueSubject.contains(name)|| data.subCode.contains(name)
+                    // ||data.selectedValueLecturer.filter((data) => data.value.contains(name))
+                    // ||data.selectedValueTag.filter((data) => data.value.contains(name))
+                )
+            ):setSessionData(
+                session
+            )
+    };
+
     const gotoUpdate = (data) => {
         history.push({
             pathname: "/session/update",
@@ -122,7 +128,7 @@ const ViewSession = () => {
                             >
                                 Add new record
                             </button>
-                            {/*<Search searchData={searchData} />*/}
+                            <Search searchData={searchData} />
                         </div>
                         {SessionData.length > 0 && (
                             <table className="table table-dark table-hover LecturerViewContainer__table">
@@ -142,16 +148,16 @@ const ViewSession = () => {
                                 <tbody>
                                 {SessionData.map((data) => (
                                     <tr key={data.id}>
-                                        {/*<td>*/}
-                                        {/*    <div className="form-check">*/}
-                                        {/*        <input*/}
-                                        {/*            onChange={(e) => Handlebox(e)}*/}
-                                        {/*            type="checkbox"*/}
-                                        {/*            value={data.id}*/}
-                                        {/*            className="form-check-input"*/}
-                                        {/*        />*/}
-                                        {/*    </div>*/}
-                                        {/*</td>*/}
+                                        <td>
+                                            <div className="form-check">
+                                                <input
+                                                    onChange={(e) => Handlebox(e)}
+                                                    type="checkbox"
+                                                    value={data.id}
+                                                    className="form-check-input"
+                                                />
+                                            </div>
+                                        </td>
                                         <td><span>{data.subCode}</span></td>
                                         <td><span>{data.selectedValueSubject}</span> </td>
                                         <td><span>{data.selectedValueGroup.label}</span></td>
@@ -177,19 +183,19 @@ const ViewSession = () => {
                             </table>
                         )}
 
-                        {/*<div className="LecturerViewContainer__bottom">*/}
-                        {/*    {lecturerData.length > 0 && lecturerData.length === session.length && (*/}
-                        {/*        <button onClick={DeleteAll} className="btn btn-danger">*/}
-                        {/*            Delete All*/}
-                        {/*        </button>*/}
-                        {/*    )}*/}
+                        <div className="LecturerViewContainer__bottom">
+                            {SessionData.length > 0 && SessionData.length === session.length && (
+                                <button onClick={DeleteAll} className="btn btn-danger">
+                                    Delete All
+                                </button>
+                            )}
 
-                        {/*    {checkData.length > 0 && (*/}
-                        {/*        <button onClick={DeleteSelected} className="btn btn-danger">*/}
-                        {/*            Delete Selected*/}
-                        {/*        </button>*/}
-                        {/*    )}*/}
-                        {/*</div>*/}
+                            {checkData.length > 0 && (
+                                <button onClick={DeleteSelected} className="btn btn-danger">
+                                    Delete Selected
+                                </button>
+                            )}
+                        </div>
                     </React.Fragment>
                 )}
             </div>
