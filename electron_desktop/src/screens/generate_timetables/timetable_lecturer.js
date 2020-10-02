@@ -100,6 +100,13 @@ const ViewLecturer = (props) => {
                                 required
                             /> 
                                 </td>
+                                <td>
+                    <br></br>
+                    <div className="session_buttons">
+                            <button type="button" className="btn">Download</button>
+                            
+                        </div>
+                    </td>
                             </tr>
                         </table>
 <br>
@@ -122,25 +129,68 @@ const ViewLecturer = (props) => {
                       <tbody>
                           <tr>
                               <td>8.30</td>
-                              <td>IT2030-OOP(lecture)
+                              <td>IT2030-OOP(Lecture)
                                 <br></br>Y2.S1.03(IT)
                                     <br></br>B501
                                 </td>
+                                <td>SE3040-AF(lecture)
+                                <br></br>Y3.S1.01(SE)
+                                    <br></br>B401
+                                </td>
+                                <td>--X--</td>
+                                <td></td>
+                                <td></td>
+                                
+                                <td>--X--</td>
+                                <td>--X--</td>
                              
 
                           </tr>
                           <tr>
                               <td>9.30</td>
+                              <td>IT2030-OOP(Lecture)
+                                <br></br>Y2.S1.03(IT)
+                                    <br></br>B501
+                                </td>
+                                <td>--X--</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>--X--</td>
+                                <td>--X--</td>
                              
 
                           </tr>
                           <tr>
                               <td>10.30</td>
+                              <td>IT2030-OOP(Practical)
+                                <br></br>Y2.S1.03(IT)
+                                    <br></br>B501
+                                </td>
+                                <td>--X--</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>--X--</td>
+                                <td>--X--</td>
                              
 
                           </tr>
                           <tr>
                               <td>11.30</td>
+                              <td>IT2030-OOP(Practical)
+                                <br></br>Y2.S1.03(IT)
+                                    <br></br>B501
+                                </td>
+                                <td>SE3040-AF(lecture)
+                                <br></br>Y3.S1.01(SE)
+                                    <br></br>B401
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>--X--</td>
+                                <td>--X--</td>
                               
 
                           </tr>
@@ -157,27 +207,76 @@ const ViewLecturer = (props) => {
                           </tr>
                           <tr>
                               <td>01.30</td>
-                              
+                              <td>IT2080- MAD(lecture)
+                                <br></br>Y2.S2.03(IT)
+                                    <br></br>B501
+                                </td>
+                                <td>IT2080- MAD(lecture)
+                                <br></br>Y2.S2.03(IT)
+                                    <br></br>B501
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>--X--</td>
+                                <td>--X--</td>
+
 
                           </tr>
                           <tr>
                               <td>2.30</td>
+                              <td>IT2080- MAD(lecture)
+                                <br></br>Y2.S2.03(IT)
+                                    <br></br>B501
+                                </td>
+                                <td>--X--</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>--X--</td>
+                                <td>--X--</td>
                              
 
                           </tr>
                           <tr>
                               <td>3.30</td>
-                             
+                              <td>IT2080- MAD(lecture)
+                                <br></br>Y2.S2.03(IT)
+                                    <br></br>B501
+                                </td>
+                             <td>--X--</td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td>--X--</td>
+                             <td>--X--</td>
 
                           </tr>
                           <tr>
                               <td>4.30</td>
+                              <td>--X--</td>
+                              <td>--X--</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>--X--</td>
+                              <td>--X--</td>
                               
 
                           </tr>
                           <tr>
                               <td>5.30</td>
-                             
+                              <td>--X--</td>
+                              <td>IT2080- MAD(Practical)
+                                <br></br>Y2.S2.03(IT)
+                                    <br></br>B501
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>--X--</td>
+                                <td>--X--</td>
+
 
                           </tr>
                           

@@ -95,6 +95,16 @@ const Room = (props) => {
                
               />
                     </td>
+                    <td>
+
+                    </td>
+                    <td>
+                    <br></br>
+                    <div className="session_buttons">
+                            <button type="button" className="btn">Download</button>
+                            
+                        </div>
+                    </td>
                    
                 </tr>
             </table>
@@ -139,6 +149,11 @@ const Room = (props) => {
                           </tr>
                           <tr>
                               <td>11.30</td>
+                              <td>IT2030-OOP(Practical)
+                                   <br></br>Ms.Nuwan Kodagoda
+                                <br></br>Y2.S1.03(IT)
+                                    
+                                </td>
                              
                           </tr>
                           <tr>

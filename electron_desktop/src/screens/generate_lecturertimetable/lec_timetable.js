@@ -326,7 +326,7 @@ const Lecturertimetableadd = () => {
                        
                         <div className="session_buttons">
                             <button type="button" className="btn">Clear</button>
-                            <button type="submit" className="btn">Add</button>
+                            <button type="submit" className="btn">Generate</button>
                         </div>
                     </form>
                 </div>

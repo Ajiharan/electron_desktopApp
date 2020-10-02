@@ -98,7 +98,9 @@ const Studenttimetableadd = () => {
         { value: 'Tuesday', label: 'Tuesday',isFixed: true },
         { value: 'Wednesday', label: 'Wednesday',isFixed: true },
         { value: 'Thursday', label: 'Thursday',isFixed: true },
-        { value: 'Friday', label: 'Friday',isFixed: true }
+        { value: 'Friday', label: 'Friday',isFixed: true },
+        { value: 'Saturday', label: 'Saturday',isFixed: true },
+        { value: 'Sunday', label: 'Sunday',isFixed: true }
     ]
 
     const workinghoursoptions = [
@@ -115,7 +117,15 @@ const Studenttimetableadd = () => {
     const roomoptions = [
         { value: 'B501', label: 'B501',isFixed: true },
         { value: 'B401', label: 'B401',isFixed: true },
-        { value: 'N3B', label: 'B401',isFixed: true }
+        { value: 'N3B', label: 'N3B',isFixed: true }
+        
+    ]
+
+    const ParallelSessionoptions = [
+        { value: 'MAD[IT2080]Lecture' , label: 'MAD[IT2080]Lecture',isFixed: true },
+        { value: 'OOP[IT2030]Tutorial', label: 'OOP[IT2030]Tutorial',isFixed: true },
+        { value: 'SPM[SE3020]Lecture', label: 'SPM[SE3020]Lecture',isFixed: true },
+        { value: 'AF[SE3020]Lecture', label: 'SPM[SE3020]Lecture',isFixed: true }
         
     ]
 
@@ -196,6 +206,12 @@ const Studenttimetableadd = () => {
         setselectedValueroom(Array.isArray(e) ? e.map(x => x.value) : []);
     }
 
+     const[selectedValueParallelSession,setselectedValueParallelSession] = useState([]);
+    const handleParallelSession = (e) =>{
+        setselectedValueParallelSession(Array.isArray(e) ? e.map(x => x.value) : []);
+    }
+
+
     const studentgroupIdOptions =  [{ value: 'None', label: 'None',isFixed: true }];
     var noOfstudents = 120;
     var timeDuration = 3;
@@ -222,7 +238,8 @@ const Studenttimetableadd = () => {
         e.preventDefault();
         isClicked(true);
         let data = {
-            selectedValueLecturer,selectedValueSubject,subCode,selectedValueTag,selectedValueGroup,noOfstudents,timeDuration,selectedValueWorkingday,selectedValueWorkinghour,selectedValueroom
+            selectedValueLecturer,selectedValueSubject,subCode,selectedValueTag,selectedValueGroup,noOfstudents,timeDuration,selectedValueWorkingday,selectedValueWorkinghour,selectedValueroom,
+            selectedValueParallelSession
         }
         console.log(data);
         dispatch(Addstudenttimetable(data))
@@ -299,12 +316,22 @@ const Studenttimetableadd = () => {
 
                         />
 
+
                             <label htmlFor="title">Select Tag</label>
                             <Select closeMenuOnSelect={false} components={animatedComponents} isMulti  options={tagoptions}
                                     onChange={handleChangeTag}
                                     name="tag"
                                     value={tagoptions.filter(obj => selectedValueTag.includes(obj.value))}
                             />
+
+                                
+                            <label htmlFor="title">Select Parallel Sessions</label>
+                            <Select closeMenuOnSelect={false} components={animatedComponents} isMulti  options={ParallelSessionoptions}
+                                    onChange={handleParallelSession}
+                                    name="tag"
+                                    value={ParallelSessionoptions.filter(obj => selectedValueParallelSession.includes(obj.value))}
+                            />
+
 
                           
                                <label htmlFor="title">Select Location</label>
@@ -320,7 +347,7 @@ const Studenttimetableadd = () => {
                        
                         <div className="session_buttons">
                             <button type="button" className="btn">Clear</button>
-                            <button type="submit" className="btn">Add</button>
+                            <button type="submit" className="btn">Generate</button>
                         </div>
                     </form>
                 </div>
