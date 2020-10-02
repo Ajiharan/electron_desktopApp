@@ -117,6 +117,7 @@ const Room = () => {
                 <option value="">None</option>
                 <option value="lab">Laboratory</option>
                 <option value="lecture">Lecture</option>
+                <option value="tutorial">Tutorial</option>
               </select>
             </div>
 
