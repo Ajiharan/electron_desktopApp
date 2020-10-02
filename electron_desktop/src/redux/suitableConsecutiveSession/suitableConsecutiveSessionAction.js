@@ -36,5 +36,5 @@ import {
     };
   };
   
-  export { addSuitableConsecutiveConsecutiveSession };
+  export { addSuitableConsecutiveSession };
   

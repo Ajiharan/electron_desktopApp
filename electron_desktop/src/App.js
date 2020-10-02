@@ -60,6 +60,7 @@ import loca_timetable from "./screens/generate_locationtimetable/loca_timetable"
 import PreferredRoom from "./screens/preferredRoom/PreferredRoom";
 import UpdateSession from "./screens/session/UpdateSession";
 import ReservedTime from "./screens/reservedTime/ReservedTime";
+import SuitableConsecutiveSession from "./screens/suitableConsecutiveSession/SuitableConsecutiveSession";
 
 function App() {
   return (
@@ -71,6 +72,11 @@ function App() {
           <Route exact path="/reservedTime/add" component={ReservedTime} />
           <Route exact path="/PreferredRoom/add" component={PreferredRoom} />
           <Route exact path="/overlap/add" component={OverlapSession} />
+          <Route
+            exact
+            path="/suitableConsecutiveSession/add"
+            component={SuitableConsecutiveSession}
+          />
           <Route
             exact
             path="/suitableLecturer/add"
