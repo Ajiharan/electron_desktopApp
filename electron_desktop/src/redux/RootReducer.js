@@ -87,17 +87,14 @@ import {
 import { addSuitableRoomReducer } from "./suitableRoom/SuitableRoomReducer";
 import { addSuitableLecturerReducer } from "./SuitableLecturer/SuitableLecturerReducer";
 import { addOverlapReducer } from "./overlap/OverlapReducer";
-
-import {
-  lecturertimetable_addReducer,
-  
-} from "./generate_lecturertimetable/lecturertimetableReducer";
-
-import {
-  locationtimetable_addReducer,
-}from "./generate_locationtimetable/locationtimetableReducer";
+import { addSuitableSessionReducer } from "./suitableSession/SuitableSessionReducer";
+import { lecturertimetable_addReducer } from "./generate_lecturertimetable/lecturertimetableReducer";
+import { addSuitableGroupIdReducer } from "./suitableGroupId/SuitableGroupIdReducer";
+import { locationtimetable_addReducer } from "./generate_locationtimetable/locationtimetableReducer";
 
 const rootReducer = combineReducers({
+  addSuitableGroupId: addSuitableGroupIdReducer,
+  addSuitableSession: addSuitableSessionReducer,
   addOverlapReducer: addOverlapReducer,
   addSuitableLecturer: addSuitableLecturerReducer,
   addSuitableRoom: addSuitableRoomReducer,

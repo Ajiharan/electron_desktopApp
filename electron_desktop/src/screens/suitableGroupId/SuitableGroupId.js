@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addSuitableGroupId } from "../../redux/suitableGroupId/SuitableGroupIdAction";
-import { viewGroupId } from "../../redux/groupId/GroupIdAction";
+import { view_genGroupId } from "../../redux/genId/genIdAction";
 import { viewRoom } from "../../redux/Room/RoomAction";
 import "./SuitableGroupId.css";
 import { Spinner } from "../animations/Spinner";
@@ -23,17 +23,17 @@ const SuitableGroupId = () => {
     (state) => state.addSuitableGroupId
   );
   const { room } = useSelector((state) => state.get_room);
-  const { groupid } = useSelector((state) => state.get_groupId);
+  const { gen_groupids } = useSelector((state) => state.get_genGroupId);
 
   useEffect(() => {
     dispatch(viewRoom());
-    dispatch(viewGroupId());
+    dispatch(view_genGroupId());
   }, []);
 
   useEffect(() => {
     setRooms(room);
-    setGroupIds(groupid);
-  }, [room, groupid]);
+    setGroupIds(gen_groupids);
+  }, [room, gen_groupids]);
 
   const room_options = room.map((data) => {
     console.log(data);
@@ -43,11 +43,11 @@ const SuitableGroupId = () => {
     };
   });
 
-  const groupid_options = groupid.map((data) => {
+  const groupid_options = gen_groupids.map((data) => {
     console.log(data);
     return {
-      value: data.groupid.group_id,
-      label: data.groupid.group_id,
+      value: data.gen_groupid,
+      label: data.gen_groupid,
     };
   });
 

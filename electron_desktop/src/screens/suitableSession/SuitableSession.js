@@ -27,7 +27,7 @@ const SuitableSession = () => {
 
   useEffect(() => {
     dispatch(viewRoom());
-    //dispatch(viewSession());
+    dispatch(viewSessions());
   }, []);
 
   useEffect(() => {
@@ -43,11 +43,33 @@ const SuitableSession = () => {
     };
   });
 
-  const session_options = session.map((data) => {
-    console.log(data);
+  const session_options = session.map((result) => {
+    console.log(result);
     return {
-      value: data.session,
-      label: data.session,
+      value:
+        result.selectedValueLecturer +
+        " " +
+        result.selectedValueSubject +
+        " " +
+        result.selectedValueTag +
+        " " +
+        result.selectedValueGroup.label +
+        " " +
+        result.noOfstudents +
+        " " +
+        result.timeDuration,
+      label:
+        result.selectedValueLecturer +
+        " " +
+        result.selectedValueSubject +
+        " " +
+        result.selectedValueTag +
+        " " +
+        result.selectedValueGroup.label +
+        " " +
+        result.noOfstudents +
+        " " +
+        result.timeDuration,
     };
   });
 
