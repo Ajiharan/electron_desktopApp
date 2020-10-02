@@ -22,26 +22,44 @@ const addBuilding = (building, center) => {
     try {
       const timestamp = firebase.firestore.FieldValue.serverTimestamp();
       db.collection("buildings")
-        .add({
-          building,
-          center,
-          timestamp,
-        })
-        .then(() => {
-          dispatch({
-            type: ADD_BUILDING_SUCCESS,
-            payload: {
-              building,
-              center,
-              timestamp,
-            },
+      .get()
+        .then(async (snapshot) => {
+          const tempData = await snapshot.docs.map((doc) => ({
+            building: doc.data().building,
+            id: doc.id,
+          }));
+      const isExists = await tempData.filter(
+        (data) => data.building  === building
+      );
+      if (isExists.length === 0) {
+        db.collection("buildings")
+          .add({
+            building,
+            center,
+            timestamp,
+          })
+          .then(() => {
+            dispatch({
+              type: ADD_BUILDING_SUCCESS,
+              payload: {
+                building,
+                center,
+                timestamp,
+              },
+            });
+          })
+          .catch((err) => {
+            dispatch({
+              type: ADD_BUILDING_FAILURE,
+              error: err,
+            });
           });
-        })
-        .catch((err) => {
+        } else{
           dispatch({
             type: ADD_BUILDING_FAILURE,
-            error: err,
+            error: "data already exists",
           });
+        }
         });
     } catch (err) {}
   };
