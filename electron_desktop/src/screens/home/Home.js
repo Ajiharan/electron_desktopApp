@@ -26,24 +26,24 @@ const Home = () => {
               />
               <img
                 className=" img-thumbnail"
-                src={require("../images/imageHome1.gif")}
+                src={require("../images/anime10.gif")}
               />
 
               <img
                 className=" img-thumbnail"
-                src={require("../images/imageHome1.gif")}
+                src={require("../images/anime8.gif")}
               />
               <img
                 className=" img-thumbnail"
-                src={require("../images/imageHome1.gif")}
+                src={require("../images/anime6.gif")}
               />
               <img
                 className=" img-thumbnail"
-                src={require("../images/imageHome1.gif")}
+                src={require("../images/anime7.gif")}
               />
               <img
                 className=" img-thumbnail"
-                src={require("../images/imageHome1.gif")}
+                src={require("../images/anime9.gif")}
               />
             </div>
           </div>
