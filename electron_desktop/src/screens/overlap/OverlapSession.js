@@ -66,7 +66,7 @@ const OverlapSession = () => {
     {
       id: 2,
       name: "OverlapSession",
-      pathname: "/OverlapSession/add",
+      pathname: "/overlap/add",
     },
   ];
 

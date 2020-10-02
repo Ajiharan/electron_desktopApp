@@ -1,15 +1,15 @@
-.OverlapSession__container {
+.PreferredRoom__container {
   margin: 10px;
 }
 
-.OverlapSession__navigation {
+.PreferredRoom__navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px;
 }
 
-.OverlapSession__box {
+.PreferredRoom__box {
   width: auto;
   height: auto;
   display: flex;
@@ -18,45 +18,45 @@
   align-items: center;
 }
 
-.OverlapSession__message {
+.PreferredRoom__message {
   height: 30px;
 }
 
-.OverlapSession__error_message {
+.PreferredRoom__error_message {
   height: 15px;
 }
 
-.OverlapSession__box > form {
+.PreferredRoom__box > form {
   border: 1px solid rgb(150, 148, 148);
   margin: 10px;
   padding: 8px;
   border-radius: 8px;
   height: auto;
   display: flex;
-  width: 60vw;
   flex-direction: column;
   align-items: center;
   background-color: white;
   justify-content: center;
   flex-wrap: wrap;
 }
-.OverlapSession_inputs {
+.PreferredRoom_inputs {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: nowrap;
   width: 350px;
+  margin-top: 5px;
 }
 
-.OverlapSession_inputs > label {
+.PreferredRoom_inputs > label {
   width: 200px;
 }
 
-.OverlapSession_buttons {
+.PreferredRoom_buttons {
   display: flex;
 }
 
-.OverlapSession_buttons button {
+.PreferredRoom_buttons button {
   color: white;
   background-image: linear-gradient(to right, #fc6076, #ff9231);
   border: none;
@@ -66,7 +66,7 @@
   padding: 5px;
 }
 
-.OverlapSession_buttons button:hover {
+.PreferredRoom_buttons button:hover {
   background-image: linear-gradient(to right, #e72c45, #f59644);
 }
 

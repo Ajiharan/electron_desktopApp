@@ -29,7 +29,7 @@ const Consecutive = () => {
     },
     {
       id: 2,
-      name: "sessions",
+      name: "Consecutive sessions",
       pathname: "/consecutive",
     },
   ];

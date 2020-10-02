@@ -59,7 +59,6 @@ const HomeList = () => {
   const sub_generatetimetabledata = usecheck(false);
   const sub_viewtimetableData = usecheck(false);
 
-
   return (
     <div>
       <List
@@ -466,6 +465,11 @@ const HomeList = () => {
                     <ListItemText primary="Add SuitableGroupId" />
                   </ListItem>
                 </Link>
+                <Link to="/PreferredRoom/add">
+                  <ListItem button className={classes.sub_nested}>
+                    <ListItemText primary="Add PrefferedRoom" />
+                  </ListItem>
+                </Link>
               </List>
             </Collapse>
           </List>
@@ -478,7 +482,7 @@ const HomeList = () => {
           <ListItemText primary=" Generate Time Table" />
           {GenerateTimetableData.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
-       
+
         <Collapse in={GenerateTimetableData.open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItem
@@ -489,16 +493,19 @@ const HomeList = () => {
               <ListItemText primary="Add Time Table" />
               {sub_generatetimetabledata.open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-          
-            <Collapse in={sub_generatetimetabledata.open} timeout="auto" unmountOnExit>
+
+            <Collapse
+              in={sub_generatetimetabledata.open}
+              timeout="auto"
+              unmountOnExit
+            >
               <List component="div" disablePadding>
-             
                 <Link to="/generate_lecturertimetable/lec_timetable">
                   <ListItem button className={classes.sub_nested}>
                     <ListItemText primary="Add Lecturer Time Table" />
                   </ListItem>
                 </Link>
-             
+
                 <Link to="/generate_lecturertimetable/stud_timetable">
                   <ListItem button className={classes.sub_nested}>
                     <ListItemText primary="Add Student Time Table" />
@@ -511,7 +518,7 @@ const HomeList = () => {
                 </Link>
               </List>
             </Collapse>
-          
+
             <ListItem
               button
               onClick={sub_viewtimetableData.handleClick}
@@ -520,9 +527,12 @@ const HomeList = () => {
               <ListItemText primary="View Time Table" />
               {sub_viewtimetableData.open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={sub_viewtimetableData.open} timeout="auto" unmountOnExit>
+            <Collapse
+              in={sub_viewtimetableData.open}
+              timeout="auto"
+              unmountOnExit
+            >
               <List component="div" disablePadding>
-               
                 <Link to="/generate_timetables/main">
                   <ListItem button className={classes.sub_nested}>
                     <ListItemText primary="View" />
