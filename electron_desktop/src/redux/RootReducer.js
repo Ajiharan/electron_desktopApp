@@ -92,8 +92,9 @@ import { lecturertimetable_addReducer } from "./generate_lecturertimetable/lectu
 import { addSuitableGroupIdReducer } from "./suitableGroupId/SuitableGroupIdReducer";
 import { locationtimetable_addReducer } from "./generate_locationtimetable/locationtimetableReducer";
 import { addpreferredRoomReducer } from "./preferedRoom/PreferedRoomReducer";
-
+import { addReservedTimeReducer } from "./reservedTime/ReservedTimeReducer";
 const rootReducer = combineReducers({
+  addReservedTime: addReservedTimeReducer,
   addpreferredRoom: addpreferredRoomReducer,
   addSuitableGroupId: addSuitableGroupIdReducer,
   addSuitableSession: addSuitableSessionReducer,
