@@ -57,6 +57,7 @@ import TimeTable_student from "./screens/generate_timetables/timetable_student";
  import Lec_timetable from "./screens/generate_lecturertimetable/lec_timetable";
  import stud_timetable from "./screens/generate_studenttimetable/stud_timetable";
 import loca_timetable from "./screens/generate_locationtimetable/loca_timetable";
+import UpdateSession from "./screens/session/UpdateSession";
 
 function App() {
   return (
@@ -92,6 +93,7 @@ function App() {
           <Route exact path="/parallel" component={ParallelSession} />
           <Route exact path="/session/add" component={AddSession} />
           <Route exact path="/session/view" component={ViewSession} />
+          <Route exact path="/session/update" component={UpdateSession} />
           <Route
             exact
             path="/student/generate/subId"
