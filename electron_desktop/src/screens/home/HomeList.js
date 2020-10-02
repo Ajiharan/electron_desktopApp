@@ -470,6 +470,11 @@ const HomeList = () => {
                     <ListItemText primary="Add PrefferedRoom" />
                   </ListItem>
                 </Link>
+                <Link to="/reservedTime/add">
+                  <ListItem button className={classes.sub_nested}>
+                    <ListItemText primary="Add ReservedTIme" />
+                  </ListItem>
+                </Link>
               </List>
             </Collapse>
           </List>
