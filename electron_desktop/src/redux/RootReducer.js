@@ -91,8 +91,10 @@ import { addSuitableSessionReducer } from "./suitableSession/SuitableSessionRedu
 import { lecturertimetable_addReducer } from "./generate_lecturertimetable/lecturertimetableReducer";
 import { addSuitableGroupIdReducer } from "./suitableGroupId/SuitableGroupIdReducer";
 import { locationtimetable_addReducer } from "./generate_locationtimetable/locationtimetableReducer";
+import { addpreferredRoomReducer } from "./preferedRoom/PreferedRoomReducer";
 
 const rootReducer = combineReducers({
+  addpreferredRoom: addpreferredRoomReducer,
   addSuitableGroupId: addSuitableGroupIdReducer,
   addSuitableSession: addSuitableSessionReducer,
   addOverlapReducer: addOverlapReducer,

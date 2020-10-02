@@ -54,9 +54,10 @@ import SuitableGroupId from "./screens/suitableGroupId/SuitableGroupId";
 import TimeTable_lecturer from "./screens/generate_timetables/timetable_lecturer";
 import TimeTable_location from "./screens/generate_timetables/timetable_location";
 import TimeTable_student from "./screens/generate_timetables/timetable_student";
- import Lec_timetable from "./screens/generate_lecturertimetable/lec_timetable";
- import stud_timetable from "./screens/generate_studenttimetable/stud_timetable";
+import Lec_timetable from "./screens/generate_lecturertimetable/lec_timetable";
+import stud_timetable from "./screens/generate_studenttimetable/stud_timetable";
 import loca_timetable from "./screens/generate_locationtimetable/loca_timetable";
+import PreferredRoom from "./screens/preferredRoom/PreferredRoom";
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/PreferredRoom/add" component={PreferredRoom} />
           <Route exact path="/overlap/add" component={OverlapSession} />
           <Route
             exact
@@ -196,7 +198,7 @@ function App() {
             path="/workingdays/update"
             component={UpdateWorkingdays}
           />
-        <Route
+          <Route
             exact
             path="/generate_timetables/main"
             component={GenerateTimetable}
@@ -216,12 +218,12 @@ function App() {
             path="/generate_timetables/location_table"
             component={Location_table}
           />
-           <Route
+          <Route
             exact
             path="/generate_timetables/timetable_lecturer"
             component={TimeTable_lecturer}
           />
-           <Route
+          <Route
             exact
             path="/generate_timetables/timetable_location"
             component={TimeTable_location}
@@ -231,17 +233,17 @@ function App() {
             path="/generate_timetables/timetable_student"
             component={TimeTable_student}
           />
-           <Route
+          <Route
             exact
             path="/generate_lecturertimetable/lec_timetable"
             component={Lec_timetable}
           />
-           <Route
+          <Route
             exact
             path="/generate_lecturertimetable/stud_timetable"
             component={stud_timetable}
           />
-            <Route
+          <Route
             exact
             path="/generate_locationtimetable/loca_timetable"
             component={loca_timetable}

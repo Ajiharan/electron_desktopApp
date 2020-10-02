@@ -30,8 +30,8 @@ const ParllelSession = () => {
     },
     {
       id: 2,
-      name: "sessions",
-      pathname: "/Session",
+      name: "Parallel sessions",
+      pathname: "/parallel",
     },
   ];
 
