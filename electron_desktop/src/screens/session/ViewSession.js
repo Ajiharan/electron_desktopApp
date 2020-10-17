@@ -88,12 +88,18 @@ const ViewSession = () => {
         setCheckData([]);
         name?
             setSessionData(
-                session.filter((data) => data.selectedValueSubject.includes(name)|| data.subCode.includes(name)
-                    // ||data.selectedValueLecturer.filter((data) => data.includes(name))
-                    // ||data.selectedValueTag.filter((data) => data.includes(name))
-                    // ||data.selectedValueSubject.contains(name)|| data.subCode.contains(name)
-                    // ||data.selectedValueLecturer.filter((data) => data.value.contains(name))
-                    // ||data.selectedValueTag.filter((data) => data.value.contains(name))
+                session.filter((data) => data.selectedValueSubject.includes(name.toLocaleString())|| data.subCode.includes(name.toLocaleString())
+                    ||data.selectedValueSubject.includes(name.toUpperCase())
+                    ||data.subCode.includes(name.toLocaleString())||data.subCode.includes(name.toUpperCase())
+                    ||data.selectedValueGroup.label.includes(name)
+                    ||data.selectedValueLecturer[0].includes(name.toString())
+                    ||data.selectedValueLecturer[0].startsWith(name.toUpperCase())
+                    ||data.selectedValueTag[0].startsWith(name.toString())
+                    ||data.selectedValueTag[0].includes(name.toString())
+                    ||data.selectedValueTag[0].startsWith(name.toUpperCase())
+                    // ||data.selectedValueLecturer[1].includes(name.toString())
+                    // ||data.selectedValueLecturer[2].includes(name.toString())
+                    // ||data.selectedValueTag[0].includes(name.toString()) ||data.selectedValueTag[1].includes(name.toString())
                 )
             ):setSessionData(
                 session
@@ -134,6 +140,7 @@ const ViewSession = () => {
                             <table className="table table-dark table-hover LecturerViewContainer__table">
                                 <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Subject Code</th>
                                     <th>Subject Name</th>
                                     <th>Group ID</th>

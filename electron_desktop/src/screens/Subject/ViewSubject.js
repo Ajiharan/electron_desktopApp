@@ -88,7 +88,7 @@ const ViewSubject = () => {
         setCheckData([]);
         name?
             setSubjectData(
-                subject.filter((data) => data.sub_name.includes(name))
+                subject.filter((data) => data.sub_name.includes(name)||data.sub_id.includes(name)||data.sub_name.includes(name.toUpperCase())||data.sub_id.includes(name.toUpperCase()))
             ):setSubjectData(
             subject
             )

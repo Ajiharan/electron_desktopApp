@@ -11,13 +11,6 @@ import {
     GET_ONE_SUBJECT_REQUEST,
     GET_ONE_SUBJECT_SUCCESS, GET_ONE_SUBJECT_FAILURE
 } from "./SubjectType";
-import {
-    GET_ONE_LECTURER_FAILURE,
-    GET_ONE_LECTURER_REQUEST, GET_ONE_LECTURER_SUCCESS,
-    UPDATE_LECTURER_FAILURE,
-    UPDATE_LECTURER_REQUEST,
-    UPDATE_LECTURER_SUCCESS
-} from "../Lecturer/LecturerType";
 
 const initialState = {
     loading: true,

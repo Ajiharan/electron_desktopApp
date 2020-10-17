@@ -88,7 +88,12 @@ const ViewLecturer = () => {
     setCheckData([]);
     name?
         setLecturerData(
-            lecturer.filter((data) => data.name.includes(name))
+            lecturer.filter((data) => data.name.includes(name)||data.name.startsWith(name.toUpperCase())||data.emp_id.includes(name)
+                                      ||data.center.startsWith(name.toUpperCase())||data.center.includes(name)
+                                      ||data.faculty.startsWith(name.toUpperCase())||data.faculty.includes(name)
+                                      ||data.department.startsWith(name.toUpperCase())||data.department.includes(name)
+                                      ||data.building.startsWith(name.toUpperCase())||data.building.includes(name)
+                                      ||data.level.startsWith(name)||data.building.includes(name))
         ):setLecturerData(
         lecturer
         )
