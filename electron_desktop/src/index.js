@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import {Provider} from 'react-redux';
-import store from './redux/Store';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { Provider } from "react-redux";
+import store from "./redux/Store";
+import * as serviceWorker from "./serviceWorker";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   typography: {
-    fontFamily: "Iceland"
-  }
+    fontFamily: "Iceland",
+  },
 });
 
 ReactDOM.render(
@@ -17,9 +17,9 @@ ReactDOM.render(
     <MuiThemeProvider theme={theme}>
       <App />
     </MuiThemeProvider>
-  </Provider> ,
-   
-  document.getElementById('root')
+  </Provider>,
+
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

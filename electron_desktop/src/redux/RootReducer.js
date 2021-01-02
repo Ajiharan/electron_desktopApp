@@ -97,10 +97,10 @@ import { addSuitableGroupIdReducer } from "./suitableGroupId/SuitableGroupIdRedu
 import { locationtimetable_addReducer } from "./generate_locationtimetable/locationtimetableReducer";
 import { addpreferredRoomReducer } from "./preferedRoom/PreferedRoomReducer";
 import { addReservedTimeReducer } from "./reservedTime/ReservedTimeReducer";
-import {addSuitableConsecutiveSessionReducer} from "./suitableConsecutiveSession/SuitableConsecutiveSessionReducer";
+import { addSuitableConsecutiveSessionReducer } from "./suitableConsecutiveSession/SuitableConsecutiveSessionReducer";
 
 const rootReducer = combineReducers({
-  addSuitableConsecutiveSession:addSuitableConsecutiveSessionReducer,
+  addSuitableConsecutiveSession: addSuitableConsecutiveSessionReducer,
   addReservedTime: addReservedTimeReducer,
   addpreferredRoom: addpreferredRoomReducer,
   addSuitableGroupId: addSuitableGroupIdReducer,
